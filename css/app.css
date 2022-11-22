@@ -159,3 +159,25 @@ pre > code {
     width: 100%;
     background-color: white;
 }
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    
+    .navbar a, .dropdown {
+        float: none;
+        display: block;
+    }
+
+    .dropdown-btn {
+        display: block;
+        width: 100%;
+    }
+
+    .dropdown-content {
+        position: static;
+    }
+
+    .dropdown-content > a {
+        text-align: center;
+    }
+}
