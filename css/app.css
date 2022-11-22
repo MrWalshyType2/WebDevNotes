@@ -8,16 +8,22 @@ html {
         - no support for IE7 or less
         - IE 8 and older don't recognise border-box if min/max-width or min/max-height used on an element
     */
-    -webkit-box-sizing: border-box; /* Safari (< 5.1), Chrome (< 10) */
-    -moz-box-sizing: border-box; /* Firefox (< 29) */
+    -webkit-box-sizing: border-box;
+    /* Safari (< 5.1), Chrome (< 10) */
+    -moz-box-sizing: border-box;
+    /* Firefox (< 29) */
     box-sizing: border-box;
     font-size: 10px;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     /* Inherit to make it easier to change to content-box model if required at any point */
-    -webkit-box-sizing: inherit; /* Safari (< 5.1), Chrome (< 10) */
-    -moz-box-sizing: inherit; /* Firefox (< 29) */
+    -webkit-box-sizing: inherit;
+    /* Safari (< 5.1), Chrome (< 10) */
+    -moz-box-sizing: inherit;
+    /* Firefox (< 29) */
     box-sizing: inherit;
 }
 
@@ -41,7 +47,8 @@ body {
     color: whitesmoke;
 }
 
-.navbar a:hover, .navbar button:hover {
+.navbar a:hover,
+.navbar button:hover {
     background-color: black;
 }
 
@@ -88,7 +95,7 @@ body {
     height: 60vh;
 }
 
-.hero > .block-image {
+.hero>.block-image {
     /* Centre block image */
     display: block;
     margin-left: auto;
@@ -102,7 +109,13 @@ body {
 }
 
 /* General styling */
-p, li, a, pre, th, td, blockquote {
+p,
+li,
+a,
+pre,
+th,
+td,
+blockquote {
     font-size: 1.6rem;
     color: black;
 }
@@ -125,6 +138,28 @@ main {
     margin-right: auto;
 }
 
+/* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
+}
+
 /* Code block styling */
 code {
     font-family: 'Courier New', Courier, monospace;
@@ -132,7 +167,7 @@ code {
     font-size: inherit;
 }
 
-pre > code {
+pre>code {
     color: inherit;
 }
 
@@ -141,7 +176,7 @@ pre > code {
     background-color: lightslategray;
 }
 
-.block-code > code {
+.block-code>code {
     display: block;
     padding: 8px;
     overflow-x: auto;
@@ -154,7 +189,7 @@ pre > code {
     background-color: lightslategray;
 }
 
-.example > .example-content {
+.example>.example-content {
     padding: 8px;
     width: 100%;
     background-color: white;
@@ -162,9 +197,10 @@ pre > code {
 
 /* Mobile responsiveness upto tablet size */
 @media screen and (max-width: 768px) {
-    
+
     /* Navigation */
-    .navbar a, .dropdown {
+    .navbar a,
+    .dropdown {
         float: none;
         display: block;
     }
@@ -178,7 +214,7 @@ pre > code {
         position: static;
     }
 
-    .dropdown-content > a {
+    .dropdown-content>a {
         text-align: center;
     }
 
