@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/html/web.html">The Web</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                HTML &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">HTML syntax</a>
+                <a href="">HTML Entities and symbols</a>
+                <a href="">Headings and paragraphs</a>
+                <a href="">Structural/semantic HTML</a>
+                <a href="">Hyperlinks</a>
+                <a href="">Images</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Forms</a>
+                <a href="">The <code>&lt;head&gt;</code> element</a>
+                <a href="">The DOM</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                CSS &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">CSS and the DOM</a>
+                <a href="">Selectors and inheritance</a>
+                <a href="">Styling text and links</a>
+                <a href="">Units of measurement</a>
+                <a href="">The Box Model</a>
+                <a href="">Positioning elements</a>
+                <a href="">Images and backgrounds</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Transitions, transformations and animation</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Responsive Web Design &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">Mobile first design</a>
+                <a href="">Media queries</a>
+                <a href="">Grid systems</a>
+                <a href="">Flexbox</a>
+                <a href="">Responsive images</a>
+            </div>
+        </div>
+        <a href="/html/attributions.html">Attributions</a>
+    </nav>
+
+    <div class="hero">
+        <img class="block-image" src="/images/WWW-Icon.svg" alt="Icon of the World Wide Web (WWW)">
+        <div class="block-hero-content">
+            <h2>The World Wide Web</h2>
+        </div>
+    </div>
+
+    <main>
+        <header>
+            <h1>Introduction to Web Development with HTML</h1>
+        </header>
+        <section>
+            <header>
+                <h2>What is web development?</h2>
+            </header>
+            <p><strong>Web development</strong> is the work done to create websites and web applications for use on the internet. These web applications can be created in a variety of languages, but the essentials for any website or web application usually includes a mix of:</p>
+            <ul>
+                <li>The <strong>Hypertext Markup Language (HTML)</strong>, is a <em>markup language</em> used for marking up electronic documents for display in a web browser where the term <strong>markup</strong> refers to the data in the electronic document that is not typically displayed on the client web browser. HTML semantically describes the structure of a documents content, how the content is laid out on the page.</li>
+                <li><strong>Cascading Style Sheets (CSS)</strong> is a <em>style sheet language</em> commonly used for describing the presentation of a markup document, typically HTML, where the <strong>presentation</strong> is how the pages content looks and feels.</li>
+                <li><strong>JavaScript (JS)</strong>, an implementation of the <em>ECMAScript standard</em>, is a general-purpose programming language often used for adding dynamic behaviour to a web page. JavaScript code is capable of running in a client-side browser (frontend) and in a separate engine such as Node.js to power server-side applications (backend).</li>
+            </ul>
+        </section>
+        <section>
+            <header>
+                <h2>The internet vs the web</h2>
+            </header>
+            <p>The internet is an interconnected network of computers which communicate using the Internet protocol suite (TCP/IP). The web, formally the World Wide Web, is a software platform which runs on-top of the internet. Web applications communicate using the Hypertext Transfer Protocol (HTTP) using a request-response cycle.</p>
+        </section>
+        <section>
+            <header>
+                <h2>Web standards and the semantic web</h2>
+            </header>
+            <p>The World Wide Web was developed throughout the 1990s after Tim Berners-Lee, an English computer scientist, developed the foundational technologies on which the web is built at The European Organisation for Nuclear Research (CERN) in 1990:</p>
+            <ul>
+                <li>The HTTP protocol</li>
+                <li>The HTML markup language</li>
+                <li>A simple what-you-see-is-what-you-get (WYSIWYG) web-browser and web page editor, confusingly named WorldWideWeb but later renamed to Nexus - discontinued in 1994.</li>
+                <li>The CERN httpd web server daemon used for processing requests and returning responses.</li>
+                <li>The first website, still accessible today at: http://info.cern.ch/</li>
+            </ul>
+            <p>Throughout the late 1990s and early 2000s, the web started to develop as other companies, research institutions and goverments sought to exchange information more efficiently around the globe. This lead to a situation known as the browser wars where a competition for dominance in the web browser market occurred. The problem was, no browser vendor yet adhered to any true technical standards - a set of established requirements or normalities for carrying out a repeatable technical task.</p>
+            <blockquote>
+                Tim Berners-Lee published the first HTML draft proposal in 1991, readable at: http://info.cern.ch/hypertext/WWW/MarkUp/Tags.html
+            </blockquote>
+            <p>During the browser wars, vendors competed to produce browsers with ever more features, but this also reduced the accessibility of the web to users. This posed a problem as more devices of varying screen sizes, hardware and software specifications started to connect to the web. Some of the first and most influential wars occurred between the NCSA Mosiac browser, developed in 1993 and later rebranded as Netscape Navigator, and Microsoft's Internet Explorer, developed in 1995. Needless to say, Internet Explorer eventually won this battle with Netscape being discontinued in 2008 - the original Mozilla Firefox web browser was based on the source-code of Netscape Navigator.</p>
+            <blockquote>The browser wars continue in many forms, as new features are released and realised. As they are a long and complex topic, they won't be discussed further here, information can easily be found online surrounding them.</blockquote>
+            <p>The browser wars kicked off a need for standards to be developed to ensure that a website written in HTML, CSS and JS could be displayed in not just one browser, but any browser. The major releases of HTML are listed in the following table:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>HTML Version</th>
+                        <th>Standard</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2.0</td>
+                        <td>RFC 1866: https://datatracker.ietf.org/doc/html/rfc1866</td>
+                        <td>1995 - 1997</td>
+                    </tr>
+                    <tr>
+                        <td>3.2</td>
+                        <td>W3C Recommendation</td>
+                        <td>1997</td>
+                    </tr>
+                    <tr>
+                        <td>4.0</td>
+                        <td>W3C Recommendation</td>
+                        <td>1997 - 2000</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>W3C Recommendation</td>
+                        <td>2012/2014 - 2017</td>
+                    </tr>
+                    <tr>
+                        <td>Living standards</td>
+                        <td>WHATWG: https://html.spec.whatwg.org/multipage/</td>
+                        <td>2012 onwards</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>The IETF HTML Working Group published the HTML 2.0 specification as an RFC, Request-For-Change</li>
+                <li>W3C, the World Wide Web Consortium, exclusively developed the HTML 3 specification</li>
+                <li>The WHATWG, Web Hypertext Application Technology Working Group, are the current de-facto producers of HTML specifications - the current HTML standard is labelled a living standard which means that it evolves over time as the needs of the web change.</li>
+            </ul>
+        </section>
+    </main>
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

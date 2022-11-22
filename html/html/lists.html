@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/html/web.html">The Web</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                HTML &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="/html/html/syntax.html">HTML syntax</a>
+                <a href="/html/html/entities_and_symbols.html">HTML Entities and symbols</a>
+                <a href="/html/html/headings_and_paragraphs.html">Headings and paragraphs</a>
+                <a href="/html/html/semantic_elements.html">Structural/semantic HTML</a>
+                <a href="/html/html/hyperlinks.html">Hyperlinks</a>
+                <a href="/html/html/images.html">Images</a>
+                <a href="/html/html/lists.html">Lists</a>
+                <a href="/html/html/tables.html">Tables</a>
+                <a href="/html/html/forms.html">Forms</a>
+                <a href="/html/html/head.html">The <code>&lt;head&gt;</code> element</a>
+                <a href="/html/html/dom.html">The DOM</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                CSS &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">CSS and the DOM</a>
+                <a href="">Selectors and inheritance</a>
+                <a href="">Styling text and links</a>
+                <a href="">Units of measurement</a>
+                <a href="">The Box Model</a>
+                <a href="">Positioning elements</a>
+                <a href="">Images and backgrounds</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Transitions, transformations and animation</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Responsive Web Design &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">Mobile first design</a>
+                <a href="">Media queries</a>
+                <a href="">Grid systems</a>
+                <a href="">Flexbox</a>
+                <a href="">Responsive images</a>
+            </div>
+        </div>
+        <a href="/html/attributions.html">Attributions</a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Lists</h1>
+            <p>This section covers the three types of HTML list and nested lists.</p>
+        </header>
+        <p>In HTML documents, we can represent lists of data. In HTML, there are three types of list:</p>
+        <ul>
+            <li>Unordered lists</li>
+            <li>Ordered lists</li>
+            <li>Description lists</li>
+        </ul>
+        <p>We can also nest these lists inside of each other.</p>
+
+        <section>
+            <header>
+                <h2>Types of list</h2>
+            </header>
+            <article>
+                <header>
+                    <h3>Unordered lists</h3>
+                </header>
+                <p>Unordered lists are used for representing unordered data, such as a list of favourite vehicles or foods. There are two key elements in an unordered list, ul and li. The ul element is the container element for the list, nested within the ul element is possibly multiple li elements. For example:</p>
+
+                <pre class="block-code"><code>&lt;ul&gt;
+    &lt;li&gt;Mazda 787B&lt;/li&gt;
+    &lt;li&gt;Sauber C9&lt;/li&gt;
+    &lt;li&gt;Spyker C8&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+                <p>This will render an unordered list of elements to the screen, specifically the content within the li elements which will be listed using bullet points by default in most browsers.</p>
+            </article>
+
+            <article>
+                <header>
+                    <h2>Ordered lists</h2>
+                </header>
+                <p>Ordered lists are the inverse of unordered lists, these allow us to structure lists of items in an order. By default, an ordered list will be rendered using numbers. Try the following example:</p>
+                <pre class="block-code"><code>&lt;ol&gt;
+    &lt;li&gt;Eggs&lt;/li&gt;
+    &lt;li&gt;Apples&lt;/li&gt;
+    &lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+                <p>As mentioned, the default type for an ordered list is to use numbers, we can also change the type using the type attribute to one of the following:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Default if no type specified, orders numerically from smallest value to largest by default, 1...n items</td>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>Orders the list using uppercase alphabetic letters.</td>
+                        </tr>
+                        <tr>
+                            <td>a</td>
+                            <td>Orders the list using lowercase alphabetic letters.</td>
+                        </tr>
+                        <tr>
+                            <td>I</td>
+                            <td>Orders the list using uppercase roman numerals.</td>
+                        </tr>
+                        <tr>
+                            <td>i</td>
+                            <td>Orders the list using lowercase roman numerals.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>For example, I can order the list from before using lowercase roman numerals like so:</p>
+                <pre class="block-code"><code>&lt;ol type="i"&gt;
+    &lt;li&gt;Eggs&lt;/li&gt;
+    &lt;li&gt;Apples&lt;/li&gt;
+    &lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+                <p>The starting numeral, or letter, used for indicating the order can be specified using the start attribute. If I wanted to start the ol from the roman numeral ii, I would do the following:</p>
+                <pre class="block-code"><code>&lt;ol type="i" start="2"&gt;
+    &lt;li&gt;Eggs&lt;/li&gt;
+    &lt;li&gt;Apples&lt;/li&gt;
+    &lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+                <blockquote>The start attribute only takes integer values as input, even for non-numeric list types.</blockquote>
+                <p>We can reverse the order of the list by using specifying the reversed attribute in the ol opening tag, for example:</p>
+                <pre class="block-code"><code>&lt;ol type="i" reversed&gt;
+    &lt;li&gt;Eggs&lt;/li&gt;
+    &lt;li&gt;Apples&lt;/li&gt;
+    &lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                <blockquote>Some attributes are not key=value pairs, they are instead like a boolean flag. For example, if the reversed attribute is present it is true that the list is reversed and vice-versa.</blockquote>
+            </article>
+
+            <article>
+                <header>
+                    <h3>Description lists</h3>
+                </header>
+                <p>A description list is a list where each element, known as a description term, can have many associated data definitions. For example:</p>
+
+                <pre class="block-code"><code>&lt;dl&gt;
+    &lt;dt&gt;Mazda 787B&lt;/dt&gt;
+    &lt;dd&gt;A rotary powered LMP Car&lt;/dd&gt;
+    &lt;dd&gt;The rotary engine is also known as the Wankel engine&lt;/dd&gt;
+    &lt;dd&gt;The only rotary powered car to win the 24 hour le mans&lt;/dd&gt;
+    
+    &lt;dt&gt;Toyota TS050&lt;/dt&gt;
+    &lt;dd&gt;An experimental hybrid LMP car&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                <p>First, a dl element is specified that acts as the container for the description terms - this is similar to ul and ol. Each element of the description list is then specified using dt elements (Mazda 787B and Toyota TS050 above are the two elements) followed by zero or many dd elements. Every dd element following a new dt element belongs to that description term in the list.</p>
+            </article>
+        </section>
+
+        <section>
+            <header>
+                <h2>Nested lists</h2>
+            </header>
+            <p>Lists, like most HTML elements, support the nesting of other elements inside them - this also means we can nest lists inside of other lists. For example, the following unordered list of categories (Favourite cars and foods) each contain a description list nested within the li element of the ul:</p>
+            <pre class="block-code"><code>&lt;ul&gt;
+    &lt;li&gt;Favourite cars:
+        &lt;dl&gt;
+            &lt;dt&gt;Mazda 787B&lt;/dt&gt;
+            &lt;dd&gt;Only rotary engine powered car to win the 24 hour le mans&lt;/dd&gt;
+
+            &lt;dt&gt;Nissan Skyline R34&lt;/dt&gt;
+            &lt;dd&gt;Revolutionised JDM and tuner street racing&lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Favourite foods:
+        &lt;dl&gt;
+            &lt;dt&gt;Pizza&lt;/dt&gt;
+            &lt;dd&gt;Can't beat a pepperoni&lt;/dd&gt;
+
+            &lt;dt&gt;Grill cheese&lt;/dt&gt;
+            &lt;dd&gt;Yumm!&lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </section>
+    </main>
+
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

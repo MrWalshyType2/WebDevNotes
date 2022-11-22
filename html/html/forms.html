@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/html/web.html">The Web</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                HTML &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="/html/html/syntax.html">HTML syntax</a>
+                <a href="/html/html/entities_and_symbols.html">HTML Entities and symbols</a>
+                <a href="/html/html/headings_and_paragraphs.html">Headings and paragraphs</a>
+                <a href="/html/html/semantic_elements.html">Structural/semantic HTML</a>
+                <a href="/html/html/hyperlinks.html">Hyperlinks</a>
+                <a href="/html/html/images.html">Images</a>
+                <a href="/html/html/lists.html">Lists</a>
+                <a href="/html/html/tables.html">Tables</a>
+                <a href="/html/html/forms.html">Forms</a>
+                <a href="/html/html/head.html">The <code>&lt;head&gt;</code> element</a>
+                <a href="/html/html/dom.html">The DOM</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                CSS &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">CSS and the DOM</a>
+                <a href="">Selectors and inheritance</a>
+                <a href="">Styling text and links</a>
+                <a href="">Units of measurement</a>
+                <a href="">The Box Model</a>
+                <a href="">Positioning elements</a>
+                <a href="">Images and backgrounds</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Transitions, transformations and animation</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Responsive Web Design &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">Mobile first design</a>
+                <a href="">Media queries</a>
+                <a href="">Grid systems</a>
+                <a href="">Flexbox</a>
+                <a href="">Responsive images</a>
+            </div>
+        </div>
+        <a href="/html/attributions.html">Attributions</a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Forms</h1>
+            <p>HTML has a form element which can be used for creating forms to collect data from users, and then submit to a server for processing of said data.</p>
+            <ul>
+                <li>Please note that this module covers only the core information for building a form, submitting form data and handling responses requires a server or programmatic control of the form using JavaScript.</li>
+            </ul>
+        </header>
+
+        <section>
+            <h2>HTML Forms</h2>
+            <p>To create a form, the form element must first be specified as a container for holding form elements:</p>
+            <pre class="block-code"><code>&lt;form method="" action=""&gt;
+    &lt;!-- form elements in here --&gt;
+&lt;/form&gt;</code></pre>
+
+            <p>The form element has two mandatory attributes for submitting data to a server using the traditional client-server model:</p>
+            <ul>
+                <li>method: The HTTP request method in use (GET or POST)
+                    <ul>
+                        <li>GET: Used for reading data from a server, data may be sent in a query parameter for example: google.com?q=cats</li>
+                        <li>POST: Used for sending data to a server (sent in the request body)</li>
+                    </ul>
+                </li>
+                <li>action: The URL or script to send data to for processing</li>
+            </ul>
+
+            <p>After defining the container for the form element, we can then create input elements inside the form for users to enter data into, for example:</p>
+            <pre class="block-code"><code>&lt;form action="" method="POST"&gt;
+    &lt;!-- input elements
+            - various types built into HTML5
+            - some input types come with validation enabled, such as for emails
+            - placeholder attribute signifies placeholder data
+            - value attribute specifies content inside in the input field
+            - required attribute means the form will not submit unless the value is present
+            - name identifies what the input element belongs to
+            - id is a unique identifier
+    --&gt;
+    Name:
+    &lt;input type="text" name="name" placeholder="Bob Smith" required /&gt;
+&lt;/form&gt;</code></pre>
+
+            <p>The above example would render as follows:</p>
+            <div class="example">
+                <div class="example-content">
+                    <form action="" method="POST">
+                        Name:
+                        <input type="text" name="name" placeholder="Bob Smith" required />
+                 </form>
+                </div>
+            </div>
+
+            <p>The input is an inline element and by default is used for text input, we can also specify this using the type attribute as seen above. Other attributes we may wish to use include:</p>
+            <ul>
+                <li>name: Specifies the name of the input field, this is not seen by the user but is submitted alongside the input fields value as a key=value pair. If omitted, the input is not submitted.</li>
+                <li>placeholder: Signifies a placeholder value for the input field that disappears when the user starts inputting data</li>
+                <li>value: Used to specify default data that is already present in the input field</li>
+                <li>required: Indicates the input field as mandatory, prevents the form from being submitted unless data is present. This attribute does not take a value.</li>
+                <li>readonly: The field is still visible but is unusable - the data will still be sent to the server and users can still click/tab onto the field. This attribute does not take a value.</li>
+                <li>disabled: The input field is still visible but is unusable, unclickable and will not be sent to the server. This attribute does not take a value.</li>
+                <li>size: Specify the width, in characters, of the input field</li>
+                <li>maxlength: Sets the maximum number of allowed characters in an input field</li>
+                <li>min and max:  Works only with numerical and date types, used to specify the minimum and maximum values for an input field</li>
+                <li>pattern: Allows the specification of a regular expression for validating form data against</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Form input types</h2>
+            <p>There are various types of inputs that can be supplied in a HTML form. Prior to HTML 5, there was 10 basic input element types that could be supplied to the type attribute (https://www.w3.org/TR/html401/interact/forms.html):</p>
+
+            <ul>
+                <li>text: A text input field</li>
+                <li>password: A text input field where the inputted characters are displayed as asterisks</li>
+                <li>checkbox: A checkbox input element</li>
+                <li>radio: A radio button input element.</li>
+                <li>image: Creates a graphical submit button where the src attribute specifies the image to use, ensure the alt attribute is specified also. These are supplied to the input element itself.</li>
+                <li>file: Creates a file upload option</li>
+                <li>hidden: Creates a hidden input field, often used for holding the identity or some reference to a record to be edited in a database.</li>
+                <li>button: Creates a push button input field, use the value attribute to specify the buttons name.</li>
+                <li>submit: Creates a submit button that submits the form to the specified form action using the specified form method</li>
+                <li>reset: Creates a reset button that resets the values in the form</li>
+            </ul>
+
+            HTML5 introduced a variety of new form input types to make forms easier to create and use, these types include:
+
+            <article>
+                <h3>The <code>email</code> attribute</h3>
+                <p>This form input type requires typing a valid email address into the input field, valid doesn't mean the email address actually exists, just that it follows the expected format:</p>
+
+                <p>The email input type is specified as follows:</p>
+
+                <pre class="block-code"><code>&lt;input type="email" name="email" /&gt;</code></pre>
+
+                <p>When rendered in a form, it looks as follows:</p>
+
+                <div class="example">
+                    <div class="example-content">
+                        <form action="" method="get">
+                            Email: <input type="email" name="email" />
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <p>
+                    Try pressing the submit button with no email present, or a malformed email, and client-side validation will be applied to the email. This is not an exhaustive security measure though,
+                    it is required that the server also checks the formatting of an email.
+                </p>
+            </article>
+
+            <article>
+                <h3>The <code>search</code> attribute</h3>
+                <p>The <code>search</code> input type is used for creating search boxes on web pages and web applications:</p>
+
+                <pre class="block-code"><code>&lt;input type="search" name="q" /&gt;</code></pre>
+
+                <p>When rendered in a form, it looks as follows:</p>
+
+                <div class="example">
+                    <div class="example-content">
+                        <form action="" method="get">
+                            Search: <input type="search" name="q" />
+                        </form>
+                    </div>
+                </div>
+
+                <p>Search input fields often default styling and behaviours applied to them by the browser (not always), including rounded borders, default placeholder text, a button for clearing text from the field, etc...</p>
+            </article>
+
+            <article>
+                <h3>The <code>tel</code> attribute</h3>
+                <p>The <code>tel</code> attribute is used for telephone numbers, on mobile devices it will cause them to display a numeric keypad rather than the alphabetical keyboard:</p>
+
+                <pre class="block-code"><code>&lt;input type="tel" name="tel" /&gt;</code></pre>
+
+                <p>When rendered in a form, it looks as follows:</p>
+
+                <div class="example">
+                    <div class="example-content">
+                        <form action="" method="get">
+                            Telephone number: <input type="tel" name="tel" />
+                        </form>
+                    </div>
+                </div>
+
+                <p>
+                    This field does not apply client-side validation by default, meaning it can also accept letters as input. It also doesn't need to be used solely for telephone numbers, it can be
+                    useful where any numerical input is needed as it opens the numerical keypad by default on mobile devices (there is a separate number input type which is better suited though).
+                </p>
+            </article>
+
+            <article>
+                <h3>The <code>number</code> attribute</h3>
+                <p>
+                    The <code>number</code> attribute is used for numbers, on mobile devices it will cause them to display a numeric keypad rather than the alphabetical keyboard. A minimum and maximum value 
+                    can be specified using the <code>min</code> and <code>max</code> attributes respectively:
+                </p>
+
+                <pre class="block-code"><code>&lt;input type="number" name="number" min="18" max="130" /&gt;</code></pre>
+
+                <p>When rendered in a form, it looks as follows:</p>
+
+                <div class="example">
+                    <div class="example-content">
+                        <form action="" method="get">
+                            Age: <input type="number" name="number" min="18" max="130" />
+                        </form>
+                    </div>
+                </div>
+
+                <p>
+                    This field type has a basic client-side validation where it only allows integers (whole numbers). To change this, set the <code>step</code> attribute equal to <code>any</code> to allow
+                    floating point numbers (decimals). For this input type, browsers will also usually include controls for incrementing and decrementing the input number by the specified step value.
+                </p>
+            </article>
+
+            <article>
+                <h3>Other useful types</h3>
+
+                Alongside those mentioned, HTML5 introduced the following useful types for controlling form inputs:
+
+                <ul>
+                    <li><code>url</code>: Used for specifying a URL, provides client-side validation that indicates a URL is malformed if no protocol is specified such as <code>http:</code> or <code>https:</code>.</li>
+                    <li><code>range</code>: Used for a specifying a slider control on a form, used for picking a value within a range but suffers from imprecision in its control. Like the number type, a <code>min</code>, <code>max</code> and <code>step</code> attribute can be supplied. The current value of the slider is not displayed by default and requires JavaScript to do so.</li>
+                    <li>Date and time pickers: Various types exist for specifying dates and time, such as:
+                        <ul>
+                            <li><code>datetime-local</code>: Displays a widget for picking a date and time.</li>
+                            <li><code>month</code>: Displays a widget for picking a month and year.</li>
+                            <li><code>time</code>: Displays a widget for selecting a time.</li>
+                            <li><code>week</code>: Displays a widget for selecting a week number and year.</li>
+                        </ul>
+                    </li>
+                    <li><code>color</code>: Displays a colour picker widget for selecting a specific colour.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2>Simple form example</h2>
+
+            <p>The following example demonstrates using a form to submit search text to Google, Google's server will respond with a redirect which by default is then followed by the browser:</p>
+
+            <pre class="block-code"><code>&lt;form action="https://www.google.com/search" method="get"&gt;
+    Google search:
+    &lt;input type="search" name="q" /&gt;
+    &lt;button type="submit"&gt;Search&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+            <p>Here is an example of the form, rendered to the browser, to try out:</p>
+
+            <div class="example">
+                <div class="example-content">
+                    <form action="https://www.google.com/search" method="get">
+                        Google search:
+                        <input type="search" name="q" />
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/html/web.html">The Web</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                HTML &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="/html/html/syntax.html">HTML syntax</a>
+                <a href="/html/html/entities_and_symbols.html">HTML Entities and symbols</a>
+                <a href="/html/html/headings_and_paragraphs.html">Headings and paragraphs</a>
+                <a href="/html/html/semantic_elements.html">Structural/semantic HTML</a>
+                <a href="/html/html/hyperlinks.html">Hyperlinks</a>
+                <a href="/html/html/images.html">Images</a>
+                <a href="/html/html/lists.html">Lists</a>
+                <a href="/html/html/tables.html">Tables</a>
+                <a href="/html/html/forms.html">Forms</a>
+                <a href="/html/html/head.html">The <code>&lt;head&gt;</code> element</a>
+                <a href="/html/html/dom.html">The DOM</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                CSS &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">CSS and the DOM</a>
+                <a href="">Selectors and inheritance</a>
+                <a href="">Styling text and links</a>
+                <a href="">Units of measurement</a>
+                <a href="">The Box Model</a>
+                <a href="">Positioning elements</a>
+                <a href="">Images and backgrounds</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Transitions, transformations and animation</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Responsive Web Design &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">Mobile first design</a>
+                <a href="">Media queries</a>
+                <a href="">Grid systems</a>
+                <a href="">Flexbox</a>
+                <a href="">Responsive images</a>
+            </div>
+        </div>
+        <a href="/html/attributions.html">Attributions</a>
+    </nav>
+
+    <main>
+        <article>
+            <header>
+                <h1>Semantic elements and accessibility</h1>
+            </header>
+    
+            <p>Semantic elements have always been a part of HTML, but so also have non-semantic elements like the infamous div for creating divisions in your document. Historically, pre-2014 before HTML5 was released, and even still to this day, document layouts have been made using div elements. For example, a typical layout used div elements a lot with classes and id's to identify them:</p>
+            <pre class="block-code"><code>&lt;div id="navbar"&gt;
+    &lt;img class="logo" alt="#" src="#" /&gt;
+    &lt;ul&gt;
+        &lt;li class="nav-link"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-link"&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-link"&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id="header"&gt;
+    &lt;h1&gt;The example of poor HTML&lt;/h1&gt;
+    &lt;p&gt;And some follow on text...&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id="main"&gt;
+    &lt;p&gt;The main content of the page&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id="footer"&gt;
+    &lt;p&gt;Copyright &copy;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+    
+            <p>There are two major problems:</p>
+            <ol>
+                <li>This design is not semantic enough, div elements are for structure rather than meaning. This reduces accessibility for those that rely on screen readers to indicate different parts of the page. This could be solved in HTML4 using various ARIA attributes but is not ideal as it further pollutes the source: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA</li>
+                <li>It is hard to read and thus maintain.</li>
+            </ol>
+            <p>The rest of this section will discuss the new semantic elements added in HTML5 designed to alleviate the troubles of <code>div</code> based designs.</p>
+    
+            <section>
+                <h2>Exploring semantic elements</h2>
+                <p>HTML5 added semantic elements to the language to aid accessibility and design of documents by conveying meaning in the design. These new elements include:</p>
+                <ul>
+                    <li>article</li>
+                    <li>aside</li>
+                    <li>details</li>
+                    <li>figcaption</li>
+                    <li>figure</li>
+                    <li>footer</li>
+                    <li>header</li>
+                    <li>main</li>
+                    <li>mark</li>
+                    <li>nav</li>
+                    <li>section</li>
+                    <li>summary</li>
+                    <li>time</li>
+                </ul>
+    
+                <p>Before exploring the individual elements, lets look at what the above design looks like with semantic elements in use:</p>
+                <pre class="block-code"><code>&lt;nav&gt;
+    &lt;img class="logo" alt="#" src="#" /&gt;
+    &lt;ul&gt;
+        &lt;li class="nav-link"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-link"&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-link"&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;header&gt;
+    &lt;h1&gt;The example of good HTML&lt;/h1&gt;
+    &lt;p&gt;And some follow on text...&lt;/p&gt;
+&lt;/header&gt;
+&lt;main&gt;
+    &lt;p&gt;The main content of the page&lt;/p&gt;
+&lt;/main&gt;
+&lt;footer&gt;
+    &lt;p&gt;Copyright &copy;&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+    
+                <p>One thing that is immediately noticeable is how much more readability the HTML now has, the document holds much more semantic meaning...</p>
+            </section>
+    
+            <section>
+                <h2>Headers, sections and articles</h2>
+                <h3>Headers</h3>
+                <p>The header element is used to represent the main heading of a document, section or article.</p>
+                <blockquote>The header element should not be used inside the main element unless inside a section or article as the main element signifies the pages main content.</blockquote>
+
+                <p>The design of a header differs somewhat and may follow the example seen before where it is just a header with some lead text below the navigation bar but above the main content:</p>
+            <pre class="block-code"><code>&lt;header&gt;
+    &lt;h1&gt;The example of poor HTML&lt;/h1&gt;
+    &lt;p&gt;And some follow on text...&lt;/p&gt;
+&lt;/header&gt;</code></pre>
+
+                <p>We commonly also see search tools and navigation bars inside the main header of a page:</p>
+                <pre class="block-code"><code>&lt;header&gt;
+    &lt;h1&gt;Company&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;img class="logo" alt="#" src="#" /&gt;
+        &lt;ul&gt;
+        &lt;li class="nav-link"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-link"&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-link"&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+                <h3>Sections and articles</h3>
+                <p>HTML5 added section elements for thematically grouping content and article elements for representing independently distributable or reusable component of the page.</p>
+                <ul>
+                    <li>Articles could include blog posts, forum posts, comments, widgets, etc...</li>
+                    <li>Nested articles should be related to their parent article, such as comments on a blog post</li>
+                    <li>Sections and articles should be identified by a heading</li>
+                    <li>Sections cannot usually be used independently as they represent a piece of the larger whole document</li>
+                </ul>
+
+                <p>Sections may contain articles and articles may contain sections, what is most important is that their use makes semantic sense. For example, a blog post might look as follows:</p>
+                <pre class="block-code"><code>&lt;article class="blog-post"&gt;
+    &lt;h2&gt;The posts title&lt;/h2&gt;
+    &lt;section class="content"&gt;
+        &lt;h3&gt;&lt;u&gt;A lead title&lt;/u&gt;&lt;/h3&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ipsum quis dui varius ornare. Sed nec eros sed justo volutpat fermentum. Fusce egestas malesuada euismod. Cras imperdiet congue erat nec volutpat. Sed condimentum rutrum urna vel euismod. Etiam et est tellus. Mauris quis ante nisl. Suspendisse eros felis, sodales non commodo sed, gravida a elit. Morbi tempus ipsum id faucibus placerat. Etiam eu pellentesque sem, quis vulputate mauris. Ut a pretium sem. Nullam hendrerit bibendum molestie. In hac habitasse platea dictumst. Proin venenatis tellus at dui sagittis, nec tempus justo vehicula. Donec dapibus magna non commodo consequat.&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section class="comment-area"&gt;
+        &lt;h3&gt;&lt;u&gt;Comments&lt;/u&gt;&lt;/h3&gt;
+        &lt;article class="comment"&gt;
+        &lt;h4&gt;User 1&lt;/h4&gt;
+        &lt;p&gt;
+            I posted this at 
+            &lt;time datetime="2022-03-31 16:00"&gt;16:00&lt;/time&gt;
+        &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="comment"&gt;
+        &lt;h4&gt;User 2&lt;/h4&gt;
+        &lt;p&gt;
+            I posted this at 
+            &lt;time datetime="2022-03-31 16:05"&gt;16:05&lt;/time&gt;
+        &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="comment"&gt;
+        &lt;h4&gt;User 3&lt;/h4&gt;
+        &lt;p&gt;
+            I posted this at 
+            &lt;time datetime="2022-03-31 16:10"&gt;16:10&lt;/time&gt;
+        &lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+
+                <blockquote>The time element has also been used to demonstrate it, this increases the accessibility of reading times via a screen-reader. If this element is not used, the time will instead be read like text, i.e., one six colon one zero - which does not make much sense.</blockquote>
+            </section>
+
+            <section>
+                <h2>The <code>nav</code> element</h2>
+                <p>The nav element is used to indicate an area of internal or external navigation and is designed to increase accessibility, this should be preferred over div based navigation bars. A simple accessible example is:</p>
+                <pre class="block-code"><code>&lt;nav&gt;
+    &lt;a href="#"&gt;Index&lt;/a&gt;
+    &lt;a href="#"&gt;About&lt;/a&gt;
+    &lt;a href="#"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+            </section>
+
+            <section>
+                <h2><code>figures</code> and <code>figcaptions</code></h2>
+                <p>A figure element is designed to be wrapped around an image, the figcaption element is used to supply a caption to the image. For example:</p>
+                <pre class="block-code"><code>&lt;figure&gt;
+    &lt;img src="https://via.placeholder.com/50" alt="" /&gt;
+    &lt;figcaption&gt;This image has a caption&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+                <p>This will render an image with a caption associated with it, this primarily aids accessibility but is useful in development as it no longer requires the use of divs and CSS styling to achieve the same result.</p>
+            </section>
+        </article>
+    </main>
+
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

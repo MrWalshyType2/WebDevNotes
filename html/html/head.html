@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/html/web.html">The Web</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                HTML &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="/html/html/syntax.html">HTML syntax</a>
+                <a href="/html/html/entities_and_symbols.html">HTML Entities and symbols</a>
+                <a href="/html/html/headings_and_paragraphs.html">Headings and paragraphs</a>
+                <a href="/html/html/semantic_elements.html">Structural/semantic HTML</a>
+                <a href="/html/html/hyperlinks.html">Hyperlinks</a>
+                <a href="/html/html/images.html">Images</a>
+                <a href="/html/html/lists.html">Lists</a>
+                <a href="/html/html/tables.html">Tables</a>
+                <a href="/html/html/forms.html">Forms</a>
+                <a href="/html/html/head.html">The <code>&lt;head&gt;</code> element</a>
+                <a href="/html/html/dom.html">The DOM</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                CSS &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">CSS and the DOM</a>
+                <a href="">Selectors and inheritance</a>
+                <a href="">Styling text and links</a>
+                <a href="">Units of measurement</a>
+                <a href="">The Box Model</a>
+                <a href="">Positioning elements</a>
+                <a href="">Images and backgrounds</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Transitions, transformations and animation</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Responsive Web Design &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">Mobile first design</a>
+                <a href="">Media queries</a>
+                <a href="">Grid systems</a>
+                <a href="">Flexbox</a>
+                <a href="">Responsive images</a>
+            </div>
+        </div>
+        <a href="/html/attributions.html">Attributions</a>
+    </nav>
+
+    <main>
+        <article>
+            <header>
+                <h1>The document <code>head</code></h1>
+                <p>An area oft-used for supplying page metadata and linking in stylesheets</p>
+            </header>
+
+            <section>
+                <h2>Metadata</h2>
+                <p>Metadata is data used to describe other data, in the case of HTML we use metadata to describe additional information concerning our HTML document.</p>
+
+                <p>Metadata is often used to specify things like:</p>
+                <ul>
+                    <li>The character set of the document</li>
+                    <li>A description</li>
+                    <li>Keywords</li>
+                    <li>Document authors</li>
+                    <li>Viewport settings</li>
+                </ul>
+
+                <h3>The <code>meta</code> element</h3>
+                <p>The meta element is used to describe the metadata of a document, this element is special in that it must be placed within the head element of the document, meaning it will not be rendered to the user.</p>
+
+                <p>The following example demonstrates using some of the core meta attributes:</p>
+                <pre class="block-code"><code>&lt;head&gt;
+    &lt;!-- Set the character set --&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    
+    &lt;!-- Set keywords for search engines --&gt;
+    &lt;meta name="keywords" content="HTML, CSS, JS" /&gt;
+    
+    &lt;!-- Set the documents description --&gt;
+    &lt;meta name="description" content="tutorial of HTML" /&gt;
+    
+    &lt;!-- Set the documents author --&gt;
+    &lt;meta name="author" content="John Smith" /&gt;
+    
+    &lt;!-- Set the viewport width --&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+&lt;/head&gt;</code></pre>
+
+                <p>The last meta element specified is an important one, this ensures that the HTML elements in our document scale appropriately according to the devices size that is viewing the document:</p>
+                <ul>
+                    <li><code>width=device-width</code> sets the documents width to match that of the device viewing the document</li>
+                    <li><code>initial-scale=1.0</code> sets the zoom level of the document</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

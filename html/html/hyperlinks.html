@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/html/web.html">The Web</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                HTML &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="/html/html/syntax.html">HTML syntax</a>
+                <a href="/html/html/entities_and_symbols.html">HTML Entities and symbols</a>
+                <a href="/html/html/headings_and_paragraphs.html">Headings and paragraphs</a>
+                <a href="/html/html/semantic_elements.html">Structural/semantic HTML</a>
+                <a href="/html/html/hyperlinks.html">Hyperlinks</a>
+                <a href="/html/html/images.html">Images</a>
+                <a href="/html/html/lists.html">Lists</a>
+                <a href="/html/html/tables.html">Tables</a>
+                <a href="/html/html/forms.html">Forms</a>
+                <a href="/html/html/head.html">The <code>&lt;head&gt;</code> element</a>
+                <a href="/html/html/dom.html">The DOM</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                CSS &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">CSS and the DOM</a>
+                <a href="">Selectors and inheritance</a>
+                <a href="">Styling text and links</a>
+                <a href="">Units of measurement</a>
+                <a href="">The Box Model</a>
+                <a href="">Positioning elements</a>
+                <a href="">Images and backgrounds</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Transitions, transformations and animation</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Responsive Web Design &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">Mobile first design</a>
+                <a href="">Media queries</a>
+                <a href="">Grid systems</a>
+                <a href="">Flexbox</a>
+                <a href="">Responsive images</a>
+            </div>
+        </div>
+        <a href="/html/attributions.html">Attributions</a>
+    </nav>
+
+    <main>
+        <heading>
+            <h1>Hyperlinks</h1>
+            <p>In HTML documents, it is often desirable to link to other documents from the current one - whether stored and accessed on the local machine or via the web.</p>
+        </heading>
+
+        <section>
+            <heading>
+                <h2>Anchors</h2>
+            </heading>
+            <p>To create links to other documents in the current document, an a tag (short for anchor) must be supplied. The a tag has two parts:</p>
+            <ul>
+                <li>Hyperlink: A link specified in the href attribute to another web document, this is not displayed to the user.</li>
+                <li>Hypertext: The text within the anchor elements tag that is displayed to the user.</li>
+            </ul>
+
+            <p>To create a link to another document, specify the anchor tag like the following - replacing the  hyperlink and hypertext as needed:</p>
+            <pre class="block-code"><code>&lt;a href="https://www.qa.com"&gt;QA&lt;/a&gt;</code></pre>
+
+            <p>To reference a locally stored document instead, use a relative path in the href attribute rather than a URL to a document on the web:</p>
+            &lt;a href="/about.html"&gt;About us&lt;/a&gt;
+        </section>
+
+        <section>
+            <heading>
+                <h2>Targets</h2>
+            </heading>
+            <p>By default, anchor elements will open the specified document in the current tab when pressed. This may not always be desirable, and thus can be changed using the target attribute on an anchor element. The possible target values are as follows:</p>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Target</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>_blank</code></td>
+                        <td>Opens the specified hyperlink in a new tab.</td>
+                        <td><code>&lt;a href="https://www.google.com" target="_blank"&gt;Google _blank&lt;/a&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>_self</code></td>
+                        <td>Opens the specified hyperlink in the current tab (default).</td>
+                        <td><code>&lt;a href="https://www.google.com" target="_self"&gt;Google _self&lt;/a&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>_top</code></td>
+                        <td>Opens the specified hyperlink the top most frame, or the current tab if already in the top most frame (see iframes).</td>
+                        <td><code>&lt;a href="https://www.google.com" target="_top"&gt;Google _top&lt;/a&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>_parent</code></td>
+                        <td>Opens the specified hyperlink in the parent frame/document of the current frame (see iframes).</td>
+                        <td><code>&lt;a href="https://www.google.com" target="_parent"&gt;Google _parent&lt;/a&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>_framename</code></td>
+                        <td>Opens the specified hyperlink in the specified frame.</td>
+                        <td><code>&lt;a href="https://www.google.com" target="some_frame"&gt;Google _parent&lt;/a&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <heading>
+                <h2>Mailto attribute</h2>
+            </heading>
+            <p>The href attribute is capable of taking a mailto value which opens the default mail client with the supplied values, for example:</p>
+            <pre class="block-code"><code>&lt;a href="mailto:somemail@emailcom?subject=Hello World&body=Hello there sir/madam"&gt;Send email&lt;/a&gt;</code></pre>
+
+            <p>This will open the default mail client on the users computers and prefill it with the following information:</p>
+            <ul>
+                <li>A recipients email specified after <code>mailto:</code> </li>
+                <li>A <code>subject</code> and a <code>body</code> specified as key=value pairs after the <code>?</code> symbol with each query parameter separated by an <code>&</code> symbol</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

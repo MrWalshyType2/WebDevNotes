@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/html/web.html">The Web</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                HTML &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="/html/html/syntax.html">HTML syntax</a>
+                <a href="/html/html/entities_and_symbols.html">HTML Entities and symbols</a>
+                <a href="/html/html/headings_and_paragraphs.html">Headings and paragraphs</a>
+                <a href="/html/html/semantic_elements.html">Structural/semantic HTML</a>
+                <a href="/html/html/hyperlinks.html">Hyperlinks</a>
+                <a href="/html/html/images.html">Images</a>
+                <a href="/html/html/lists.html">Lists</a>
+                <a href="/html/html/tables.html">Tables</a>
+                <a href="/html/html/forms.html">Forms</a>
+                <a href="/html/html/head.html">The <code>&lt;head&gt;</code> element</a>
+                <a href="/html/html/dom.html">The DOM</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                CSS &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">CSS and the DOM</a>
+                <a href="">Selectors and inheritance</a>
+                <a href="">Styling text and links</a>
+                <a href="">Units of measurement</a>
+                <a href="">The Box Model</a>
+                <a href="">Positioning elements</a>
+                <a href="">Images and backgrounds</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Transitions, transformations and animation</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Responsive Web Design &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">Mobile first design</a>
+                <a href="">Media queries</a>
+                <a href="">Grid systems</a>
+                <a href="">Flexbox</a>
+                <a href="">Responsive images</a>
+            </div>
+        </div>
+        <a href="/html/attributions.html">Attributions</a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Headings, paragraphs and text formatting</h1>
+            <p>In HTML, we many elements with different semantic meanings. Some of the most commonly used are the elements which represent headings and paragraphs of text.</p>
+            <blockquote>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements</blockquote>
+        </header>
+
+        <section>
+            <header><h2>Headings and paragraphs</h2></header>
+            <p>In HTML, we have six sizes of heading supplied by default. These are represented by the following tags:</p>
+
+            <pre class="block-code"><code>&lt;h1&gt;Largest&lt;/h1&gt;
+&lt;h2&gt;Second largest&lt;/h2&gt;
+&lt;h3&gt;Third largest&lt;/h3&gt;
+&lt;h4&gt;...&lt;/h4&gt;
+&lt;h5&gt;...&lt;/h5&gt;
+&lt;h6&gt;Smallest&lt;/h6&gt;</code></pre>
+
+            <p>With heading elements, they progressively get smaller. Heading elements are useful for helping section textual content, especially for screen-readers who rely on the use of semantic elements to indicate the structure of the content. For example, the following example demonstrates only using p elements to structure our content - making it inaccessible to disabled users who may not be able to distinguish the separate areas of content:</p>
+            <pre class="block-code"><code>&lt;p&gt;Headings and paragraphs&lt;/p&gt;
+
+&lt;p&gt;Headings&lt;/p&gt;
+&lt;p&gt;Heading elements represent headings and have six sizes&lt;/p&gt;
+
+&lt;p&gt;Paragraphs&lt;/p&gt;
+&lt;p&gt;Paragraphs represent blocks of text&lt;/p&gt;</code></pre>
+
+            <p>From a presentational aspect, this is ok but nowhere near ideal - this relies on visual skills to infer the different sections of the document. To group the content more appropriately, we would use heading tags:</p>
+            <pre class="block-code"><code>&lt;h1&gt;Headings and paragraphs&lt;/h1&gt;
+
+&lt;h2&gt;Headings&lt;/h2&gt;
+&lt;p&gt;Heading elements represent headings and have six sizes&lt;/p&gt;
+
+&lt;h2&gt;Paragraphs&lt;/h2&gt;
+&lt;p&gt;Paragraphs represent blocks of text&lt;/p&gt;</code></pre>
+
+            <p>Using heading elements will provide two major changes:</p>
+            <ul>
+                <li>The presentation of the text will change to represent the default browser sizing and styling of the heading element, including text size, text font, text weight, line height, etc...</li>
+                <li>Heading elements create a semantic section of the document indicating that content following the heading belongs to that heading - this is very important for screen-readers. For example, the h1 element has two inner headings, h2 elements, each with their own content, providing a structure for the content.</li>
+            </ul>
+
+            <blockquote>Only one h1 element should be used per HTML document, the HTML specification doesn't state this as a rule but it generally improves accessibility for screen-readers. It is also important to ensure you use headings from largest to smallest, do not skip adding a h1 and still use h2 and h3 elements for example.</blockquote>
+        </section>
+
+        <section>
+            <header>
+                <h2>Formatting</h2>
+            </header>
+            <p>Headings and paragraph elements contain text, this text can be formatted using certain inline elements, inline meaning that they do not cause the text to go to a new line. The following table lists some of these elements:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>mark</code></td>
+                        <td>Highlights the contained text visually and provides semantic meaning to screen-readers..</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>b</code></td>
+                        <td>Boldens the contained text (non-semantic).</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>i</code></td>
+                        <td>Italicises the contained text (non-semantic).</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>u</code></td>
+                        <td>Underlines the contained text (non-semantic).</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>s</code></td>
+                        <td>Puts a strike through the contained text (non-semantic).</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>strong</code></td>
+                        <td>Boldens the contained text and provides semantic meaning to screen-readers.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>em</code></td>
+                        <td>Italisices the contained text and provides semantic meaning to screen-readers by way of emphasising the text when it is read.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>abbr</code></td>
+                        <td>Abbreviates the contained text and provides semantic meaning to screen-readers.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>ins</code></td>
+                        <td>Underlines the contained text and provides semantic meaning to screen-readers that the text was inserted.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>del</code></td>
+                        <td>Strikes through the contained text and provides semantic meaning to screen-readers that the content is deleted.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>sup</code></td>
+                        <td>Superscripts the contained text and provides semantic meaning to screen-readers.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>sub</code></td>
+                        <td>Subscripts the contained text and provides semantic meaning to screen-readers.</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Copy and and paste the following example into a file called index.html and open this in your browser:</p>
+            <ul>
+                <li>Try changing text to see how it affects what is displayed</li>
+                <li>Try adding in your own inline elements for customising the presentation of your text</li>
+            </ul>
+
+            <pre class="block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Text Formatting&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Text Manipulation&lt;/h1&gt;
+
+    &lt;!-- Highlighting text relevant to some context (semantic) --&gt;
+    &lt;h2&gt;mark&lt;/h2&gt;
+    &lt;p&gt;Hello there &lt;mark&gt;Bob&lt;/mark&gt;&lt;/p&gt;
+
+    &lt;!-- Bold, italic and underlined text (non-semantic) 
+            - b tag bolds text
+            - i tag italicises text
+            - u tag underlines text
+            These are visual and do not offer semantic help to screen readers.
+    --&gt;
+    &lt;h2&gt;Non semantic bold, italic and underline&lt;/h2&gt;
+    &lt;p&gt;Hello &lt;b&gt;Bob&lt;/b&gt;, &lt;i&gt;how are &lt;u&gt;you&lt;/u&gt; doing&lt;/i&gt;?&lt;/p&gt;
+
+    &lt;!-- Bold & Italic (semantic) 
+            - strong tag for strong reading (bold text)
+            - em tag for emphasis on reading (italic text)
+            These adjust how the content is read by screen readers (accessibility focused)
+    --&gt;
+    &lt;h2&gt;Semantic bold and italic&lt;/h2&gt;
+    &lt;p&gt;Hello &lt;strong&gt;Bob&lt;/strong&gt;, how are &lt;em&gt;you&lt;/em&gt; doing?&lt;/p&gt;
+
+    &lt;!-- Abbreviations (semantic)
+            - abbr tag for abbreviations
+            - title attribute to indicate what is being abbreviated
+    --&gt;
+    &lt;h2&gt;Abbreviations&lt;/h2&gt;
+    &lt;p&gt;I am studying &lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;&lt;/p&gt;
+
+    &lt;!-- Inserted, Deleted or Stricken
+            - ins tag for inserted text (semantic for u tag)
+            - del tag for deleted text (semantic for s tag)
+            - s for strike through
+    --&gt;
+    &lt;h2&gt;Inserted, deleted or stricken&lt;/h2&gt;
+    &lt;p&gt;&lt;ins&gt;This text was inserted&lt;/ins&gt; into here.&lt;/p&gt;
+    &lt;p&gt;&lt;del&gt;This text was deleted&lt;/del&gt; from here.&lt;/p&gt;
+    &lt;p&gt;&lt;s&gt;This text was striked through&lt;/s&gt; here.&lt;/p&gt;
+
+    &lt;!-- Superscript, subscript
+        - sup tag for superscript
+        - sub tag for subscript
+    --&gt;
+    &lt;h2&gt;Superscript and subscript&lt;/h2&gt;
+    &lt;p&gt;27&lt;sup&gt;o&lt;/sup&gt;C&lt;/p&gt;
+    &lt;p&gt;The number in base 10 is: 16&lt;sub&gt;10&lt;/sub&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </section>
+    </main>
+
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/html/web.html">The Web</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                HTML &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="/html/html/syntax.html">HTML syntax</a>
+                <a href="/html/html/entities_and_symbols.html">HTML Entities and symbols</a>
+                <a href="/html/html/headings_and_paragraphs.html">Headings and paragraphs</a>
+                <a href="/html/html/semantic_elements.html">Structural/semantic HTML</a>
+                <a href="/html/html/hyperlinks.html">Hyperlinks</a>
+                <a href="/html/html/images.html">Images</a>
+                <a href="/html/html/lists.html">Lists</a>
+                <a href="/html/html/tables.html">Tables</a>
+                <a href="/html/html/forms.html">Forms</a>
+                <a href="/html/html/head.html">The <code>&lt;head&gt;</code> element</a>
+                <a href="/html/html/dom.html">The DOM</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                CSS &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">CSS and the DOM</a>
+                <a href="">Selectors and inheritance</a>
+                <a href="">Styling text and links</a>
+                <a href="">Units of measurement</a>
+                <a href="">The Box Model</a>
+                <a href="">Positioning elements</a>
+                <a href="">Images and backgrounds</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Transitions, transformations and animation</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Responsive Web Design &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">Mobile first design</a>
+                <a href="">Media queries</a>
+                <a href="">Grid systems</a>
+                <a href="">Flexbox</a>
+                <a href="">Responsive images</a>
+            </div>
+        </div>
+        <a href="/html/attributions.html">Attributions</a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>HTML syntax</h1>
+            <p>HTML has a specific syntax used for marking up text documents, this affects how the text is represented on the screen and its structure.</p>
+        </header>
+        <section>
+            <header>
+                <h2>Elements and tags</h2>
+            </header>
+            <p>Tags are often used in languages for many reasons, a large one is the ease of which a tag-based document can be represented in a data structure; as prior seen, the DOM can be represented as a tree.</p>
+            <p>Tags in HTML have three forms that are used to represent elements, all use angle brackets, <code>&lt;&gt;</code>, to represent elements:</p>
+            <ul>
+                <li>Opening tag</li>
+                <li>Closing tag</li>
+                <li>Self-closing tag</li>
+            </ul>
+
+            <p>An opening tag (tag opener) is used to declare an element, the following tag is used to declare a block-level paragraph element:</p>
+            <pre class="block-code"><code>&lt;p&gt;</code></pre>
+
+            <p>To complete a HTML element, a closing tag (tag closer) must be supplied after the opening tag to create a complete element:</p>
+            <pre class="block-code">HTML<code>&lt;p&gt;&lt;/p&gt;</code></pre>
+
+            <p>A HTML element can represent some semantic or non-semantic meaning in the HTML document, they are used for structuring content. Block-level elements, like the p element, take up the whole width of a document for example and are semantic and presentational - they indicate a paragraph of text and browsers know how to render this.</p>
+            <p>The difference between a tag opener and closer is in the forward slash before the text between the angle brackets, this signals that the element closes here. The content to display to the user is then placed between the tag opener and tag closer:</p>
+            <pre class="block-code">HTML<code>&lt;p&gt;Hello world&lt;/p&gt;</code></pre>
+
+            <p>It is important to know that HTML elements can be nested inside each other, this is how we get nodes on a tree. It is extremely common and key to creating powerful, and semantic, designs:</p>
+            <pre class="block-code">HTML<code>&lt;p&gt;
+    The &lt;strong&gt;nested element&lt;/strong&gt; in this example is bolded using a &lt;strong&gt;strong&lt;/strong&gt; tag to not just visually signify 
+    its importance, but also to screen-readers and other hardware and/or software for disabled users.
+&lt;/p&gt;</code></pre>
+
+            <p>The previous example renders as follows:</p>
+            <div class="example">
+                <div class="example-content">
+                    <p>
+                        The <strong>nested element</strong> in this example is bolded using a <strong>strong</strong> tag to not just visually signify 
+                        its importance, but also to screen-readers and other hardware and/or software for disabled users.
+                    </p>
+                </div>
+            </div>
+
+            <blockquote>XML - Extensible Markup Language - is a language that uses tags, just like HTML; the difference being that XML is for mainly for storing and communicating data whereas HTML concerns the layout of a hypertext document.</blockquote>
+        
+            <p>Self-closing tags are a special kind of tag that only have an opening tag, with a closing forward slash at the end of the element if writing code compliant to the XHTML standard alongside HTML5. <code>&lt;img /&gt;</code> elements are a prime example of this:</p>
+            <pre class="block-code">HTML<code>&lt;img src="url" /&gt;</code></pre>
+        </section>
+
+        <section>
+            <h2>Attributes</h2>
+            <p>An attribute is used to provide additional information about an HTML element. The key points to note about attributes are:</p>
+
+            <ul>
+                <li>Attributes provide additional information</li>
+                <li>Attributes can be used on any HTML elements, although some elements are restricted in what attributes they can use</li>
+                <li>Attributes are always specified in the opening tag of an element, self-closing tags included</li>
+            </ul>
+
+            Attributes are commonly supplied to HTML elements, a prime example is using the img element to load images into our HTML documents:
+            <pre class="block-code">HTML<code>&lt;img src="url" /&gt;</code></pre>
+            <ul>
+                <li>The <code>src</code> attribute is a <code>key=value</code> pair where <code>src</code> is the key and the value is within the quotation marks.</li>
+            </ul>
+
+            <p>The <code>src</code> attribute of an image is capable of pointing to images on the web, and images stored locally on your computer. Try this by creating a an image element like the following:</p>
+            <pre class="block-code">HTML<code>&lt;img src="c://path/to/image.png" /&gt;</code></pre>
+            
+            <p>If the image is located within the same folder as the HTML document, or a nested folder, use a relative path to easily point to this instead of specifying a whole absolute path. For example, given the following folder structure:</p>
+            <pre class="block-code"><code> Root
+|
+ --- index.html
+ --- images
+ --- --- image.png</code></pre>
+
+            <p>The project root contains a file, index.html, and a folder, images. Inside the images folder is an image, image.png. To access this from an image tag inside index.html, we would use the following relative path:</p>
+            <pre class="block-code">HTML<code>&lt;img src="/images/image.png" /&gt;</code></pre>
+        </section>
+    </main>
+    <aside><p>Further reading: https://html.spec.whatwg.org/multipage/dom.html#elements</p></aside>
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

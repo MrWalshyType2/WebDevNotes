@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/html/web.html">The Web</a>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                HTML &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="/html/html/syntax.html">HTML syntax</a>
+                <a href="/html/html/entities_and_symbols.html">HTML Entities and symbols</a>
+                <a href="/html/html/headings_and_paragraphs.html">Headings and paragraphs</a>
+                <a href="/html/html/semantic_elements.html">Structural/semantic HTML</a>
+                <a href="/html/html/hyperlinks.html">Hyperlinks</a>
+                <a href="/html/html/images.html">Images</a>
+                <a href="/html/html/lists.html">Lists</a>
+                <a href="/html/html/tables.html">Tables</a>
+                <a href="/html/html/forms.html">Forms</a>
+                <a href="/html/html/head.html">The <code>&lt;head&gt;</code> element</a>
+                <a href="/html/html/dom.html">The DOM</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                CSS &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">CSS and the DOM</a>
+                <a href="">Selectors and inheritance</a>
+                <a href="">Styling text and links</a>
+                <a href="">Units of measurement</a>
+                <a href="">The Box Model</a>
+                <a href="">Positioning elements</a>
+                <a href="">Images and backgrounds</a>
+                <a href="">Lists</a>
+                <a href="">Tables</a>
+                <a href="">Transitions, transformations and animation</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">
+                Responsive Web Design &#x25BC;
+            </button>
+            <div class="dropdown-content">
+                <a href="">Introduction</a>
+                <a href="">Mobile first design</a>
+                <a href="">Media queries</a>
+                <a href="">Grid systems</a>
+                <a href="">Flexbox</a>
+                <a href="">Responsive images</a>
+            </div>
+        </div>
+        <a href="/html/attributions.html">Attributions</a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Images</h1>
+        </header>
+
+        <section>
+            <h2>General</h2>
+            <p>In HTML documents, images can be embedded using the self-closing img tag to reference the image - whether locally stored or on the internet. The img element has only one mandatory attribute, the src attribute which holds a path or URL to the desired image to display. For example:</p>
+            <pre class="block-code"><code>&lt;img src="./images/image.png" /&gt;</code></pre>
+
+            <p>This example uses a relative path from the current project root, you may also change this for a URL to an image:</p>
+            <pre class="block-code"><code>&lt;img src="https://www.qa.com/media/14650/qa-logo-white-on-blue.png?anchor=center&mode=crop&width=640&height=500&rnd=132307537440000000" /&gt;</code></pre>
+
+            <p>If we have the base64 string that represents the data of an image, we can also render it using that data. For example:</p>
+            <pre class="block-code"><code>&lt;img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUSExISFhMWGBgYFRgXFxIVGBgYFRcXGBYVGBcYHSggGB0mHhcVIzEhJSkrLi4uFyA0OTQtOCgtLi0BCgoKDg0OGhAQGy0lICYtLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABgIDBAUHAQj/xABAEAACAQICBgcFBQgBBQEAAAAAAQIDEQQhBQYSMUFREyJhcYGRoQcyUrHBQnKC0fAUI0NissLh8TNzkpOi0iT/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAwQBAgUGB//EADIRAAIBAgIGCgEEAwAAAAAAAAABAgMRBCEFEjFBUWETInGBobHB0eHwMgYUI5EkQvH/2gAMAwEAAhEDEQA/AO4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAi+m9KVVUlCm9mMcskrt2u3d/Q1D1hxEf4l+9Qf0uZWlp/van3nw5EexbzscKtXqa0nrPa9/Mqyk83cmWgNY3Wn0VSKU2m043s7b0092XaSQhGo+Dcqkqz3QWyu2Ut/kv6kTc6WCnOdJOb/4TUm3HMAAtkgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALOIrKEXJ8F/pF40usVbKMFxzfhu+vkRV6nR03L7c1k7K5HMdW3t722345s0VaWZm4qTzLWiMN0lenDg5K/cs5eiZ52SbaS3+pTaJ/q/g+ioQi/ea2pfelm/LJeBswD0sYqEVFbEXUrKwABsZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEtOYq9ST4Lqrw3+tyS46vsU5T5LLveS9SC9C6lSMfikl5739TnY6V9Wmu30RDVexGBiJXuzY6lUr4m/wAMJP5R/uMXSdHYqVIJZKUku67t6WNhqN/zz/6b+cSlTj/kQT3Pyv7EUV10ToAHeLYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABo9ZsVsxjD4nd9y/y/Q1WqlHbrSm90F/7SyXptFvWXFbVWX8vVXhv9bm61Tw2zQ2nvm3Lw3L5X8TmR/lxLfD0+SFdadyO610GsRK32lGXpZ+qZa1Qq7OKiviUo+m1/abbXWj1qc+acX4O6+bIrh8Q6dSNT4ZKXk815Fau+ixGvwd+7f4Ec+rO51YFEJJpNO6aun2MrO4WgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY+NxCp05TfBevBeZkEe1qxSUVDxf0Xz8iKvU6ODl9uaydlci9WMpzUVvnJJd7djolCkoRjBbopJdyVkRHVLDdJWdVrKmsvvSy9FfzRMyrgKdoOXH0+TSksrmm1qw+1h2+MGpfR+jb8CAV48TqdakpRlF7pJp9zVjmmIouLlF74tp96dmQ6Qp5p8fT4NayJpqljOkw8U98HsPuWcfRpeBvDn2qOP6KvsN9WpaL+99h+rX4joJbwdXpKS4rJ9xvTleIABaJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC3UqKKcnuSuyBaexTnJyfF/6XkSLWPSCilTv2y+i+vkR/RNN4jEqD9yL2pd0XkvF2XmcnGVHUqKlH6/hepXqO71USvV7A9DQhFrrPrS+9Lh4Ky8DaAHUhBQiorYidKysCFa24PZrba3VFf8AEsn6Wfiyams0/guloySXWj1o963rxV0RYinr02jE1dHOKkWvzOkaBx/T0Yz+0urP7y3+eT8Tn0ldG01R0h0VbYk+pUsu6X2X9PFcjlYSp0VW26WXt95lem9WXaT8AHcLQAAAAAAAAAAAAAAAAAAAAAAAAAAAMXH4tUoOb8FzfBGRKSSu8kiEad0uqsnZ9VZRXP8Am8fyK+JrdFHLbuNJy1Ua/S1dzzbu27+PEk+puB2KPSNdapn+Fe755vxREtGYR160KfBvrdkVnL0y72jpkIpJJKyWSXYihgKetN1HuyXbv7yKirvWKwAdcsAAAEE1k0f0VVtLqTu12P7Ufr4mhqo6ZpXAKtTcHv3xfKS3P9cznWJoyjJxkrSi7NdxxcbQ1XdbH9ZWqRsTvV3SfT0U2+vHqz7+EvFZ+fI25zXQWknh6ql9h5TX8vPvW/z5nR4STSad0801xT4l/B1+lp57Vt9/u+5LTlrIrABbJAAAAAAAAAAAAAAAAAAAa7SOmKNFfvJpP4V1peS3eJqNPaeavTovO9pTXZvUe3tIhiZN2um7u+9d7u32kE61vxOnhdHOolKo7Lhv+PMnFLWqjK9o1LJ23Q/+jOw+mKM7La2W9yll67vU5zTxSp9X9frMyY4nLN/LeRqtJbS5PRtJrK6JDrPpjavRpvJe+1xa+yuzmRavzMm6fY/1mWFSTd3Lq3ztlddn5lDERq1JN2ucavozEqT1VrLiml5v3XMl2pejtim60l1qmUeyK/N5+CJMRJ6ySjFKMKailZLrOyW5ZWL2F1rT9+n4xf0f5nRounTgoJ7CVaOrxjkvFEnBiYHHU6sdqnNSS323p8muBlllO5VcXF2aswAAYBHtZtEdIulguvFdZL7SX1Xy8CQmHX0hShlKpBNb1e78lmR1YRnFxlsGo59VK5zOpB8CW6n6Uuv2ebzWdO/Fb3Hw3rs7jA0/+zt9JSqRu/ehZq7fFXXmiLV8dZqUNqLTWead+ziu85MITo1brPyaN8Po7EzqWUWuLaaXz3HRtLay4eg3FycprfGFnb7zeS+ZpZ6+reqOWdrz324+6QDpXdO9ufd2mHicZJt55bl3FuWImenpaHoJWa1ubb8kzplD2iUL2qUqkV8UXGa8dz8rkp0bpGlXht0qkZrmuD5NPOL7HmcAlNszdC6aq4SqqlJ9kov3ZR5OPye8QxUk+tsMYjQdKUf4nqy57Pddtzv4NXoPS1PFUY1qbylk1xjJb4PtT88nuZtC8mmro8xKMoScZKzWTAAMmoAAAAAAI9rdpfoKajF2nUuk+UV70vVLx7CQnLfaBi5SxLW+MFGK8lJvzk/IirT1Yl/RuHVaulLYs/veYFTGKKcVdsxpVr+PHt/XzMWi+PgXZP8AXcULnqlFIpqYjPN3a4mZDEqVt1+XE09WpvZjRqyWd3+vka61jform+xGknBWT7+fh+Z7CspPN2tvtu7iOzqtldPEtfqw1zPQZZbSUSxTjx/yY+J0jZNpN5WW7Nv6EenjZN5v/R7iMXyd38u0zrmFh88zd4TTtSlNSpOzjv5PmnzR1LV3TkMVT2o5TjZTjyb3Ndjzt3PkcHhWadyRak6cdHGU8/3dSSpzXZUdk/B7L7kzejXcZWewqaR0dGtTcorrJXXPl7cGdvANbp7F9FRnJe9bZj3yyv4b/A6LdldnkIRc5KK35Ef09rA5SlRpycYxylJb5Nb0n8K58e7foKlo8EuTVlky3NZdufkYtetlnK/pzKEptu7PVUaEacVGGzz5/dmxFnH4pRvx8f1kaXF4xSt5778LP6FOLru9l9f1/owmyCUjp06SSLyrFlgocjUmsVNlirM8lVzsWasjFySMcyZezDWLoMSsPK/R12opcI1PsSXfufeuR2s+WY1GpRabTTyayaa3NM+ldA47p8PRrcalOMnbhJrrLwd0XsHO6cTzH6gwyhONaP8Atk+1bH3ryNiAC4edAAAAAABx3WfEf/rxEW/4j8uHodiOOe0nDdHjZu2VSKkv+2z9YMrYr8V2nZ0JZ1pRe+PqjUSrJHjxGVjVdP8A5PI1+8oax6nozPqTRZkzHdQt/tHAXN1EvspLPSdpVKpZbzBtY8qVEizUqFqrLMojI1uSKJf2ytzs01e6aatzRiylxK3Uy8jBslZo+mcNV2oRl8UU/NXI1r/iNmlTXxVPlGX5m/0UrUaS5U4f0o0mv2F28NtL+HOMn3Zx+ck/A7FW+oz59gdVYqCfGxC/2hJX3WNdjqya3W43v/kx8Ti+q91+BqJ1W75s5zkeup0d5ViZXZaBTKViMuJWyEmYuJqFVSpcxKsTDJILMKR5UkUJnkpGpLYtyO/eyybejKPZ0iX/AJJv6nAT6M1GwLoYDD05X2tjbd96dRudn3bVvAt4Ndd9h5/9QyX7eK4yXgnfzRIAAdE8gAAAAAACA+1jRm1QhiIp7VKVpfdnkm+6Vl+Jk+MbG4WFWnOlUV4Ti4yXNSVmaVIa8XEsYSv0FaNXg/DY/C583hOxtdZdCVMLXlRleyzhLhKL3NdvZwszTSZx2msmfQYTjOKlF3TzTKpTLEpnrkW5GCRIrU+BU2yiLWW8rSuDJbZ4y848DHqMMJ3DmZGjMO61anRW+c4xXfKaj9TDlIm/si0Q6uM6Zrq0I37Nt3jBf1S/Cb04a0kuJXxVdUaUqnBX793jZHcoxsrLcWsTh41ISpyV4yTi12NWZfB2T5ysjg2sOAnhq06VTh7r5p+7Jdj9GmuBqXI7hrVq5TxlLZfVqRv0c7JuLe9PnF8UcS09oqvhajp1oST4NZpr4oy4r152Zy61J03yPbaMx0MXCzymtq48168OwtykY9SaLLqpot7RDc6igVPvLUn2/M9ci1KRqSiTKGw5Em1N1NrY6d7OFBPrVGsu2Eeb7OHHhfaMXJ2RDWrQpwc5OyW8y/Zxqs8ZXVScf3FJpzbWUmrONPtvx7OV0d7MDROjKeHpRo0o2hHdzb4yb4t8zPOrRpKnG288JpDGvFVdbZFZJcvd/G4AAlKIAAAAAAAABo9ZtX6eMpdHNbMldwmkm4S59sXxXHsaTXEtO6GrYWo6dWOy1nFrOLXNPivlxsfRJrtMaIo4mm6dampx3rg4vnGSzi+4r1qCqZradXRulJYV6ks4PdvXNeq38nmfNdR5lJ0TWP2XV4NywslVj8MtmM0vRPv9CB47AVqMtmrSnCXKUJx3cr7zmzpyh+SPZYbF0cQv4pJ8t/8AW3w7Cyme9KWmynaNSw7F6VZ2LMpFUKcm0lGTbySWbb5JIlmgvZzjK7TnT6GHGVS8Xbsh7zffZdpvGDlkkQV8RToxvUkorn9u+4jGjsDUrVI0qcXKcnaMVvb+i4tvJJXPoXVDV+OCw8aKs5vrVJfFNrO3YskuxFvVfVPD4GP7uN6jVp1JJbTW+y+GN+C5K97EjOhQodHnLaeP0ppP91/HT/BeL9luXfyQAFk44NfpXRVHEQ6OtTjOPC+9PnF74vtRsAGr7TMZOLTi7NHLNMeyZNuWGrLsjVW7unFf2+JE8dqHpCm3+4clzpuM0/CLv5o7+CtLCU3syOzR09i4K0rS7V7NeNz5vjqpjm7LB4jxpVIrzcbG40d7MsdVfWhCkuc5x+Udp+aR3gGqwkN7ZJU/UOIkurGK/t+pz3QXstw1JqdeUq0l9m2xT8Vvl527Cd4ejGEVCEYxjFWjGKUUktySWSRfBYjCMfxRyK+KrV3erJvy7lsX9AAG5AAAAAAAAAAAAAAAAC1WpRktmUVJPemk15MugA0OK1QwM/ewlH8Mdj+ixYo6i6Pi7rCU33upL0lJklBrqQ4InWKrpWU5W7WYWB0bRo/8VGlT57EIwv32WZmgGUrbCFtt3YABkwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/9k=" /&gt;</code></pre>
+
+            <p>Although the src attribute is the only mandatory attribute for image elements, we should also almost always treat the alt attribute - an attribute for specifying alternate text describing an image for assistive-technologies - as mandatory. This ties into legal requirements for making websites accessible under the Equality Act 2010 and the Public Sector Bodies (Websites and Mobile Applications)(No.2) Accessibility Regulations 2018. Just know that specifying an alt attribute with appropriate text describing the image helps to meet these legal obligations. The following example demonstrates using the alt attribute to describe the QA logo:</p>
+            <pre class="block-code"><code>&lt;img alt="The letters QA in white on a blue background" src="https://www.qa.com/media/14650/qa-logo-white-on-blue.png?anchor=center&mode=crop&width=640&height=500&rnd=132307537440000000" /&gt;</code></pre>
+            <blockquote>We should almost always specify the alt attribute, but cases where you might not use this attribute include images non-essential to the content of the page - in which case, set the attribute to an empty string: alt=""</blockquote>
+        </section>
+
+        <section>
+            <h2>Image attributes</h2>
+            <p>Images have multiple attributes which can be used to control how they are presented, some of these attributes are as follows:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>width</code></td>
+                        <td>Sets the width of the image in pixels.</td>
+                    </tr>
+                    <tr>
+                        <td><code>height</code></td>
+                        <td>Sets the height of the image in pixels.</td>
+                    </tr>
+                    <tr>
+                        <td><code>alt</code></td>
+                        <td>Sets alternative text for use by screen-readers, and other accessibility technologies, alongside being displayed when an image cannot be loaded.</td>
+                    </tr>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Sets the source of an image to load from, whether local or remote.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The width and height of an image can be controlled using the attributes described above, for example:</p>
+            <pre class="block-code"><code>&lt;img width="320" height="250" alt="" src="" /&gt;</code></pre>
+
+            <p>It is preferable to control the width and height of an image using CSS properties instead, the following example makes use of the style attribute to allow CSS to be supplied as the value:</p>
+            <pre class="block-code"><code>&lt;img style="width: 320px; height: 250px" alt="" src="" /&gt;</code></pre>
+        </section>
+
+        <section>
+            <h2>Images as links</h2>
+            <p>Images can be turned into links by nesting them inside of an anchor element, for example:</p>
+
+            <pre class="block-code"><code>&lt;a href="#"&gt;
+    &lt;img style="width: 320px; height: 250px" alt="" src="" /&gt;
+&lt;/a&gt;</code></pre>
+
+            <p>Whatever image is loaded and placed where the image element is defined will be turned into a clickable link as it is wrapped in an anchor tag.</p>
+            <blockquote>When href="#" is supplied to an anchor tag, the element will still appear as a link but it will not navigate anywhere.</blockquote>
+        </section>
+    </main>
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

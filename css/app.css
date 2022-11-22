@@ -1,0 +1,161 @@
+html {
+    /* 
+        Reference: https://css-tricks.com/box-sizing/
+
+        content-box: total width/height = width/height + padding + border
+        border-box : total width/height = width/height
+        - padding and border don't affect width or height in border-box model
+        - no support for IE7 or less
+        - IE 8 and older don't recognise border-box if min/max-width or min/max-height used on an element
+    */
+    -webkit-box-sizing: border-box; /* Safari (< 5.1), Chrome (< 10) */
+    -moz-box-sizing: border-box; /* Firefox (< 29) */
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+*, *::before, *::after {
+    /* Inherit to make it easier to change to content-box model if required at any point */
+    -webkit-box-sizing: inherit; /* Safari (< 5.1), Chrome (< 10) */
+    -moz-box-sizing: inherit; /* Firefox (< 29) */
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation */
+.navbar {
+    overflow: hidden;
+    background-color: gray;
+}
+
+.navbar a {
+    float: left;
+    padding: 12px 16px;
+    font-size: 1.6rem;
+    text-align: center;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.navbar a:hover, .navbar button:hover {
+    background-color: black;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropdown-btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: inherit;
+    color: whitesmoke;
+    background-color: inherit;
+}
+
+.dropdown-content {
+    display: none;
+    /* Use top, right, bottom, left to specify offsets */
+    position: absolute;
+    z-index: 1;
+    background-color: gray;
+}
+
+.dropdown-content a {
+    display: block;
+    float: none;
+    padding: 12px 16px;
+    text-align: left;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.show {
+    display: block;
+}
+
+/* Hero content */
+.hero {
+    height: 60vh;
+}
+
+.hero > .block-image {
+    /* Centre block image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80%;
+}
+
+.block-hero-content {
+    /* Centre block text */
+    text-align: center;
+}
+
+/* General styling */
+p, li, a, pre, th, td, blockquote {
+    font-size: 1.6rem;
+    color: black;
+}
+
+h1 {
+    font-size: 3.2rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+h3 {
+    font-size: 2.0rem;
+}
+
+main {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Code block styling */
+code {
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(236, 70, 70);
+    font-size: inherit;
+}
+
+pre > code {
+    color: inherit;
+}
+
+.block-code {
+    padding: 8px;
+    background-color: lightslategray;
+}
+
+.block-code > code {
+    display: block;
+    padding: 8px;
+    overflow-x: auto;
+    width: 100%;
+    background-color: white;
+}
+
+.example {
+    padding: 8px;
+    background-color: lightslategray;
+}
+
+.example > .example-content {
+    padding: 8px;
+    width: 100%;
+    background-color: white;
+}
