@@ -142,6 +142,17 @@ main {
     margin-right: auto;
 }
 
+figure > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+figcaption {
+    text-align: center;
+}
+
 /* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
 blockquote {
     background: #f9f9f9;
@@ -225,5 +236,20 @@ pre>code {
     /* General */
     main {
         width: 90%;
+    }
+
+    figure {
+        margin: 0;
+    }
+
+    figure > img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    
+    figcaption {
+        text-align: center;
     }
 }

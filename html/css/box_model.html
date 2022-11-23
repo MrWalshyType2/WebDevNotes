@@ -64,6 +64,433 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <h1>The CSS Box Model</h1>
+
+            <section>
+                <h2>What is the CSS Box Model?</h2>
+                <p>The CSS Box Model is a model which depicts each HTML element to be surrounded by a box with multiple layers:</p>
+                <figure>
+                    <img src="../../images/box_model.png" alt="The CSS Box Model">
+                    <figcaption>Diagram of the CSS Box Model</figcaption>
+                </figure>
+
+                <h3>Types of box</h3>
+                <p>As prior mentioned, the box model depicts each element as being surrounded by a box - there are two main types of box that this could be:</p>
+                <ul>
+                    <li>Block box</li>
+                    <li>Inline box</li>
+                </ul>
+                <p>Both block and inline boxes have inner and outer display types that dictate how elements should behave.</p>
+
+                <h3>Inner and outer display types</h3>
+                <p>The outer display type in CSS is used to detail whether a box is inline or block. Block elements behave as follows:</p>
+                <ul>
+                    <li>They break onto new lines</li>
+                    <li>They extend horizontally (width wise) to fill the available space in its container</li>
+                    <li>width and height properties are respected</li>
+                    <li>padding, margin and border cause other elements to be pushed away from the box</li>
+                </ul>
+                <p>Inline elements behave as follows:</p>
+                <ul>
+                    <li>They do not break onto new lines</li>
+                    <li>width and height properties are ignored</li>
+                    <li>Vertical padding, margins and borders apply but do not cause other inline boxes to move away</li>
+                    <li>Horizontal padding, margins and borders apply and do cause other inline boxes to move away</li>
+                </ul>
+                <p>Elements such as p, h1-h6, div, etc... use block as their default outer display type whereas elements such as span, a, em, strong, mark, etc... are inline by default.</p>
+                <p>To change the outer display type of an element, use the display property:</p>
+                <pre class="block-code"><code>&lt;h1 style="display: inline;"&gt;This title&lt;/h1&gt;
+&lt;p style="display: inline;"&gt; - is on the same line as the paragraph&lt;/p&gt;</code></pre>
+
+                <p>This renders as follows:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <h1 style="display: inline;">This title</h1>
+                        <p style="display: inline;"> - is on the same line as the paragraph</p>
+                    </div>
+                </div>
+
+                <p>Inner display types dictate how elements nested inside of an element behave; by default, elements are laid out according to normal flow, meaning they behave like any other block or inline element.</p>
+                <p>The inner display type can also be changed using the display property. For example, two new layout models were added by CSS3 - Grid and Flexbox - setting the display property to grid or flex will change the inner display type to grid or flex respectively whilst the outer display type will be block.</p>
+            </section>
+
+            <section>
+                <h2>The parts of the box</h2>
+                <figure>
+                    <img src="../../images/box_model.png" alt="The CSS Box Model">
+                    <figcaption>Diagram of the CSS Box Model</figcaption>
+                </figure>
+
+                <p>This graphic, displayed at the beginning of this section, demonstrates the box that forms around an element and the different layers making up that box:</p>
+                <ul>
+                    <li>Content box: The content that is displayed in the browser, sizeable using the width and height properties</li>
+                    <li>Padding box: The padding wraps around the content box as whitespace, its size can be controlled with the padding property</li>
+                    <li>Border box: The border wraps around the content and any padding (there might not be any padding), control the size and style with the border property</li>
+                    <li>Margin box: The margin wraps around the content, padding and border as whitespace between this box and other boxes in the document. Control the size using the margin property</li>
+                </ul>
+
+                <p>The standard CSS box model follows the above rules. In the next example, this model is demonstrated:</p>
+                <pre class="block-code"><code>&lt;div style="display: inline-block; 
+                width: 200px;
+                height: 200px;
+                margin: 8px; 
+                padding: 16px; 
+                border: 5px solid black; 
+                background-color: blue;"&gt;&lt;/div&gt;
+&lt;div style="display: inline-block; width: 200px; height: 200px; margin: 8px; padding: 16px; border: 5px solid black; background-color: red;"&gt;&lt;/div&gt;</code></pre>
+
+                <p>This example demonstrates usage of another display type, inline-block which makes elements behave like an inline element but the width and height properties are obeyed. The example renders two boxes, one red and one blue with a black border:</p>
+                <blockquote>The div element is a non-semantic element often used for styling purposes, be careful not to overuse this element as it may easily reduce accessibility due to its non-semantic nature - screen readers are unable to identify what exactly a div is and thus usually ignore them.</blockquote>
+                <div class="example">
+                    <div class="example-content">
+                        <div style="display: inline-block; 
+                                    box-sizing: content-box;
+                                    width: 200px;
+                                    height: 200px;
+                                    margin: 8px; 
+                                    padding: 16px; 
+                                    border: 5px solid black; 
+                                    background-color: blue;"></div>
+                        <div style="display: inline-block; box-sizing: content-box; width: 200px; height: 200px; margin: 8px; padding: 16px; border: 5px solid black; background-color: red;"></div>
+                    </div>
+                </div>
+
+                <p>According to the standard CSS Box Model, the actual space taken up by an element can be calculated by doing the following:</p>
+                <ul>
+                    <li>Total width = width + padding-left + padding-right + border-left + border-right</li>
+                    <li>Total height = height + padding-bottom + padding-top + border-bottom + border-top</li>
+                </ul>
+                <p>The margin is ignored and does not count towards the size of the box as it only affects space outside the box, the boxes area stops at the border and does not extend into the margin.</p>
+                <p>If we set the margin to 0px, there will be no space between the two boxes:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <div style="display: inline-block; 
+                                    box-sizing: content-box;
+                                    width: 200px;
+                                    height: 200px;
+                                    margin: 0px; 
+                                    padding: 16px; 
+                                    border: 5px solid black; 
+                                    background-color: blue;"></div>
+                        <div style="display: inline-block; box-sizing: content-box; width: 200px; height: 200px; margin: 0px; padding: 16px; border: 5px solid black; background-color: red;"></div>
+                    </div>
+                </div>
+
+                <p>Or so we would expect... Unfortunately, the inline-block outer display type is still inline - this means our elements are having spaces inserted between them as if they was text. There are a few tricks to solve this issue, the easiest is to use another display type like flex. The following example fixes this by using a negative 4px right margin:</p>
+                <pre class="block-code"><code>&lt;div style="display: inline-block; 
+            width: 50px; 
+            height: 50px; 
+            margin: 0px; 
+            margin-right: -4px; 
+            padding: 16px; 
+            border: 5px solid black; 
+            background-color: blue;"&gt;&lt;/div&gt;
+&lt;div style="display: inline-block; width: 50px; height: 50px; margin: 0px; margin-right: -4px; padding: 16px; border: 5px solid black; background-color: red;"&gt;&lt;/div&gt;</code></pre>
+            
+                <p>The <code>flex</code> display type could also have been used, example markup and styling looks as follows:</p>
+                <pre class="block-code">HTML<code>&lt;div style="display: flex;"&gt;
+    &lt;div style="width: 50px; height: 50px; margin: 0px; padding: 16px; border: 5px solid black; background-color: blue;"&gt;&lt;/div&gt;
+    &lt;div style="width: 50px; height: 50px; margin: 0px; padding: 16px; border: 5px solid black; background-color: red;"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </section>
+
+            <section>
+                <h2>The alternate box model</h2>
+                <p>The alternative CSS box model is known as the border box CSS model, where the specified width is the actual total width of a box on the page. This means the contents width is either the size of the specified width or smaller, it doesn't expand the box when padding or borders are applied.</p>
+                <ul>
+                    <li>Content area width = width - border-left - border-right - padding-left - padding-right</li>
+                    <li>Content area height = height - border-bottom - border-top - padding-bottom - padding-top</li>
+                </ul>
+
+                <p>To activate the alternate box model, apply the following CSS rule to an element:</p>
+                <pre class="block-code">CSS<code>.box {
+    box-sizing: border-box;
+}</code></pre>
+
+                <p>To set all elements to use the alternate box model, a common reset used by developers, apply the following CSS rule to the HTML element and allow it to be inherited by all elements:</p>
+                <pre class="block-code">CSS<code>html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}</code></pre>
+                <blockquote>
+                    Using inheritance to inherit the selector style allows it to be more easily overridden, useful if you ever want to apply the <code>content-box</code> model to any elements again.
+                    This page is doing exactly that, a reset has been applied in the stylesheet to make every element inherit the <code>border-box</code> model, and where examples need to be rendered 
+                    using the <code>content-box</code> model, that sizing property has been applied.
+                </blockquote>
+            
+                <p>Applying the box-model to the previous example, the blue and red square, actually shrinks the boxes as they now honor the specified width:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <div style="display: inline-block; 
+                                    width: 200px;
+                                    height: 200px;
+                                    margin: 0px; 
+                                    padding: 16px; 
+                                    border: 5px solid black; 
+                                    background-color: blue;"></div>
+                        <div style="display: inline-block; width: 200px; height: 200px; margin: 0px; padding: 16px; border: 5px solid black; background-color: red;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Margin, padding and borders</h2>
+                <p>The <code>margin</code>, <code>padding</code> and <code>border</code> properties demonstrated above are shorthand properties that allow us to quickly set sizes and other values - the following sections explore the longhand equivalents and how these can be represented shorthand.</p>
+            
+                <article>
+                    <h3>Margins</h3>
+                    <p>Margins are the space around a box which pushes other elements away, these margins can be positive or negative. The margin of an element is always added after the visible boxes size has been calculated, whether using the standard or alternate box model.</p>
+                    <blockquote>Negative margins may causes boxes to overlap other elements on the page.</blockquote>
+                    <p>There are four <code>margin-</code> properties used for controlling specific sides:</p>
+                    <ul>
+                        <li><code>margin-left</code></li>
+                        <li><code>margin-right</code></li>
+                        <li><code>margin-top</code></li>
+                        <li><code>margin-bottom</code></li>
+                    </ul>
+                    
+                    <p>The <code>margin</code> property is a short-hand for those four properties. For example, the following four CSS rules are all equivalent to each other:</p>
+                    <pre class="block-code"><code>.margin-test1 {
+    margin: 8px;
+}
+    
+.margin-test2 {
+    /* margin: top right bottom left; */
+    margin: 8px 8px 8px 8px;
+}
+
+.margin-test3 {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.margin-test4 {
+    /* margin: vertical horizontal; */
+    margin: 8px 8px;
+}</code></pre>
+
+                    <h4>Collapsed margins</h4>
+                    <p>Margin collapsing occurs when two elements margins touch, the margins quite literally collapse into one margin in all but a few exceptions. Collapses occur under the following conditions:</p>
+                    <ul>
+                        <li>If two elements touch whose margins are both positive, those margins combine to become one with its size equal to that of the largest margin of the two elements</li>
+                        <li>If two elements touch where one margin is negative, the negative margins value is subtracted from the total margin.</li>
+                        <li>Where both elements margins are negative, the margins collapse and the smallest value is used (-3 is smaller than -1)</li>
+                    </ul>
+
+                    <p>The following example uses the two boxes from earlier, but leaves them in normal flow (the div's default to block) to demonstrate margin collapsing. Both div elements have been styled exactly the same, barring colour, with an 8 pixel margin:</p>
+                    <pre class="block-code"><code>&lt;style&gt;
+    .box {
+        width: 50px;
+        height: 50px;
+        margin: 8px; 
+        padding: 16px; 
+        border: 5px solid black; 
+    }
+&lt;/style&gt;
+    
+&lt;div class="box" style="background-color: blue;"&gt;&lt;/div&gt;
+&lt;div class="box" style="background-color: red;"&gt;&lt;/div&gt;</code></pre>
+
+                    <p>The rendered example would look as follows:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <div style="box-sizing: content-box;
+                                        width: 50px;
+                                        height: 50px;
+                                        margin: 8px; 
+                                        padding: 16px; 
+                                        border: 5px solid black; 
+                                        background-color: blue;"></div>
+                            <div style="box-sizing: content-box; width: 50px; height: 50px; margin: 8px; padding: 16px; border: 5px solid black; background-color: red;"></div>
+                        </div>
+                    </div>
+
+                    <p>If we look in-depth using Chrome Dev Tools, we see that the box is 92 x 92 pixels (not including margin):</p>
+                    <figure>
+                        <img src="../../images/92px_box_devtools_inspection.png" alt="Example of the boxes with collapsed margin">
+                        <figcaption>Inspecting the box using Chrome Dev tools</figcaption>
+                    </figure>
+                    <ul>
+                        <li>The boxes total width is <code>50px (width) + 16px (padding-left) + 16px (padding-right) + 5px (border-left) + 5px (border-right)</code>. The height is similar, but uses top and bottom padding and border instead for the calculations.</li>
+                    </ul>
+                    <p>This also demonstrates an instance of margin collapsing, the bottom margin of the top square and top margin of the bottom square have collapsed to become one 8 pixel margin instead of 16 pixels:</p>
+                    <figure>
+                        <img src="../../images/92px_box_devtools_box_model.png" alt="Example of the boxes box model">
+                        <figcaption>Inspecting the box model using Chrome Dev tools</figcaption>
+                    </figure>
+
+                    <p>If we set the top margin of the red square to be -4, the overall margin will become 4 pixels and the squares will become slightly closer due to the effect of margin collapsing:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <div style="box-sizing: content-box;
+                                        width: 50px;
+                                        height: 50px;
+                                        margin: 8px; 
+                                        padding: 16px; 
+                                        border: 5px solid black; 
+                                        background-color: blue;"></div>
+                            <div style="box-sizing: content-box; width: 50px; height: 50px; margin: -4px 8px 8px 8px; padding: 16px; border: 5px solid black; background-color: red;"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article>
+                    <h3>Padding</h3>
+                    <p>Padding is between the border and the content area and must take a value of 0 or greater, negative values are not allowed unlike margins.</p>
+                    <blockquote>Background images or colours applied to an element will still be visible in the padded area</blockquote>
+
+                    <p>There are four properties for managing the padding of individual sides of an element:</p>
+                    <ul>
+                        <li><code>padding-left</code></li>
+                        <li><code>padding-top</code></li>
+                        <li><code>padding-right</code></li>
+                        <li><code>padding-bottom</code></li>
+                    </ul>
+
+                    <p>The shorthand padding property can also be used as follows:</p>
+                    <pre class="block-code"><code>selector {
+    padding: top right bottom left;
+    /* or */
+    padding: vertical horizontal;
+    /* or */
+    padding: all_sides;
+}</code></pre>
+                    <p>The following two examples are equivalent to each other:</p>
+                    <pre class="block-code"><code>.pad-med {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.pad-med-alt {
+    padding: 0px 8px;
+}</code></pre>
+                </article>
+
+                <article>
+                    <h3>Borders</h3>
+                    <p>The border is between the margin and padding, when using the standard CSS box model the size of the border is added to the width and height. The alternative CSS box model makes the content box smaller as the border is part of the width and height.</p>
+                
+                    <p>The following four properties are used to style individual sides:</p>
+                    <ul>
+                        <li><code>border-left</code></li>
+                        <li><code>border-right</code></li>
+                        <li><code>border-top</code></li>
+                        <li><code>border-bottom</code></li>
+                    </ul>
+
+                    <p>The following properties can be used to set the width, style and colour of a border (all sides):</p>
+                    <ul>
+                        <li><code>border-width</code></li>
+                        <li><code>border-style</code></li>
+                        <li><code>border-color</code></li>
+                    </ul>
+
+                    <p>The <code>border</code> property is a shorthand property for <code>border-width</code>, <code>border-style</code>, and <code>border-color</code>:</p>
+                    <pre class="block-code"><code>selector {
+    border: line-width line-style color;
+}</code></pre>
+                    <ul>
+                        <li>The width will default to <code>medium</code> if absent</li>
+                        <li>The style defaults to <code>none</code> if absent</li>
+                        <li>The color defaults to <code>currentcolor</code> if absent</li>
+                    </ul>
+
+                    <p>The following example CSS and HTML demonstrates different ways of using these properties:</p>
+                    <pre class="block-code"><code>&lt;style&gt;
+    .box {
+        width: 50px;
+        height: 50px;
+        margin: 8px; 
+        padding: 16px; 
+        border: 5px solid black; 
+    }
+
+    .box-alt {
+        width: 50px;
+        height: 50px;
+        margin: 8px; 
+        padding: 16px; 
+        border-width: 5px;
+        border-style: solid;
+        border-color: black;
+        border-left: 8px dashed white;
+        border-right: 8px dashed white;
+    }
+&lt;/style&gt;
+
+&lt;div class="box" style="background-color: blue;"&gt;&lt;/div&gt;
+&lt;div class="box-alt" style="background-color: red;"&gt;&lt;/div&gt;</code></pre>
+
+                    <p>This will result in two boxes with two different borders, a solid border and a jigsaw piece like border:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <div style="box-sizing: content-box;
+                                        width: 50px;
+                                        height: 50px;
+                                        margin: 8px; 
+                                        padding: 16px; 
+                                        border: 5px solid black; 
+                                        background-color: blue;"></div>
+                            <div style="box-sizing: content-box; width: 50px; height: 50px; margin: -4px 8px 8px 8px; padding: 16px; border: 5px solid black; border-left: 8px dashed white; border-right: 8px dashed white; background-color: red;"></div>
+                        </div>
+                    </div>
+
+                    <p>Borders can also be rounded using the border-radius property:</p>
+                    <ul>
+                        <li><code>border-radius: all_sides;</code></li>
+                        <li><code>border-radius: top-left/bottom-right top-right/bottom-left;</code></li>
+                        <li><code>border-radius: top-left top-right bottom-right bottom-left;</code></li>
+                    </ul>
+
+                    <p>The radius will be applied to the element even if no border was specified, here is some example CSS and HTML:</p>
+                    <pre class="block-code"><code>&lt;style&gt;
+.fill {
+    width: 50px;
+    height: 50px;
+    margin: 8px; 
+    padding: 16px; 
+}
+
+.rounded-box {
+    background-color: blue;
+    border-radius: 10% 10%;
+}
+
+.cool-box {
+    width: 150px;
+    border-radius: 0 10% 0 10%; 
+    background-color: darkgreen;
+}
+
+.circle {
+    background-color: red;
+    border-radius: 50%;
+}
+&lt;/style&gt;
+
+&lt;div class="rounded-box fill"&gt;&lt;/div&gt;
+&lt;div class="circle fill"&gt;&lt;/div&gt;
+&lt;div class="cool-box fill"&gt;&lt;/div&gt;</code></pre>
+
+                    <p>This will render the following shapes:</p>
+                    <figure>
+                        <img src="../../images/shapes_varying_borders.png" alt="Shapes with varying border radius">
+                        <figcaption>A rounded square, a circle and a rectangle with sharp and rounded borders</figcaption>
+                    </figure>
+                </article>
+            </section>
+        </article>
+    </main>
+
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
