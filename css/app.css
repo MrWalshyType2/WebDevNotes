@@ -55,6 +55,7 @@ body {
 .dropdown {
     float: left;
     overflow: hidden;
+    height: 100%;
 }
 
 .dropdown .dropdown-btn {
@@ -116,7 +117,8 @@ pre,
 th,
 td,
 blockquote,
-figcaption {
+figcaption,
+button {
     font-size: 1.6rem;
     color: black;
     line-height: 1.5;
