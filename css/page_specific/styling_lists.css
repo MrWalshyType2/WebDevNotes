@@ -1,0 +1,88 @@
+ul,
+ol,
+dl {
+    font-size: 1.5rem;
+}
+
+li {
+    line-height: 1.5;
+}
+
+dd,
+dt {
+    line-height: 1.5;
+}
+
+dt {
+    font-weight: bold;
+}
+
+/* Horizontal simple nav example */
+.ex1-navbar {
+    width: 100%;
+    list-style-type: none;
+    border-bottom: 1px solid gray;
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.ex1-nav-btn {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.ex1-nav-link {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    font-size: 1.5rem;
+}
+
+.ex1-nav-link:hover {
+    background-color: limegreen;
+}
+
+/* Vertical simple nav example */
+.ex2-navbar {
+    display: inline-block;
+    width: 20%;
+    /* height: 100%;
+    min-height: 100%; */
+    overflow-y: auto;
+    background-color: gray;
+}
+
+.ex2-navbar>ul {
+    list-style-type: none;
+    border-bottom: 1px solid gray;
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.ex2-nav-link {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    font-size: 1.5rem;
+}
+
+.ex2-nav-link:hover,
+.ex2-nav-link.active {
+    background-color: limegreen;
+    cursor: pointer;
+}
+
+.ex2-main-content {
+    display: inline-block;
+    max-width: 79%;
+    height: 100%;
+    font-size: 0;
+    vertical-align: top; /* align elements from top */
+}

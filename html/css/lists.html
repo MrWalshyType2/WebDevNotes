@@ -7,6 +7,7 @@
     <title>Home</title>
 
     <link rel="stylesheet" href="../../css/app.css">
+    <link rel="stylesheet" href="../../css/page_specific/styling_lists.css">
 </head>
 <body>
     <nav class="navbar">
@@ -64,6 +65,277 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <header>
+                <h1>Styling lists</h1>
+                <p>Lists are commonly used in web development, and not just as you might expect. A common practice is to actually turn lists into navigation bars. This sections will explore different ways of styling lists using CSS:</p>
+            </header>
+
+            <section>
+                <h2>Styling lists with CSS</h2>
+                <p>When creating lists, the first thing to do is to reset the spacing to ensure they keep the same vertical and horizontal spacing as their surrounding elements (paragraphs, images, etc...). The following example demonstrates a simple CSS reset for this with a styled list:</p>
+
+                <pre class="block-code"><code>&lt;style&gt;
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    padding: 0 16%;
+}
+
+ul, ol, dl, p {
+    font-size: 1.5rem;
+}
+
+li, p {
+    line-height: 1.5;
+}
+
+dd, dt {
+    line-height: 1.5;
+}
+
+dt {
+    font-weight: bold;
+}
+&lt;/style&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;Apple&lt;/li&gt;
+    &lt;li&gt;Orange&lt;/li&gt;
+    &lt;li&gt;Pear&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+                <p>The first rule resets all elements to use the alternative box model and sets their margin and padding to 0. The html rule sets the font size to 10 pixels, this is to make working with relative units such as rem easier.</p>
+                <blockquote>rem values range from +/-1.0. A rem value of 1 means text will take on the same font size as specified in the root element, the html rule. 1.5 means the text will be 50% larger, 0.5 being 50% smaller.</blockquote>
+                <p>The rules affecting lists, paragraphs and list items set the line-height to ensure consistent spacing between elements.</p>
+
+                <article>
+                    <h3>List properties</h3>
+                    <p>CSS list properties can be used to change the style type, the position of the style (the bulletpoints) and whether a custom image is used or not.</p>
+
+                    <h4><code>list-style-type</code></h4>
+                    <p>The <code>list-style-type</code> property is used to change the marker in use for a list, possible values include:</p>
+                    <pre class="block-code"><code>selector {
+    list-style-type: disc | circle | square | decimal | georgian | upper-roman | lower-roman | lower-latin | upper-latin | etc... | none; 
+}</code></pre>
+                
+                    <p>A Unicode value can also be specified as a list marker, for example the Unicode <code>U+1F604</code> is a smily face emoji (<code>list-style-type: "\1F604";</code>):</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <ul style="list-style-type: '\1F604';">
+                                <li>Apple</li>
+                                <li>Orange</li>
+                                <li>Pear</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4><code>list-style-position</code></h4>
+                    <p>This property is used to change the position of a list marker to inside or outside the list:</p>
+                    <pre class="block-code"><code>list-style-position: outside | inside;</code></pre>
+
+                    <p>By default, list markers appear outside of the list item itself:</p>
+                    <figure>
+                        <img src="../../images/list_marker_outside.png" alt="List with markers outside">
+                        <figcaption>A list with the markers outside of the list items</figcaption>
+                    </figure>
+
+                    <p>If the markers are changed to be inside instead, the markers will be inside the list:</p>
+                    <figure>
+                        <img src="../../images/list_marker_inside.png" alt="List with markers inside">
+                        <figcaption>A list with the markers inside of the list items</figcaption>
+                    </figure>
+                </article>
+
+                <article>
+                    <h3>Navigation bars with lists</h3>
+                    <p>As prior mentioned, it is common to create navigation bars using lists. The following two examples demonstrate creating a desktop top navigation bar and side navigation bar.</p>
+
+                    <h4>Top navigation bar</h4>
+                    <p>To make a simple, left-aligned navigation bar using a list. We first create the structure in HTML:</p>
+                    <pre class="block-code"><code>&lt;nav&gt;
+    &lt;ul class="navbar"&gt;
+        &lt;li class="nav-btn"&gt;&lt;a class="nav-link" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt; 
+        &lt;li class="nav-btn"&gt;&lt;a class="nav-link" href="#"&gt;Store&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-btn"&gt;&lt;a class="nav-link" href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-btn"&gt;&lt;a class="nav-link" href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+                    <p>We first created a nav element as a container, this is for semantic purposes to aid accessibility. A nested unordered list is then declared with a class navbar applied to it. The ul contains multiple nested li elements with the class nav-btn, each one with a nested anchor with the class nav-link. Without any CSS, it will just be a normal list of block level elements. Adding CSS to set the list marker to none and then setting the li elements to inline-block will allow for a row of elements to be created:</p>
+                    <pre class="block-code"><code>.navbar {
+    width: 100%;
+    list-style-type: none;
+    border-bottom: 1px solid gray;
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-btn {
+    display: inline-block;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    font-size: 1.5rem;
+}
+
+.nav-link:hover {
+    background-color: limegreen;
+}</code></pre>
+
+                    <p>This will produce the following navigation bar:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <ul class="ex1-navbar">
+                                <li class="ex1-nav-btn"><a class="ex1-nav-link">Home</a></li> 
+                                <li class="ex1-nav-btn"><a class="ex1-nav-link">Store</a></li>
+                                <li class="ex1-nav-btn"><a class="ex1-nav-link">About</a></li>
+                                <li class="ex1-nav-btn"><a class="ex1-nav-link">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>The <code>href</code> attribute is not specified on the navbar rendered above, it would be in actual implementation.</li>
+                    </ul>
+
+                    <h4>Vertical side navigation bar</h4>
+                    <p>Often, side navigation bars are used for documentation sites. The following example demonstrates a side navigation bar:</p>
+                    <pre class="block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+&lt;/head&gt;
+    &lt;style&gt;
+    *, *::before, *::after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    html {
+        font-size: 10px;
+    }
+
+    ul, ol, dl, p {
+        font-size: 1.5rem;
+    }
+
+    li, p {
+        line-height: 1.5;
+    }
+
+    dd, dt {
+        line-height: 1.5;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    .navbar {
+        display: inline-block;
+        width: 20%;
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+        background-color: gray;
+    }
+
+    .navbar &gt; ul {
+        list-style-type: none;
+        border-bottom: 1px solid gray;
+        font-size: 0;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: white;
+        background-color: black;
+        font-size: 1.5rem;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        background-color: limegreen;
+    }
+&lt;/style&gt;
+&lt;body&gt;
+&lt;nav class="navbar"&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt; 
+    &lt;li&gt;&lt;a class="nav-link" href="#"&gt;Store&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="nav-link" href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="nav-link" href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <p>The above example renders the following:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <div class="ex2-navbar">
+                                <ul>
+                                    <li><a class="ex2-nav-link active">Home</a></li> 
+                                    <li><a class="ex2-nav-link">Store</a></li>
+                                    <li><a class="ex2-nav-link">About</a></li>
+                                    <li><a class="ex2-nav-link">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>Add the following CSS to include content to the right of the navigation menu using an element with the id<code>main-content</code> as a container:</p>
+                    <pre class="block-code"><code>#main-content {
+    display: inline-block;
+    max-width: 80%;
+    height: 100%;
+    font-size: 0;
+    vertical-align: top; /* align elements from top */
+}</code></pre>
+
+                    <p>This would look as follows when applied:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <div class="ex2-navbar">
+                                <ul>
+                                    <li><a class="ex2-nav-link active">Home</a></li> 
+                                    <li><a class="ex2-nav-link">Store</a></li>
+                                    <li><a class="ex2-nav-link">About</a></li>
+                                    <li><a class="ex2-nav-link">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="ex2-main-content">
+                                <h2>A page title</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti adipisci quasi odio dolores aliquid repellendus inventore dicta similique, facilis neque quo voluptatem maiores vitae cumque! Impedit architecto reiciendis eius expedita?</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi facere impedit voluptates. Repudiandae, quasi neque impedit odio ullam eveniet quod expedita distinctio molestias iusto, illo nulla, nobis veniam qui suscipit.</p>
+                                <p>A consequuntur aliquid similique. Excepturi nostrum veniam minus, recusandae inventore quidem tempora quod itaque labore esse aspernatur dignissimos, sequi pariatur id aliquid doloremque alias ipsam sit quo in. Amet, in.</p>
+                                <p>Repellendus voluptate debitis ipsum fuga quo. Sed, quibusdam. Neque aliquid, natus expedita consequuntur accusamus facilis, a reprehenderit blanditiis eveniet corrupti voluptas accusantium unde. Saepe fugit optio, suscipit voluptatibus vel molestias!</p>
+                                <p>Error quas praesentium modi veritatis harum fugiat, similique dolor eos, velit mollitia unde quo cumque, autem ex tenetur explicabo voluptate soluta. Sunt iusto, veritatis facilis exercitationem vel nam id dicta!</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </article>
+    </main>
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
