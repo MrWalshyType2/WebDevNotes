@@ -332,6 +332,70 @@ dt {
                             </div>
                         </div>
                     </div>
+
+                    <h4>A simple responsive navigation bar</h4>
+                    <p>In this example, a mobile-first responsive navigation bar is created using Flexbox from CSS3. Flexbox is a display type for creating one-dimensional content, a navigation bar is one-dimensional; horizontal on large screens and vertical on smaller screens like mobile phones or tablets.</p>
+
+                    <p>The HTML for the navigation bar is the same as the previous example, the difference is in the CSS that is applied. Before looking at the CSS though, try resizing the screen to see what happens with the navigation bar below:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <ul class="ex3-navbar">
+                                <li><a class="ex3-nav-link active">Home</a></li> 
+                                <li><a class="ex3-nav-link">Store</a></li>
+                                <li><a class="ex3-nav-link">About</a></li>
+                                <li><a class="ex3-nav-link">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p>This navigation bar becomes a vertical bar when the screen-size is below 1024 pixels, the average screen size for a small laptop. The CSS is as follows:</p>
+                    <pre class="block-code"><code>.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar > li {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-link {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    font-size: 1.5rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: limegreen;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+    .navbar {
+        align-items: flex-start;
+        flex-wrap: nowrap;
+    }
+
+    .navbar > li {
+        width: auto;
+    }
+}</code></pre>
+
+                    <ul>
+                        <li>First, the display type of <code>flex</code> is applied to the navigation bar using the class called <code>navbar</code>. This affects the immediate children of the element it is applied to, making them all line up in a row by default.</li>
+                        <li>The <code>flex-wrap</code> property is set to <code>wrap</code>, this means the child elements (the <code>li</code>'s) will wrap onto a new line should their width expand whatever element is containing them.</li>
+                        <li>The <code>li</code> elements are given a width of <code>100%</code> so each link takes up a whole line, this is the mobile-first aspect of the design.</li>
+                        <li>A media query, <code>@media</code> is used to apply styles when a certain condition is met, in this case that the screen has a minimum width of 1024 pixels.</li>
+                        <li>When the media query is activated, the navigation bar has its <code>flex-wrap</code> property set to <code>nowrap</code>. This prevents the list items from wrapping onto a newline on larger displays. The width of each <code>li</code> is set to <code>auto</code> so that its width is that of the list items content rather than <code>100%</code> of its container.</li>
+                    </ul>
                 </article>
             </section>
         </article>

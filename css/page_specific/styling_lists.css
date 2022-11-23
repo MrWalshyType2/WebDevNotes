@@ -86,3 +86,44 @@ dt {
     font-size: 0;
     vertical-align: top; /* align elements from top */
 }
+
+/* Respnsive navigation bar example */
+.ex3-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ex3-navbar > li {
+    width: 100%;
+    text-align: center;
+}
+
+.ex3-nav-link {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    font-size: 1.5rem;
+}
+
+.ex3-nav-link:hover,
+.ex3-nav-link.active {
+    background-color: limegreen;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+    .ex3-navbar {
+        align-items: flex-start;
+        flex-wrap: nowrap;
+    }
+
+    .ex3-navbar > li {
+        width: auto;
+    }
+}
