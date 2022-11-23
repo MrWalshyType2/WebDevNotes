@@ -115,7 +115,8 @@ a,
 pre,
 th,
 td,
-blockquote {
+blockquote,
+figcaption {
     font-size: 1.6rem;
     color: black;
 }
@@ -154,7 +155,10 @@ figure > img {
 }
 
 figcaption {
-    text-align: center;
+    border-bottom: 1px solid black;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
