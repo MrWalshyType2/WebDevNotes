@@ -119,6 +119,7 @@ blockquote,
 figcaption {
     font-size: 1.6rem;
     color: black;
+    line-height: 1.5;
 }
 
 h1 {
