@@ -64,6 +64,263 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <header>
+                <h1>CSS Selectors</h1>
+                <p>To style elements, we must be able to find the specific element to style. This is what <em>selectors</em> are for in CSS.</p>
+            </header>
+
+            <section>
+                <h2>What is a CSS selector?</h2>
+                <p>CSS is used to style HTML elements but to do this, CSS must be able to locate the elements that will be styled. HTML elements are selected using <strong>css selectors</strong> - a pattern through which to identify an element - which take the following format:</p>
+            
+                <pre class="block-code"><code>selector {
+    attribute1: value;
+    attribute2: value;
+}</code></pre>
+                <ul>
+                    <li>Each attribute represents a <code>key: value</code> pair</li>
+                    <li>Each attribute pair must end with a semi-colon, this is the delimiter</li>
+                    <li>The attributes specified within the block, <code>{}</code>, belong only to the specified selector</li>
+                </ul>
+
+                <p>The simplest selector is the <strong>tag/type selector</strong>, this will select all elements in a document that use the specified tag. The following example demonstrates styling all paragraph text to be blue:</p>
+                <pre class="block-code"><code>&lt;html lang=en&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;style&gt;
+    p {
+        color: blue;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Some text&lt;/p&gt;
+    &lt;p&gt;Some more text&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <blockquote>The CSS is embedded into the file in the <code>head</code> of the document, it could also be specified inline or more preferably in an external stylesheet.</blockquote>
+
+                <p>The previous example would render the following blue text:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <p style="color: blue" role="presentation">Some text</p>
+                        <p style="color: blue" role="presentation">Some more text</p>
+                    </div>
+                </div>
+                <blockquote>The <code>color</code> attribute is used to change the colour of text, specified using the American English spelling.</blockquote>
+            </section>
+
+            <section>
+                <h2>The id and class attributes</h2>
+                <p>Often, we will want to style only a single element or a group of specific elements that cannot be solely targeted using a type selector. To do this, two attributes exist that can be used on any HTML element:</p>
+                <ul>
+                    <li><code>id</code>: An identifier that should only be used once per document, such as for the main page heading on each page</li>
+                    <li><code>class</code>: An identifier that can be used on many different elements in the same document</li>
+                </ul>
+
+                <p>In the following example, a <code>h1</code> element (which should appear once per page in most cases anyway) is given the <code>id</code> of <code>title</code>:</p>
+                <pre class="block-code"><code>&lt;html lang=en&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="title"&gt;The example site&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                <p>To select an element by its id in CSS, using an <strong>ID Selector</strong>, specify a <code>#</code> followed by the name of the id to target. The following example adds a background colour to the title and changes the colour of the text:</p>
+                <pre class="block-code"><code>&lt;html lang=en&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;style&gt;
+    #title {
+        color: white;
+        background-color: black;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="title"&gt;The example site&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                <p>This will render as follows:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <h1 style="color: white; background-color: black;" role="presentation">The example site</h1>
+                    </div>
+                </div>
+                <blockquote>There will be white space around heading when displayed in the browser; this is to be expected and will be explained further in the section on the CSS Box Model.</blockquote>
+            
+                <p>The following example demonstrates a subtitle class being applied to multiple h2 elements:</p>
+                <pre class="block-code"><code>&lt;html lang=en&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;style&gt;
+    #title {
+        color: white;
+        background-color: black;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="title"&gt;The example site&lt;/h1&gt;
+    
+    &lt;h2 class="subtitle"&gt;The first section on examples&lt;/h2&gt;
+    &lt;p&gt;Examples are often brief for the purpose of conveying core material rather than distraction&lt;/p&gt;
+    
+    &lt;h2 class="subtitle"&gt;The second section on examples&lt;/h2&gt;
+    &lt;p&gt;This is the second section talking more about examples.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                <p>Without styling the elements with the subtitle class, the example will look as follows:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <h1 style="color: white; background-color: black;" role="presentation">The example site</h1>
+  
+                        <h2 role="presentation">The first section on examples</h2>
+                        <p role="presentation">Examples are often brief for the purpose of conveying core material rather than distraction</p>
+                        
+                        <h2 role="presentation">The second section on examples</h2>
+                        <p role="presentation">This is the second section talking more about examples.</p>
+                    </div>
+                </div>
+
+                <p>To style only elements with the <code>subtitle</code> class, a <strong>Class Selector</strong> must be used; first a period, <code>.</code>, is specified followed by the name of the class to target:</p>
+                <pre class="block-code"><code>&lt;html lang=en&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;style&gt;
+    #title {
+        color: white;
+        background-color: black;
+    }
+    
+    .subtitle {
+        background-color: gray;
+        color: lightgreen;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="title"&gt;The example site&lt;/h1&gt;
+    
+    &lt;h2 class="subtitle"&gt;The first section on examples&lt;/h2&gt;
+    &lt;p&gt;Examples are often brief for the purpose of conveying core material rather than distraction&lt;/p&gt;
+    
+    &lt;h2 class="subtitle"&gt;The second section on examples&lt;/h2&gt;
+    &lt;p&gt;This is the second section talking more about examples.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                <p>The example with the subtitles styled will now look as follows:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <h1 style="color: white; background-color: black;" role="presentation">The example site</h1>
+  
+                        <h2 style="color: lightgreen; background-color: gray;" role="presentation">The first section on examples</h2>
+                        <p role="presentation">Examples are often brief for the purpose of conveying core material rather than distraction</p>
+                        
+                        <h2 style="color: lightgreen; background-color: gray;" role="presentation">The second section on examples</h2>
+                        <p role="presentation">This is the second section talking more about examples.</p>
+                    </div>
+                </div>
+                <blockquote>HTML elements can have multiple ids and classes specified, the requirement is that they are separated by a space: <code>&lt;h1 id="title" class="large centered"&gt;...&lt;/h1&gt;</code></blockquote>
+            </section>
+
+            <section>
+                <h2>Attribute and Universal selectors</h2>
+                <p><strong>Attribute selectors</strong> are used to select elements based on the element, its attributes, and attribute values that an element holds. Attribute selectors can take any of the following forms:</p>
+
+                <pre class="block-code"><code>/* 
+    select all matching elements that have the specified attribute, 
+    irrespective of value 
+*/
+selector[attribute] {
+}
+
+/*
+    select all elements whose attribute exactly matches the specified value
+*/
+selector[attribute=value] {
+}
+
+/*
+    selects all elements whose attribute exactly matches the specified value or
+    where an attributes values, separated by whitespace, contains the specified
+    value
+*/
+selector[attribute~=value] {
+}
+
+</code></pre>
+
+                <p>First, a selector of any type is specified. A set of square brackets is opened afterwards where the attribute to check for is specified.</p>
+
+                <p>A universal selector is specified using the wildcard symbol, *. This indicates that every element in the document is to be selected. It is common to see this for something called a CSS reset where certain default attributes are changed, for example the following removes the default spacing in and around all elements as well as changes how element sizes are calculated (explored further in the box model):</p>
+                <pre class="block-code"><code>html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}</code></pre>
+                <blockquote>The <code>::before</code> and <code>::after</code> are <strong>psuedo-element selectors</strong>, used to style a specific part of a selected element - in this case, every element.</blockquote>
+            </section>
+
+            <section>
+                <h2>Psuedo-class and pseudo-element selectors</h2>
+
+                <article>
+                    <h3>Psuedo-class selectors</h3>
+                    <p>TODO</p>
+                </article>
+                <article>
+                    <h3>Psuedo-element selectors</h3>
+                    <p>A <strong>psuedo-element selector</strong> is used to style a specific part of a selected element, this could be the first line of a paragraph of text or every 2nd line for example.</p>
+                    <p>TODO</p>
+                </article>
+            </section>
+            <section>
+                <header>
+                    <h2>Combinators</h2>
+                    <p>A <strong>combinator</strong> is a special kind of selector which combines multiple selectors together.</p>
+                </header>
+
+                <article>
+                    <h3>Descendant selector</h3>
+                    <p>A <strong>descendant combinator</strong> is used by combining two selectors that are separated by a space, elements that match the second selector are only selected if one of their ancestors matches the first selector.</p>
+                    <p>TODO</p>
+                </article>
+                <article>
+                    <h3>Child selector</h3>
+                    <p>A <strong>child combinator</strong> is placed between two CSS selectors, it is represented by the <code>></code> symbol. It selects only elements matching the second selector which are a direct descendant (child) of the first selector.</p>
+                    <p>TODO</p>
+                </article>
+                <article>
+                    <h3>Adjacent selector</h3>
+                    <p>A <strong>adjacent sibling combinator</strong>, like a child combinator, is placed between two CSS selectors and is represented by the <code>+</code> symbol. This selector selects elements matching the second selector which are immediately preceeded by the matching element of the first selector.</p>
+                    <p>TODO</p>
+                </article>
+                <article>
+                    <h3>General sibling selector</h3>
+                    <p>The <strong>general sibling combinator</strong> is similar to the adjacent sibling combinator, the difference is that it will select any element matching the second selector that comes after the matching element for the first selector rather than just the matching element that immediately follows the first selector.</p>
+                    <p>TODO</p>
+                </article>
+            </section>
+        </article>
+    </main>
+
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
