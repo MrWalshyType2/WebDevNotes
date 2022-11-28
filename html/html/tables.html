@@ -64,6 +64,251 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <header>
+                <h1>Tables</h1>
+                <p>Tables are used in HTML to represent tabular data (data in rows and columns).</p>
+            </header>
+
+            <section>
+                <h2>Creating a basic table</h2>
+                <p>
+                    A HTML table is created with the <code>table</code> element, the rows and columns are nested inside the element. The following 
+                    example demonstrates some simple markup for a table with three rows (one header row) and three columns:
+                </p>
+                <pre class="block-code"><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Username&lt;/th&gt;
+        &lt;th&gt;Email&lt;/th&gt;
+        &lt;th&gt;Date of birth&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;user123&lt;/td&gt;
+        &lt;td&gt;user123@mail.com&lt;/td&gt;
+        &lt;td&gt;&lt;time datetime="1987-04-17"&gt;17/04/1987&lt;/time&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;user356&lt;/td&gt;
+        &lt;td&gt;user356@mail.com&lt;/td&gt;
+        &lt;td&gt;&lt;time datetime="1994-09-23"&gt;23/09/1994&lt;/time&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                <ul>
+                    <li>Each row in the table is represented by the <code>tr</code> element, the data which represents the columns is nested inside of the <code>tr</code> elements.</li>
+                    <li>The <code>th</code> element represents a table heading, this table has three headings on the first row which represent the headings for three columns.</li>
+                    <li>
+                        The <code>td</code> element represents table data, each piece of data conforms to the columns defined prior. In this case, the first piece of data in each row after
+                        the first row (the row with the headings) is the username and will be lined up in the first column.
+                    </li>
+                </ul>
+
+                <p>
+                    By default, tables have minimal styling and do not expand to the width of the parent container like most block-level elements. The previous markup 
+                    would look as follows by default:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <table>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Date of birth</th>
+                            </tr>
+                            <tr>
+                                <td>user123</td>
+                                <td>user123@mail.com</td>
+                                <td><time datetime="1987-04-17">17/04/1987</time></td>
+                            </tr>
+                            <tr>
+                                <td>user356</td>
+                                <td>user356@mail.com</td>
+                                <td><time datetime="1994-09-23">23/09/1994</time></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <h3>Spanning multiple rows and columns</h3>
+                <p>
+                    Sometimes, we may have data that requires a more complex layout... To handle this, the <code>colspan</code> and <code>rowspan</code> attributes can be applied to
+                    the table cells. The following example demonstrates a heading applied to the bottom row to represent the total cost of an order:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <table>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Cost</th>
+                            </tr>
+                            <tr>
+                                <td>6 pack apples</td>
+                                <td>1</td>
+                                <td>£1.70</td>
+                            </tr>
+                            <tr>
+                                <td>Chocolate Orange</td>
+                                <td>3</td>
+                                <td>£1.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" colspan="2">Total</th>
+                                <td>£4.70</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <p>We may also want to span more than one row, the following example demonstrates this using a primary and secondary email:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <table>
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col" colspan="2">Email</th>
+                                <th scope="col">Date of birth</th>
+                            </tr>
+
+                            <tr>
+                                <td rowspan="2">user123</td>
+                                <th scope="row">Primary:</th>
+                                <td>user123@mail.com</td>
+                                <td><time datetime="1987-04-17">17/04/1987</time></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Secondary:</th>
+                                <td>user123alt@mail.com</td>
+                            </tr>
+
+                            <tr>
+                                <td rowspan="2">user356</td>
+                                <th scope="row">Primary:</th>
+                                <td>user356@mail.com</td>
+                                <td><time datetime="1994-09-23">23/09/1994</time></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Secondary:</th>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <h3>Adding a caption</h3>
+            </section>
+
+            <section>
+                <h2>Adding structure to a table</h2>
+            </section>
+
+            <section>
+                <h2>Nested tables</h2>
+
+            </section>
+
+            <section>
+                <h2>Styling</h2>
+            </section>
+        </article>
+    </main>
+
     <script src="../../js/navigation.js"></script>
+    <script>
+        (() => {
+            const examples = document.querySelectorAll(".example");
+
+            examples.forEach(example => {
+                const content = example.querySelector(".example-content");
+                const exampleBtns = example.querySelector(".example-buttons");
+                const renderBtn = example.querySelector(".example-buttons > .render-btn");
+                const rawBtn = example.querySelector(".example-buttons > .raw-btn");
+
+                const rawView = document.createElement("pre");
+                rawView.classList.add("block-code");
+                const rawViewCode = document.createElement("code");
+                rawViewCode.append(document.createTextNode(stringifyElement(content.childNodes, 0)));
+                rawView.append(rawViewCode);
+
+                if (rawBtn != null) rawBtn.addEventListener("click", event => {
+                    // console.log(stringifyElement(content.childNodes, 0));
+                    content.remove();
+                    exampleBtns.insertAdjacentElement("beforeBegin", rawView);
+                });
+
+                if (renderBtn != null) renderBtn.addEventListener("click", event => {
+                    rawView.remove();
+                    exampleBtns.insertAdjacentElement("beforeBegin", content);
+                });
+            });
+
+            function stringifyElement(elements, indentation) {
+                let output = "";
+
+                elements.forEach(element => {
+                    const elementName = element.localName;
+                    let selfClosing = false;
+                    let blockLevel = false;
+
+                    // is element or text node?
+                    if (elementName) {
+                        output += " ".repeat(indentation) + "<" + elementName + ">";
+                        // add a newline if block-level to the end of the opening element
+                        const displayStyle = window.getComputedStyle(element, null).getPropertyValue("display");
+                        if (displayStyle == "block" || displayStyle == "flex" || displayStyle == "grid" || 
+                            displayStyle == "table" || displayStyle == "table-row-group" || displayStyle == "table-row") {
+                                output += "\n";
+                                blockLevel = true;
+                            }
+                    }
+                    else {
+                        // is a text node
+                        selfClosing = true;
+                        const content = element.textContent.trim();
+                        if (content.length > 0) output += content;
+                    }
+
+                    // is self closing?
+                    switch (elementName) {
+                        case "input":
+                        case "meta":
+                        case "area":
+                        case "base":
+                        case "br":
+                        case "hr":
+                        case "col":
+                        case "embed":
+                        case "img":
+                        case "link":
+                        case "param":
+                        case "source":
+                        case "track":
+                        case "wbr":
+                            selfClosing = true;
+                    }
+
+                    // handle any children
+                    output += stringifyElement(element.childNodes, indentation + 4);
+
+                    // if not self closing, add indentation for block level and no indentation for inline
+                    if (!selfClosing) {
+                        if (elementName && blockLevel) output += " ".repeat(indentation) + "</" + elementName + ">" + "\n";
+                        else if (elementName) output += "</" + elementName + ">" + "\n";
+                    }
+                });
+
+                // output += "\n";
+                return output;
+            }
+        })();
+    </script>
 </body>
 </html>
