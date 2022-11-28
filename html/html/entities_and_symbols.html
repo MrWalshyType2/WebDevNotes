@@ -64,6 +64,46 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <header>
+                <h1>Symbols in HTML</h1>
+                <p>Often, there are symbols in every day use that we do not find on the standard QWERTY, AZERTY, etc... keyboards. To compensate for this, HTML provides a variation of codes that can be used to represent them.</p>
+                <p>Find a full table of symbols in HTML <a href="https://www.toptal.com/designers/htmlarrows/symbols/">here</a>.</p>
+            </header>
+
+            <section>
+                <h2>HTML Character Entities</h2>
+                <p>
+                    It is commonplace when writing content in a HTML document that certain reserved symbols are required, how do we get the <code>&lt;</code> symbol to display for example. Character 
+                    entities are short codes that can be written to display such characters. Some examples include:
+                </p>
+                <ul>
+                    <li><strong>&amp;lt;</strong> to display the less than symbol.</li>
+                    <li><strong>&amp;gt;</strong> to display the greater than symbol.</li>
+                    <li><strong>&amp;amp;</strong> to display an ampersand.</li>
+                    <li><strong>&amp;pound;</strong> to display the British pound symbol.</li>
+                    <li><strong>&amp;copy;</strong> to display the copyright symbol.</li>
+                    <li><strong>&amp;reg;</strong> to display the registered trademark symbol.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Other symbols and forms of representation</h2>
+                <p>Not every symbol available in HTML5 has a named character entity code, but instead one or more of the following:</p>
+                <ul>
+                    <li><strong>HTML code</strong>, like <code>&amp;#9824;</code> for the spade symbol: &#9824;</li>
+                    <li><strong>Hex code</strong>, like <code>&amp;#x2660;</code> for the spade symbol: &#x2660;</li>
+                </ul>
+                <blockquote>
+                    When researching Unicode symbols, they will generally be of the form <code>U+02660</code>. Simply replace the <code>U+</code> with <code>&#x</code> and put a semicolon on 
+                    the end to make it a usable hex code character entity in HTML. So <code>U+02660</code> would be <code>&amp;#x02660;</code> or <code>&amp;#x2660;</code> as we can also drop any leading
+                    zero's from hexadecimal values.
+                </blockquote>
+            </section>
+        </article>
+    </main>
+
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
