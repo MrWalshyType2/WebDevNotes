@@ -41,7 +41,7 @@
         const exampleBtns = example.querySelector(".example-buttons");
         const renderBtn = example.querySelector(".example-buttons > .render-btn");
         const rawBtn = example.querySelector(".example-buttons > .raw-btn");
-
+        
         try {
             const rawView = document.createElement("pre");
             rawView.classList.add("block-code");
@@ -74,7 +74,15 @@
 
             // is element or text node?
             if (elementName) {
-                output += " ".repeat(indentation) + "<" + elementName + (element.classList.length > 0 ? " class=\"" + element.classList + "\"" : "") + ">";
+                if (elementName == "a") output += "\n";
+                let attributes = "";
+
+                for (const attrName of element.getAttributeNames()) {
+                    if (attrName == "class") attributes += (element.classList.length > 0 ? " class=\"" + element.classList + "\"" : "");
+                    else attributes += ` ${attrName}${element[attrName] ? "=" : ""}"${element[attrName]}"`;
+                }
+
+                output += " ".repeat(indentation) + "<" + elementName + attributes + ">";
                 // add a newline if block-level to the end of the opening element
                 const displayStyle = window.getComputedStyle(element, null).getPropertyValue("display");
                 if ((displayStyle == "block" || displayStyle == "flex" || displayStyle == "grid" ||

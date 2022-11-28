@@ -64,6 +64,168 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <header>
+                <h1>Page layout methods: Normal flow, floats and positioning</h1>
+                <p>
+                    There are many different layout algorithms available in CSS which change how HTML elements are displayed, 
+                    specifically by changing their outer and inner display types as described in the CSS Box Model section.
+                </p>
+            </header>
+
+            <section>
+                <h2>Flow layout</h2>
+                <p>
+                    The flow layout algorithm is the default applied when an elements display type is left to its default block or inline state.
+                    This is how elements appear by default, without any changes to their outer or inner display types.
+                </p>
+            </section>
+
+            <section>
+                <h2>Floats</h2>
+                <p>Floats are used for repositioning elements on a page, specifically by shifting them to the left, or right, until they hit the edge of the parent box or another floated element.</p>
+                <blockquote>If a floated element contains children, it will be at least as tall as the tallest floated child.</blockquote>
+                <p>The <code>float</code> property takes one of five values:</p>
+                <ul>
+                    <li><code>left</code>: Element is floated on the left side of its container.</li>
+                    <li><code>right</code>: Element is floated on the right side of its container.</li>
+                    <li><code>none</code>: Element is not floated.</li>
+                    <li><code>inline-start</code>: Element floats on the starting side of its container.</li>
+                    <li><code>inline-end</code>: Element floats on the ending side of its container.</li>
+                </ul>
+                <blockquote>The float property may also take any of the following global values: <code>inherit</code>, <code>initial</code>, <code>revert</code>, <code>unset</code>.</blockquote>
+
+                <p>The following example demonstrates the float property being used to place three shapes and some text on the same row:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .container {
+        float: left;
+        width: 100%;
+    }
+    
+    .fill {
+        width: 50px;
+        height: 50px;
+        margin: 8px; 
+        padding: 16px; 
+    }
+    
+    .rounded-box {
+        background-color: blue;
+        border-radius: 10% 10%;
+        float: right;
+    }
+    
+    .cool-box {
+        width: 150px;
+        border-radius: 0 10% 0 10%; 
+        background-color: darkgreen;
+        float: left;
+    }
+    
+    .circle {
+        background-color: red;
+        border-radius: 50%;
+        float: left;
+    }
+                          </style>
+                          
+                          <div class="container">
+                            <div class="rounded-box fill"></div>
+                            <div class="circle fill"></div>
+                            <div class="cool-box fill"></div>
+                            <p>Hello world</p>
+                          </div>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                
+                <p>The natural ordering of these elements (normal flow) has been changed. First, a div element is setup as a container for floating elements in. The .container CSS rule then floats this container left and sets its width to 100% of its parent element, this prevents the text from being erroneously displayed. The first element inside the container, the blue square, has had float: right applied to it to move it to the right of the container. The next element, the red circle, has had float: left applied to it and is thus floated to the left. The green box element also is then floated to the left, the paragraph of text then automatically repositions itself in the remaining space.</p>
+                <p>When the float property is used, it modifies the display type of an element (in most cases) to be block. For example, inline and inline-block elements become block elements.</p>
+
+                <p>The following example uses floats, alongside some styling, to create a simple right-aligned navigation bar:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .ex-navbar {
+        float: left;
+        width: 100%;
+        list-style-type: none;
+        padding: 8px 0;
+    }
+    
+    .ex-nav-btn {
+        float: right;
+    }
+    
+    .ex-nav-link {
+        padding: 8px;
+        text-decoration: none;
+        color: white;
+        background-color: black;
+    }
+    
+    .ex-nav-link:hover {
+        cursor: pointer;
+        padding-bottom: 12px;
+        background-color: limegreen;
+    }
+                        </style>
+                          
+                        <ul class="ex-navbar">
+                            <li class="ex-nav-btn"><a class="ex-nav-link">Contact</a></li>
+                            <li class="ex-nav-btn"><a class="ex-nav-link">About</a></li>
+                            <li class="ex-nav-btn"><a class="ex-nav-link">Store</a></li>
+                            <li class="ex-nav-btn"><a class="ex-nav-link">Home</a></li>    
+                        </ul>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <p>
+                    Unfortunately, floats come with a few issues which can cause complicated layout issues.
+                     Generally, we should only use floats for positioning images around text. For example, 
+                     we can float an image to the left or right of some text:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .card {
+        padding: 16px;
+    }
+    
+    .card > img {
+        float: left;
+        padding: 8px;
+        margin: 16px;
+        border: solid 2px black;
+        background-color: lightslategray;
+    }
+                          </style>
+                          
+                          <div class="card">
+                            <img src="https://via.placeholder.com/150" alt="placeholder" />
+                            <p>This text is accompanying this image at the side of it as some placeholder text to demonstrate floating an image to the right of some text... Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum soluta reiciendis sit atque reprehenderit aspernatur ullam natus alias. Dicta amet tenetur nemo recusandae asperiores velit, minus debitis, nostrum ipsa, quisquam adipisci. Aspernatur facere in explicabo commodi, nisi laboriosam, sit sint totam, saepe omnis eos ab ut nostrum. A explicabo alias vel incidunt molestiae repellat eligendi? Laborum eius ab dolores mollitia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam et nobis cumque distinctio iusto quisquam sapiente suscipit iure odio. Dolorem itaque incidunt magnam deleniti officia, amet beatae rerum cum suscipit deserunt aut nam dolor nisi rem quibusdam minima non excepturi pariatur blanditiis consequatur et. Corrupti inventore libero ut vero quisquam voluptatum? Voluptatibus magnam mollitia error possimus tempore eveniet. Minima, aut. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias officia molestiae velit voluptatum quibusdam, esse eaque, quidem obcaecati hic cumque vero possimus maiores aut temporibus debitis? Cumque libero obcaecati facilis velit sequi aliquid architecto in quis at odit nemo dicta veritatis aperiam, nam explicabo consequuntur blanditiis quibusdam ut enim exercitationem! Illum similique necessitatibus non cum placeat perspiciatis ducimus aperiam tenetur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, deserunt voluptatibus incidunt nostrum eum architecto vel repellat quis sapiente ipsum.
+                            </p>
+                          </div>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>In this example, the text will wrap around the floated image creating a simple but pleasing to the eyes layout.</p>
+            </section>
+        </article>
+    </main>
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
