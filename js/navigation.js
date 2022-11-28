@@ -74,12 +74,14 @@
 
             // is element or text node?
             if (elementName) {
-                output += " ".repeat(indentation) + "<" + elementName + ">";
+                output += " ".repeat(indentation) + "<" + elementName + (element.classList.length > 0 ? " class=\"" + element.classList + "\"" : "") + ">";
                 // add a newline if block-level to the end of the opening element
                 const displayStyle = window.getComputedStyle(element, null).getPropertyValue("display");
-                if (displayStyle == "block" || displayStyle == "flex" || displayStyle == "grid" ||
+                if ((displayStyle == "block" || displayStyle == "flex" || displayStyle == "grid" ||
                     displayStyle == "table" || displayStyle == "table-row-group" || displayStyle == "table-row" ||
-                    displayStyle == "table-header-group" || displayStyle == "table-footer-group") {
+                    displayStyle == "table-header-group" || displayStyle == "table-footer-group") && 
+                    elementName != "p" && elementName != "h1" && elementName != "h2" && elementName != "h3" && 
+                    elementName != "h4" && elementName != "h5" && elementName != "h6") {
                     output += "\n";
                     blockLevel = true;
                 }
@@ -87,8 +89,8 @@
             else {
                 // is a text node
                 selfClosing = true;
-                const content = element.textContent.trim();
-                if (content.length > 0) output += content;
+                let content = element.textContent.trim();
+                if (content.length > 0) output += "\n" + " ".repeat(indentation) + content + "\n";
             }
 
             // is self closing?
@@ -116,7 +118,7 @@
             // if not self closing, add indentation for block level and no indentation for inline
             if (!selfClosing) {
                 if (elementName && blockLevel) output += " ".repeat(indentation) + "</" + elementName + ">" + "\n";
-                else if (elementName) output += "</" + elementName + ">" + "\n";
+                else if (elementName) output += " ".repeat(indentation) + "</" + elementName + ">" + "\n";
             }
         });
 

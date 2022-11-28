@@ -283,12 +283,131 @@ selector[attribute~=value] {
 
                 <article>
                     <h3>Psuedo-class selectors</h3>
-                    <p>TODO</p>
+                    <p>A <strong>psuedo-class selector</strong> selects elements that have some state to target, such as an element being active or being hovered on. Psuedo-classes take the following form in CSS:</p>
+                    <pre class="block-code"><code>selector:psuedo-class {
+    /* styles */
+}</code></pre>
+                    <p>There are various pseudo-classes available, some useful ones include:</p>
+                    <ul>
+                        <li><strong><code>:first-child</code></strong>: Targets the first child of a parent element</li>
+                        <li><strong><code>:hover</code></strong>: Targets an element when it is hovered over</li>
+                        <li><strong><code>:focus</code></strong>: Targets an element when it receives focus</li>
+                    </ul>
+
+                    <p>
+                        The following example styles the first paragraph to be bolded and larger in font-size and makes the 
+                        second paragraph change colour when hovered over:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+                                .pseudo-class-example :first-child {
+        font-weight: 900;
+        font-size: 2rem;
+    }
+    .psuedo-class-hover-example:hover {
+        background-color: royalblue;
+    }
+                            </style>
+                            <div class="pseudo-class-example">
+                                <p>This text is bolder and larger.</p>
+                                <p class="psuedo-class-hover-example">Hover over me!</p>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <blockquote>
+                        The example above uses the selector <code>.pseudo-class-example :first-child</code>, which will target 
+                        the first child element of any element matching the first selector. To make it only elements of a specific type, say a paragraph, 
+                        we put the element before the pseudo-class selector like so: <code>.pseudo-class-example p:first-child</code>
+                    </blockquote>
                 </article>
                 <article>
                     <h3>Psuedo-element selectors</h3>
-                    <p>A <strong>psuedo-element selector</strong> is used to style a specific part of a selected element, this could be the first line of a paragraph of text or every 2nd line for example.</p>
-                    <p>TODO</p>
+                    <p>A <strong>psuedo-element selector</strong> is used to style a specific part of a selected element, this could be the first line of a paragraph of text or every 2nd line for example. These selectors act as if a whole new element was added into the HTML markup. Some useful psuedo-element selectors include:</p>
+                    <ul>
+                        <li><strong><code>::first-letter</code></strong>: Targets the first letter of an element only, as if you had put a span around it.</li>
+                        <li><strong><code>::first-line</code></strong>: Targets the first line of text of an element, automatically adjusting as needed when the line length changes.</li>
+                        <li><strong><code>::selection</code></strong>: Targets the selected text.</li>
+                        <li><strong><code>::before</code></strong>: Targets before the start of the element, as if you had inserted an element before it.</li>
+                        <li><strong><code>::after</code></strong>: The inverse of <code>::before</code></li>
+                    </ul>
+
+                    <p>
+                        The following example demonstrates making the first letter of some text larger, the first line bolder and selected text 
+                        to have a light green background:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+                                .pseudo-element-example :first-child::first-line {
+        font-weight: 900;
+        font-size: 2rem;
+    }
+
+    .pseudo-element-example :first-child::first-letter {
+        font-size: 4rem;
+    }
+
+    .pseudo-element-example p::selection {
+        background-color: lightgreen;
+    }
+                            </style>
+                            <div class="pseudo-element-example">
+                                <p>This text is bolder and larger. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, quod nisi nobis iusto dolores dolorum mollitia quia veniam sunt qui? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim accusantium repellat obcaecati sint distinctio, dolore necessitatibus praesentium harum minus maiores!</p>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, alias?</p>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+
+                    <h4>The <code>::before</code> and <code>::after</code> pseudo-element selectors</h4>
+                    <p>
+                        As prior mentioned, these two selectors allow for the insertion of content before and after some element. The following 
+                        example demonstrates inserting an arrow before some text and styling it:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+    .before-example p::before {
+        content: " \02192";
+        display: inline-block;
+        width: fit-content;
+        padding: 8px 16px 24px 16px;
+        line-height: 1;
+        font-size: 6rem;
+        background-color: royalblue;
+    }
+
+    .before-example p::first-line {
+        font-weight: 700;
+    }
+
+    .before-example p:hover::before {
+        box-shadow: 10px 10px 5px lightslategray;
+        background-color: yellow;
+    }
+                            </style>
+                            <div class="before-example">
+                                <p>&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, quod nisi nobis iusto dolores dolorum mollitia quia veniam sunt qui? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim accusantium repellat obcaecati sint distinctio, dolore necessitatibus praesentium harum minus maiores!</p>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <blockquote>
+                        The example inserts an arrow before the paragraph text, to insert content into the psuedo-element you can 
+                        easily use text. To insert a symbol, you must insert the escaped unicode. That is, you must place a <code>/</code> before the value.
+                        <code>U+02192</code> would become <code>\02192</code> for example.
+                    </blockquote>
                 </article>
             </section>
             <section>
@@ -300,22 +419,97 @@ selector[attribute~=value] {
                 <article>
                     <h3>Descendant selector</h3>
                     <p>A <strong>descendant combinator</strong> is used by combining two selectors that are separated by a space, elements that match the second selector are only selected if one of their ancestors matches the first selector.</p>
-                    <p>TODO</p>
+                    <p>The following example demonstrates styling paragraph elements which may be nested arbitrarily inside of some parent element:</p>
+
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+                                .descendent-example p {
+        background-color: green;
+    }
+                            </style>
+                            <div class="descendent-example">
+                                <p>This text will be affected.</p>
+                                <div style="background-color: yellow; padding: 8px;">
+                                    <p>This will also be affected.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
                 </article>
                 <article>
                     <h3>Child selector</h3>
                     <p>A <strong>child combinator</strong> is placed between two CSS selectors, it is represented by the <code>></code> symbol. It selects only elements matching the second selector which are a direct descendant (child) of the first selector.</p>
-                    <p>TODO</p>
+                    <p>The following example demonstrates selecting only the paragraph elements which are a direct child of the parent element:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+                                .child-example > p {
+        background-color: green;
+    }
+                            </style>
+                            <div class="child-example">
+                                <p>This text will be affected.</p>
+                                <div style="background-color: yellow; padding: 8px;">
+                                    <p>This will not be affected.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
                 </article>
                 <article>
                     <h3>Adjacent selector</h3>
                     <p>A <strong>adjacent sibling combinator</strong>, like a child combinator, is placed between two CSS selectors and is represented by the <code>+</code> symbol. This selector selects elements matching the second selector which are immediately preceeded by the matching element of the first selector.</p>
-                    <p>TODO</p>
+                    <p>The following example targets only the paragraph element immediately following the heading level 2 element:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+                                .adjacent-heading + p {
+        background-color: green;
+    }
+                            </style>
+                            <h2 role="presentation" class="adjacent-heading">The heading</h2>
+                            <p>This text will be affected.</p>
+                            <p>This will not be affected.</p>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
                 </article>
                 <article>
                     <h3>General sibling selector</h3>
                     <p>The <strong>general sibling combinator</strong> is similar to the adjacent sibling combinator, the difference is that it will select any element matching the second selector that comes after the matching element for the first selector rather than just the matching element that immediately follows the first selector.</p>
-                    <p>TODO</p>
+                    <p>The following example targets all paragraphs coming after the level 2 heading that are at the same level in the hierarchy:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+                                .general-sibling-heading ~ p {
+        background-color: green;
+    }
+                            </style>
+                            <h2 role="presentation" class="general-sibling-heading">The heading</h2>
+                            <p>This text will be affected.</p>
+                            <p>This text will also be affected.</p>
+                            <div style="background-color: yellow;">
+                                <p>This will not be affected as it is not at the same level in the hiearchy, it is nested inside a div.</p>
+                            </div>
+                            <p>But this will be...</p>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
                 </article>
             </section>
         </article>
