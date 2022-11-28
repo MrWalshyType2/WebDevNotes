@@ -132,8 +132,10 @@
                 <h3>Spanning multiple rows and columns</h3>
                 <p>
                     Sometimes, we may have data that requires a more complex layout... To handle this, the <code>colspan</code> and <code>rowspan</code> attributes can be applied to
-                    the table cells. The following example demonstrates a heading applied to the bottom row to represent the total cost of an order:
+                    the table cells. We will also make sure to specify the <code>scope</code> attribute and set it appropriately, this helps signify to screenreaders what a <code>th</code> element is being 
+                    applied to (a column (<code>col</code>) or a row (<code>row</code>)).
                 </p>
+                <p>The following example demonstrates a heading applied to the bottom row to represent the total cost of an order:</p>
                 <div class="example">
                     <div class="example-content">
                         <table>
@@ -204,111 +206,79 @@
                 </div>
 
                 <h3>Adding a caption</h3>
+                <p>A table can be captioned to aid accessibility and provide a visible descriptive text, the <code>caption</code> element is used for this:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <table>
+                            <caption>Table of users</caption>
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col" colspan="2">Email</th>
+                                <th scope="col">Date of birth</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
             </section>
 
             <section>
                 <h2>Adding structure to a table</h2>
-            </section>
+                <p>
+                    When creating a table, it can be structured semantically using the <code>thead</code> (table head), <code>tbody</code> (table body), and <code>tfoot</code> (table footer) elements.
+                </p>
+                <ul>
+                    <li>The <code>thead</code> element wraps the header of the table, usually the first row which contains the column headings.</li>
+                    <li>The <code>tbody</code> element wraps the body of the table, the main data rows of the table.</li>
+                    <li>The <code>tfoot</code> element wraps the footer content of the table, this will always be rendered at the bottom of the table regardless of its position.</li>
+                </ul>
 
-            <section>
-                <h2>Nested tables</h2>
-
-            </section>
-
-            <section>
-                <h2>Styling</h2>
+                <p>We will add these elements to the table of items in an order from earlier, visually there won't be any change but semantically the table has much more meaning:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Cost</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="2">Total</th>
+                                    <td>£4.70</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>6 pack apples</td>
+                                    <td>1</td>
+                                    <td>£1.70</td>
+                                </tr>
+                                <tr>
+                                    <td>Chocolate Orange</td>
+                                    <td>3</td>
+                                    <td>£1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <ul>
+                    <li>As prior mentioned, the table footer appears at the bottom even though in this example it has been specified under the table head element.</li>
+                </ul>
             </section>
         </article>
     </main>
 
     <script src="../../js/navigation.js"></script>
-    <script>
-        (() => {
-            const examples = document.querySelectorAll(".example");
-
-            examples.forEach(example => {
-                const content = example.querySelector(".example-content");
-                const exampleBtns = example.querySelector(".example-buttons");
-                const renderBtn = example.querySelector(".example-buttons > .render-btn");
-                const rawBtn = example.querySelector(".example-buttons > .raw-btn");
-
-                const rawView = document.createElement("pre");
-                rawView.classList.add("block-code");
-                const rawViewCode = document.createElement("code");
-                rawViewCode.append(document.createTextNode(stringifyElement(content.childNodes, 0)));
-                rawView.append(rawViewCode);
-
-                if (rawBtn != null) rawBtn.addEventListener("click", event => {
-                    // console.log(stringifyElement(content.childNodes, 0));
-                    content.remove();
-                    exampleBtns.insertAdjacentElement("beforeBegin", rawView);
-                });
-
-                if (renderBtn != null) renderBtn.addEventListener("click", event => {
-                    rawView.remove();
-                    exampleBtns.insertAdjacentElement("beforeBegin", content);
-                });
-            });
-
-            function stringifyElement(elements, indentation) {
-                let output = "";
-
-                elements.forEach(element => {
-                    const elementName = element.localName;
-                    let selfClosing = false;
-                    let blockLevel = false;
-
-                    // is element or text node?
-                    if (elementName) {
-                        output += " ".repeat(indentation) + "<" + elementName + ">";
-                        // add a newline if block-level to the end of the opening element
-                        const displayStyle = window.getComputedStyle(element, null).getPropertyValue("display");
-                        if (displayStyle == "block" || displayStyle == "flex" || displayStyle == "grid" || 
-                            displayStyle == "table" || displayStyle == "table-row-group" || displayStyle == "table-row") {
-                                output += "\n";
-                                blockLevel = true;
-                            }
-                    }
-                    else {
-                        // is a text node
-                        selfClosing = true;
-                        const content = element.textContent.trim();
-                        if (content.length > 0) output += content;
-                    }
-
-                    // is self closing?
-                    switch (elementName) {
-                        case "input":
-                        case "meta":
-                        case "area":
-                        case "base":
-                        case "br":
-                        case "hr":
-                        case "col":
-                        case "embed":
-                        case "img":
-                        case "link":
-                        case "param":
-                        case "source":
-                        case "track":
-                        case "wbr":
-                            selfClosing = true;
-                    }
-
-                    // handle any children
-                    output += stringifyElement(element.childNodes, indentation + 4);
-
-                    // if not self closing, add indentation for block level and no indentation for inline
-                    if (!selfClosing) {
-                        if (elementName && blockLevel) output += " ".repeat(indentation) + "</" + elementName + ">" + "\n";
-                        else if (elementName) output += "</" + elementName + ">" + "\n";
-                    }
-                });
-
-                // output += "\n";
-                return output;
-            }
-        })();
-    </script>
 </body>
 </html>

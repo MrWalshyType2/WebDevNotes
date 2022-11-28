@@ -186,6 +186,16 @@ blockquote p {
     display: inline;
 }
 
+table {
+    width: 100%;    
+}
+
+table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Code block styling */
 code {
     font-family: 'Courier New', Courier, monospace;
@@ -216,6 +226,7 @@ pre>code {
 }
 
 .example>.example-content {
+    overflow-x: auto;
     padding: 8px;
     width: 100%;
     background-color: white;
