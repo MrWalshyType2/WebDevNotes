@@ -64,6 +64,264 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <header>
+                <h1>Styling text elements</h1>
+                <p>
+                    It is common to style text whether for accessibility, effect on the reader or something else... So common in fact that there is a field called typography which 
+                    concerns the legibility, readability and appeal of text.
+                </p>
+            </header>
+
+            <section>
+                <h2>Font families</h2>
+                <p>CSS has five main font families of which various fonts descend:</p>
+                <ul>
+                    <li>
+                        <strong>Serif</strong>: Font's which have small lines or strokes attached to the end of a longer stroke. This is 
+                        different from a diacritic mark which isn't part of the letter itself.
+                    </li>
+                    <li>
+                        <strong>Sans-serif</strong>: Font's which omit the small lines or strokes attached to the end of longer stokes, 
+                        often more accessible for users with certain disabilities or neurodivergences. The British Dyslexia Association has a 
+                        <a href="https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide">guide</a> for creating dyslexia friendly text.
+                    </li>
+                    <li>
+                        <strong>Monospace</strong>: Font's where each character has a fixed width, may have serifs or be sans-serif.
+                    </li>
+                    <li>
+                        <strong>Cursive</strong>: Font's which replicate cursive handwriting, usually consist of joining strokes or other characteristics for joining letters.
+                    </li>
+                    <li>
+                        <strong>Fantasy</strong>: Font's which are not generally used for large portions of reading but for effect.
+                    </li>
+                </ul>
+
+                <p>The family of fonts used by default is decided by the browser stylesheet. You can override these defaults for any element using the <code>font-family</code> property:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.monospace {
+    font-family: 'Courier New', Courier, monospace;
+}
+                        </style>                       
+                        <p class="monospace">This text has been given a Monospace font.</p>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <p>
+                    When a comma-separated list of values is supplied to the <code>font-family</code> property, each successive font acts as a backup in-case the prior specified is not available 
+                    on the machine in use.
+                </p>
+            </section>
+
+            <section>
+                <h2>Font-settings</h2>
+                <p>Alongside controlling the family of font in use, additional typographic properties are available for finer control of a font:</p>
+                <ul>
+                    <li><code>font-size</code>: Specifying the size of a font using measurement units or the values: xx-small, x-small, smaller, small, medium, large, larger, x-large, xx-large, xxx-large</li>
+                    <li><code>font-style</code>: Specifies whether a font is normal, italic or oblique styled from its font-family</li>
+                    <li><code>font-weight</code>: Specifies the weight of a font as a value between 1 and 1000 (CSS level 4) or a value: normal (400), bold (700), lighter (one relative font lighter), bolder (one relative font bolder)</li>
+                    <li><code>line-height</code>: Specifies the height of a line box, commonly used to set the distance between lines of text</li>
+                    <li><code>font-variant</code>: Use to specify variant styling for a font, see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant">here</a> for more information.</li>
+                    <li><code>font-stretch</code>: Use to specify how a font should be stretched, affects overall size and appearance of text. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch">here</a></li>
+                </ul>
+
+                <p>
+                    Fortunately, there exists a <code>font</code> property which can be used as a shorthand for all of the prior mentioned properties. The only mandatory values are 
+                    the <code>font-size</code> and <code>font-family</code> respectively:
+                </p>
+                <pre class="block-code"><code>font: font-size font-family</code></pre>
+
+                <p>
+                    The following example demonstrates setting the font to be italic in style, 14px in size, 700 in weight and 2 in line-height with a sans-serif font-family:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.styled-text {
+    font: italic 700 14px/2 Arial, Helvetica, sans-serif;
+}
+                        </style>                       
+                        <p class="styled-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, molestias aspernatur impedit accusantium magnam, sed quos atque, delectus modi consectetur asperiores numquam nemo necessitatibus excepturi enim error explicabo! Necessitatibus obcaecati voluptate voluptatem nostrum est qui quisquam omnis aliquid odio ullam ducimus consequuntur hic ab culpa enim saepe, cupiditate optio? Consectetur porro deleniti inventore a omnis delectus, ipsa vel pariatur eos.</p>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <h3>External fonts</h3>
+                <p>
+                    CSS also provides the capabilities to import fonts from other sources, see <a href="https://developers.google.com/fonts">Google Fonts</a> to find a variety 
+                    of open-source fonts free for usage in commercial and non-commercial projects.
+                </p>
+                <p>There are two ways to import an external font, either via a HTML <code>link</code> tag in the <code>head</code> or an <code>@import</code> rule in your CSS. HTML would look as follows for the Roboto font:</p>
+                <pre class="block-code">HTML<code>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap" rel="stylesheet"&gt;</code></pre>
+
+                <p>For CSS, as follows:</p>
+                <pre class="block-code">CSS<code>@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap');</code></pre>
+
+                <p>To use the imported style, specify it in single-quotes when specifying a font-family:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap');
+
+    .roboto-text {
+        font-family: 'Roboto' sans-serif;
+        font-weight: 700;
+    }
+                        </style>
+                        <p class="roboto-text">I am Roboto!</p>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>General text styling properties</h2>
+                <ul>
+                    <li><code>vertical-align</code>: Sets the vertical alignment of an inline, inline-block or table-cell box according to its line-box.</li>
+                    <li><code>color</code>: Sets the text color for an element and its inheriting children.</li>
+                    <li><code>text-align</code>: Sets the horizontal alignment of inline-level text content inside a block element or table-cell, similar to <code>vertical-align</code> but on the horizontal axis.</li>
+                    <li><code>text-decoration</code>: Sets or removes decorations from text. Commonly applied to anchor elements to remove the default <code>underline</code> style.</li>
+                    <li><code>text-transform</code>: Specifies a transformation to apply to text such as <code>lowercase</code>, <code>uppercase</code> or <code>capitalize</code></li>
+                    <li><code>text-indent</code>: Specifies the indentation of the first line of text in an element.</li>
+                    <li><code>direction</code>: Specifies the direction of the text as <code>rtl</code> (right to left) or <code>ltr</code> (left to right)</li>
+                    <li><code>text-shadow</code>: Applies a shadow to some text.</li>
+                    <li><code>letter-spacing</code>: Sets the spacing between text characters.</li>
+                    <li><code>word-spacing</code>: Sets the spacing between words in text.</li>
+                </ul>
+
+                <p>The following example demonstrates using a variety of these properties to style different textual elements:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.centered-heading {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.rtl-text {
+    direction: rtl;
+}
+
+.easy-read {
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    text-indent: 4rem;
+    text-align: justify;
+}
+
+.lift {
+    vertical-align: super;
+}
+
+.shadows {
+    /* text-shadow: offset-x | offset-y | blur-radius | color */
+    /* text-shadow: offset-x | offset-y */
+    text-shadow: 10px 20px 2px lightslategray;
+    text-transform: uppercase;
+}
+                        </style>                       
+                        <h1 class="centered-heading" role="presentation">The centered serif heading</h1>
+                        <p class="rtl-text">Right to left text.</p>
+                        <p class="easy-read">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim dolor aliquid omnis recusandae eligendi earum in officiis nisi fuga quis, odio exercitationem ex atque accusantium placeat quia? Ex distinctio alias amet vel omnis eius vitae voluptas. Adipisci dolorem illum, laborum impedit ex ipsum accusantium assumenda, ad aspernatur ab harum voluptatibus.</p>
+                        <p>Check the <span class="lift">lifted</span> content, done with <code>vertical-align</code>.</p>
+                        <p class="shadows">And how about some shadows :)</p>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Other ways of improving the appearance of text</h2>
+                <p>The font and text properties give a lot of power over the appearance of text, other properties can also be used to adjust the layout.</p>
+
+                <article>
+                    <h3>Improving line lengths</h3>
+                    <p>
+                        The <code>width</code> and <code>max-width</code> properties cna be used in conjunction to set appropriate line-lengths for some text. The following example 
+                        demonstrates using a margin to centre some text and the prior mentioned properties to control the length of the lines:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+.text-container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 90ch;
+}
+                            </style>
+                            <div class="text-container">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia cumque distinctio, nobis nesciunt maxime deserunt laudantium quas reiciendis fuga natus perspiciatis molestias aperiam, doloremque ut? Eos sequi nesciunt ad officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque accusamus eligendi vero dolor quaerat laborum quas cum minima, sequi dignissimos.</p>
+                            </div>            
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <p>
+                        Try resizing the screen to see how the line-length changes. On smaller screens, it will take up 80% of the containers width but on larger screens it will abide by the 
+                        <code>90ch</code> maximum width. The <code>max-width</code> of <code>90ch</code> is calculated as the width of 90 zeroes in the font specified.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Setting appropriate line-heights</h3>
+                    <p>
+                        By default, the <code>line-height</code> of text is set to 1.2. This works okay for headings which generally have a better presentation with shorter line lengths,
+                        but not so much for paragraphs where the text may appear squished and thus harder to read. The following example adjusts the line heights for headings and paragraphs:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+.text-container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 90ch;
+}
+
+.text-container > h1, .text-container h2 {
+    line-height: 1.1;
+}
+
+.text-container > p {
+    line-height: 1.7;
+}
+                            </style>
+                            <div class="text-container">
+                                <h1 role="presentation">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h1>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia cumque distinctio, nobis nesciunt maxime deserunt laudantium quas reiciendis fuga natus perspiciatis molestias aperiam, doloremque ut? Eos sequi nesciunt ad officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque accusamus eligendi vero dolor quaerat laborum quas cum minima, sequi dignissimos.</p>
+                                <h2 role="presentation">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos temporibus velit esse natus unde illo. Ipsam voluptas minus accusantium pariatur!</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos perspiciatis magnam, ipsam molestias officiis delectus asperiores porro odit rerum? Necessitatibus impedit quis mollitia. Ex quae debitis quo commodi culpa ad consequuntur ea praesentium eos! Accusamus saepe eveniet libero deleniti unde in fugit nam et, doloribus tenetur. Voluptatem maxime deserunt eveniet numquam repudiandae a sapiente voluptatum architecto recusandae nesciunt eligendi adipisci, reiciendis officiis? Quo sequi beatae quibusdam ratione, perferendis, ullam aperiam saepe voluptates quaerat eligendi debitis nihil natus repudiandae fuga magni atque temporibus aliquid corporis ipsum doloremque delectus maiores! Aut facilis culpa at. Reiciendis at rem exercitationem. Quas, fugiat vero! Est.</p>
+                            </div>            
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </article>
+    </main>
+
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
