@@ -79,6 +79,7 @@
 
                 for (const attrName of element.getAttributeNames()) {
                     if (attrName == "class") attributes += (element.classList.length > 0 ? " class=\"" + element.classList + "\"" : "");
+                    else if (attrName == "style") continue;
                     else attributes += ` ${attrName}${element[attrName] ? "=" : ""}"${element[attrName]}"`;
                 }
 

@@ -145,8 +145,8 @@
                     </div>
                 </div>
                 
-                <p>The natural ordering of these elements (normal flow) has been changed. First, a div element is setup as a container for floating elements in. The .container CSS rule then floats this container left and sets its width to 100% of its parent element, this prevents the text from being erroneously displayed. The first element inside the container, the blue square, has had float: right applied to it to move it to the right of the container. The next element, the red circle, has had float: left applied to it and is thus floated to the left. The green box element also is then floated to the left, the paragraph of text then automatically repositions itself in the remaining space.</p>
-                <p>When the float property is used, it modifies the display type of an element (in most cases) to be block. For example, inline and inline-block elements become block elements.</p>
+                <p>The natural ordering of these elements (normal flow) has been changed. First, a div element is setup as a container for floating elements in. The <code>.container</code> CSS rule then floats this container left and sets its width to 100% of its parent element, this prevents the text from being erroneously displayed. The first element inside the container, the blue square, has had <code>float: right</code> applied to it to move it to the right of the container. The next element, the red circle, has had <code>float: left</code> applied to it and is thus floated to the left. The green box element is also floated to the left, the paragraph of text then automatically repositions itself in the remaining space.</p>
+                <p>When the <code>float</code> property is used, it modifies the display type of an element (in most cases) to be block. For example, inline and inline-block elements become block elements.</p>
 
                 <p>The following example uses floats, alongside some styling, to create a simple right-aligned navigation bar:</p>
                 <div class="example">
@@ -223,6 +223,348 @@
                     </div>
                 </div>
                 <p>In this example, the text will wrap around the floated image creating a simple but pleasing to the eyes layout.</p>
+            </section>
+
+            <section>
+                <h2>Positioning</h2>
+                <p>CSS positioning allows for elements to be taken out of normal flow, this is done with the CSS position property and may take any of the following values:</p>
+                <pre class="block-code"><code>position: static | relative | absolute | fixed | sticky;</code></pre>
+                <p>By default, elements are given static positioning - this is the normal flow of a document as has been seen in previous sections.</p>
+
+                <article>
+                    <h3>Relative positioning</h3>
+                    <p>The <code>relative</code> position allows you to reposition an element relative to its position in normal flow (where it normally appears). This is done with the the help of four other CSS properties:</p>
+                    <ul>
+                        <li><code>top</code>, <code>bottom</code>, <code>left</code> and <code>right</code></li>
+                    </ul>
+
+                    <p>The following HTML and CSS will create three squares on separate rows:</p>
+                    <div class="example">
+                        <div class="example-content">
+            <style>    
+    .square {
+        display: block;
+        width: 60px;
+        height: 60px;
+        border: 1px solid black;
+    }
+    
+    .red { background-color: red; }
+    .green { background-color: green; }
+    .blue { background-color: blue; }
+                </style>
+                              
+                              <div class="square red"></div>
+                              <div class="square green"></div>
+                              <div class="square blue"></div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+
+                    <p>Each of the squares is 60 x 60 pixels. To move the blue square up and then to the right of the green and red square, we will use relative positioning. If the following CSS rule is applied to the blue square, it will be repositioned as desired:</p>
+                    <div class="example">
+                        <div class="example-content">
+            <style>    
+    .relative { 
+        position: relative; 
+        bottom: 90px; 
+        left: 60px; 
+    }
+                </style>
+                              
+                              <div class="square red"></div>
+                              <div class="square green"></div>
+                              <div class="square blue relative"></div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <p>
+                        The reason it has moved up and to the right, even though <code>bottom</code> and <code>left</code> where specified, is because 
+                        it pushes the element away from the specified position. <code>bottom: 90px</code> will push the element upwards 90 pixels from where the element originally was. 
+                        If <code>top</code> was specified, it would push it downwards instead.
+                    </p>
+
+                    <p>
+                        When <code>position: relative</code> is used, an interesting side-effect is that the elements position in the DOM is still remembered and 
+                        so any new elements specified afterwards will result in a space where the blue square was:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">                              
+                              <div class="square red"></div>
+                              <div class="square green"></div>
+                              <div class="square blue relative"></div>
+                              <div class="square green"></div>
+                              <div class="square red"></div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article>
+                    <h3>Absolute positioning</h3>
+                    <p>
+                        Absolute positioning is used to remove an element from normal flow, unlike relative positioning though the element is fully removed 
+                        from its specified position - the element will instead sit in its own layer separate from the rest of the document.
+                    </p>
+                    <blockquote>This is useful for popover elements on web pages</blockquote>
+
+                    <p>
+                        Absolutely positioned elements are positioned according to their containing element, by default the <strong>initial 
+                        containing block</strong> wraps around the <code>html</code> element. The following example demonstrates usage of a <em>positioning context</em>, explained shortly:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+    .absolute {
+        position: absolute;
+        top: 180px;
+        left: 60px;
+    }
+                            </style>                        
+                            <div style="position: relative">
+                                <div class="square red"></div>
+                                <div class="square green"></div>
+                                <div class="square blue absolute"></div>
+                                <div class="square green"></div>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>The styles from the prior examples have been used, see the previous examples <strong>Raw</strong> section for the code</li>
+                    </ul>
+                    <p>
+                        The above code will position the blue square beneath and to the right of the second green square, 
+                        it does this by pushing the element down from the top of the page by 180 pixels (the size of 3 boxes) and then pushes it 60 pixels from the left to the right.
+                    </p>
+                    <p>
+                        As can be seen above, unlike relative positioning, the second green square filled the gap left behind by the blue square that was taken out of normal flow. It can also 
+                        be seen that the square has overflowed out of its containing element, hence the scrollbar on the rendered example.
+                    </p>
+
+                    <h4>Positioning context</h4>
+                    <p>
+                        Absolutely positioned elements are positioned based on their containing element, 
+                        this is the initial containing block that wraps the html element by default. To change the element that an absolutely positioned element is positioned off of, 
+                        apply <code>position: relative</code> to a parent element of an absolutely positioned element. The following example demonstrates this:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+    #board {
+        position: relative;
+        margin: 32px;
+    }
+
+    .absolute-2 {
+        position: absolute;
+        top: 60px;
+        left: 60px;
+    }
+                            </style>                       
+                            <div id="board">
+                                <div class="square red"></div>
+                                <div class="square green"></div>
+                                <div class="square blue absolute-2"></div>
+                                <div class="square green"></div>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+
+                    <h4><code>z-index</code></h4>
+                    <p>
+                        When an element is absolutely positioned, it becomes capable of obstructing other elements. 
+                        For example, the following absolutely positioned boxes end up obscured by the last red box:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+    .box {
+        position: absolute;
+        width: 240px;
+        height: 40px;
+    }
+                            </style>                       
+                            <div id="board" style="height: 80px">
+                                <div class="box red">
+                                    <p>Hello world 1</p>
+                                </div>
+                                
+                                <div class="box green">
+                                    <p>Hello world 2</p>
+                                </div>
+                                
+                                <div class="box blue">
+                                    <p>Hello world 3</p>
+                                </div>
+                                
+                                <div class="box red">
+                                    <p>Hello world 4</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <p>
+                        By default, positioned elements have a <code>z-index</code> value of <code>auto</code>, which is effectively <code>0</code>. 
+                    </p>
+                    <ul>
+                        <li>Negative values move an element lower down</li>
+                        <li>Higher values move an element higher up</li>
+                    </ul>
+
+                    <p>
+                        If we wanted the <code>div</code> that has the text <code>Hello World 2</code> to appear on top, we just give it a <code>z-index</code> of 1.
+                        This will then put the specified box on the top of the stacking order:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+    .z1 {
+        z-index: 1;
+    }
+                            </style>                       
+                            <div id="board" style="height: 80px">
+                                <div class="box red">
+                                    <p>Hello world 1</p>
+                                </div>
+                                
+                                <div class="box green z1">
+                                    <p>Hello world 2</p>
+                                </div>
+                                
+                                <div class="box blue">
+                                    <p>Hello world 3</p>
+                                </div>
+                                
+                                <div class="box red">
+                                    <p>Hello world 4</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article>
+                    <h3>Fixed positioning</h3>
+                    <p>
+                        Applying <code>position: fixed</code> to an element will position it in relation to the viewport window (what you can see). This means the element will always 
+                        stay in the same place, regardless of the scroll on the web page. The <code>top</code>, <code>bottom</code>, <code>left</code> and <code>right</code> properties 
+                        are used to control the position of the element.
+                    </p>
+                    <ul>
+                        <li>Like absolutely positioned elements, fixed elements are taken out of normal flow and exist in a layer of their own in the document</li>
+                    </ul>
+                    
+                    <p>You may have noticed a red square at the bottom right of the page, this has been given the fixed position and appears on the page regardless of scroll depth:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+    .fixed {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 50px;
+        height: 50px;
+        background-color: red;
+    }
+                            </style>                       
+                            <div class="fixed"></div>
+                            <p>Look at the bottom right of the page &#x02192;. Click the <strong>Raw</strong> button to see the style that makes it appear there!</p>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article>
+                    <h3>Sticky positioning</h3>
+                    <p>The <code>sticky</code> positioning method positions elements based on a user's scroll position in relation to the elements positioning context.</p>
+                    <ul>
+                        <li>When not scrolled past the <code>sticky</code> element, it will be positioned according to the rules for a relatively positioned element</li>
+                        <li>When the <code>sticky</code> element about to be scrolled out of view, it sticks in a specific place rather than disappearing from view</li>
+                    </ul>
+                    
+                    <p>The following example demonstrates a sticky element (try scrolling down to trigger the sticky behaviours):</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+    .sticky {
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        background-color: green;
+    }
+
+    .centre {
+        position: relative;
+        height: 100%;
+        overflow: auto;
+    }
+
+    .centre > p {
+        margin: 0;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .fixed-height {
+        height: 100px;
+    }
+                            </style>                       
+                            <h2 role="presentation">Scroll down</h2>
+                            <div class="fixed-height">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, magnam reiciendis. Recusandae inventore ipsam et. Voluptatum quas fugit cumque itaque.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum natus pariatur, quo delectus omnis laudantium deleniti labore qui odio excepturi iure illo aut aspernatur nihil fuga odit necessitatibus quae perspiciatis a vel voluptatibus ad deserunt vero sed. Iste reprehenderit consequatur odio quo perspiciatis amet, eum magni accusantium aperiam eaque beatae ducimus illum similique hic explicabo, assumenda expedita deserunt officiis incidunt ullam minus fuga deleniti? Ea tempora saepe dolor alias nesciunt beatae provident veritatis quisquam nam sequi iure totam ipsa aut dignissimos, minima distinctio dolorum quas! Natus enim id dolore autem? Quia, esse. Exercitationem accusantium, id molestiae quos sunt quod facilis.</p>
+                                <div class="sticky">
+                                    <div class="centre">
+                                        <p>I am in a sticky div.</p>
+                                    </div>
+                                </div>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, vero veritatis? Laudantium at, praesentium quasi in ex porro adipisci quis.</p>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis delectus veniam illo aliquam exercitationem nam eaque voluptates perspiciatis dolorum, consequatur quas quo qui quos soluta saepe laborum vel voluptatibus possimus est! Nobis odio excepturi voluptatum voluptate eum tempora nihil optio saepe, facere sed ut quas libero magnam aliquid ex eveniet accusamus voluptatibus eos asperiores, deleniti enim! At excepturi dolorum quaerat. Fuga amet dolorum asperiores numquam excepturi nesciunt natus quaerat suscipit, ea accusamus doloremque quidem a velit reprehenderit dignissimos hic officiis perspiciatis voluptatum consectetur voluptates. Quo placeat inventore minima suscipit assumenda, adipisci tempore hic. Minima id deleniti neque molestiae repudiandae voluptatem!</p>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <blockquote>When using <code>sticky</code> positioning, you must use at least one of the top, left, bottom or right positioning attributes to specify where the element should stick.</blockquote>
+                    <p>
+                        The example demonstrated applies <code>bottom: 0</code> to a green coloured <code>div</code>. By default, it is stuck to the bottom of its containing <code>div</code>. In this 
+                        case, once the elements position in normal flow is reached it will scroll up with the rest of the content and not remain <em>stuck</em> to the bottom of the containing <code>div</code>.
+                    </p>
+                </article>
             </section>
         </article>
     </main>
