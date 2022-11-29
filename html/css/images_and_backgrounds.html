@@ -62,6 +62,86 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <header>
+                <h1>Styling images and backgrounds</h1>
+                <p>Often, we want to adjust the background of some element or modify an image.... This page will cover exactly that!</p>
+            </header>
+
+            <section>
+                <h2>Images</h2>
+                <p>This section of the document covers controlling the styling of an image, affecting how the image then displays in the browser.</p>
+
+                <p>Something we may have come across in the past is controlling the height and width of an image using attributes on the HTML element, like the following:</p>
+                <pre class="block-code"><code>&lt;img src="" alt="" width="200" height="200"&gt;</code></pre>
+                <ul>
+                    <li>Although this does change the height and width of the image, it is now fixed and can only be modified by modifying the HTML itself... Time for some CSS!</li>
+                </ul>
+
+                <p>The size of an image is easily manipulated using CSS using the <code>width</code> and <code>height</code> properties:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.img-style {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 8px;
+}
+                        </style>
+                        <div>
+                            <img class="img-style" src="https://via.placeholder.com/300?text=Hello_there" alt="A placeholder image"> 
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia dicta mollitia corrupti reiciendis beatae. Deleniti amet maiores nesciunt corporis tenetur.</p>
+                        </div>     
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    In this example, the original image is 300px x 300px, using CSS we have reduced the image to 1/3 of its original size by specifying both a height and width. This could actually 
+                    be considered bad practice though, that is setting both the width and height unless you know aspect ratio and the sizes always adhere to that. If the image is taller than it is wide, or 
+                    vice versa, it is important to only adjust the width of the image; the height will then be automatically calculated based on the original size of the image, thus retaining its
+                    original aspect ratio.
+                </p>
+
+                <h3>Styling an image</h3>
+                <p>As an <code>img</code> is a HTML element, it is also subject to the rules of the box model. This allows for us to use the <code>border</code> property to our advantage:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.img-style2 {
+    width: 200px;
+    float: left;
+    margin-right: 8px;
+    /* Using border properties for styling */
+    border: 2px dashed black;
+    border-radius: 5%;
+    box-shadow: -5px 10px 5px steelblue; /* box-shadow: offset-x offset-y blur-radius spread-radius color */
+}
+                        </style>
+                        <div>
+                            <img class="img-style2" src="https://via.placeholder.com/300x150?text=Hello_there" alt="A placeholder image"> 
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia dicta mollitia corrupti reiciendis beatae. Deleniti amet maiores nesciunt corporis tenetur.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error debitis culpa velit temporibus quam expedita vero omnis, dicta ex labore ratione hic ad ipsum distinctio sint quo nobis ipsam eius quidem nostrum magni reprehenderit, veritatis assumenda pariatur. Esse, sed vitae.</p>
+                        </div>     
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    By applying a simple dashed border and small border-radius, we can give an image more personality; making it more appealing to the viewer. A box-shadow 
+                    was also used to illustrate that their are styling options beyond just the generic box-model for images. The image only had its width set this time as well, thus helping 
+                    it to retain its original aspect ratio - this was done as the image is 300x150 pixels in size.
+                </p>
+            </section>
+        </article>
+    </main>
+
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
