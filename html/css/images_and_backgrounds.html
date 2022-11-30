@@ -290,6 +290,150 @@
 
                 <article>
                     <h3>Images with CSS</h3>
+                    <p>
+                        Sometimes, we require an image that is purely decorative; that is, it does not contribute to the content of the page in a meaningful way and has no <code>alt</code>
+                        text. We can include images using the <code>background-image</code> CSS property:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+.target {
+    height: 300px;
+    
+    /* Set a background colour in-case the image doesn't display */
+    background-color: slategray;
+
+    /* Set the background image */
+    background-image: url("https://via.placeholder.com/300x150");
+    background-repeat: no-repeat;
+}
+
+.target > p:first-of-type {
+    padding-top: 150px;
+}
+                            </style>
+                            <div class="target">
+                                <p>Some text content pushed down with padding.</p>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <p>
+                        In the above example, a placeholder image of size 300x150px was inserted into a 300x300px <code>div</code>. The height has to be set in this case or the image won't appear.
+                    </p>
+
+                    <h4>Styling background images</h4>
+                    <p>There are various properties available for styling backgrounds, these include:</p>
+                    <dl>
+                        <dt><code>background-repeat</code></dt>
+                        <dd>
+                            Used to specify whether a background image should be repeated across its container. Values include:
+                            <ul>
+                                <li><code>no-repeat</code>: Don't repeat the image.</li>
+                                <li><code>repeat-x</code>: Repeat the image on the horizontal axis.</li>
+                                <li><code>repeat-y</code>: Repeat the image on the vertical axis.</li>
+                            </ul>
+                        </dd>
+
+                        <dt><code>background-size</code></dt>
+                        <dd>
+                            Used to specify the size of an image:
+                            <ul>
+                                <li><code>auto</code>: The default size of the image</li>
+                                <li><code>width height</code>: The width and height of the image, i.e., <code>background-size: 100px 100px</code></li>
+                                <li><code>cover</code>: Scales the image to the size of its container, clips overflowing parts of the image</li>
+                            </ul>
+                        </dd>
+
+                        <dt><code>background-position</code></dt>
+                        <dd>Specifies the position of the background image:
+                            <ul>
+                                <li><code>top</code>, <code>left</code>, <code>bottom</code>, <code>right</code>: Specifies the side of a container to place the image on</li>
+                                <li><code>x% y%</code>: Percentage along the horizontal axis and vertical axis respectively, top-left is the origin at <code>0% 0%</code></li>
+                                <li><code>edge offset</code>: Allows specifying a side, or multiple sides, alongside an offset, i.e., <code>top 50% left 50%</code></li>
+                                <li><code>center</code>: Centres the image in the container.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <p>
+                        The following example demonstrates some of these properties:
+                    </p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+.box-model-container {    
+    height: 400px;
+}
+
+.box-model-container > div {
+    position: relative;
+    height: 100%;
+    /* Set the background image */
+    background-image: url("../../images/box_model.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.box-model-container > div > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+                            </style>
+                            <div class="box-model-container">
+                                <div>
+                                    <p>This is the box model, wohooo!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <p>
+                        This example demonstrates using the <code>background-repeat</code> and <code>background-size</code> properties to control the appearance of the image. Some 
+                        text was also centered onto the image, this is common when including a hero image for a page.
+                    </p>
+
+                    <p>The following example demonstrates centering an image using the <code>background-position</code> property:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+.box-model-container2 {    
+    height: 400px;
+}
+
+.box-model-container2 > div {
+    position: relative;
+    height: 100%;
+    /* Set the background image */
+    background-image: url("../../images/box_model.png");
+    background-repeat: no-repeat;
+    background-size:  400px auto;
+    background-position: center;
+}
+
+.box-model-container2 > div > p {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+}
+                            </style>
+                            <div class="box-model-container2">
+                                <div><p>Some text placed here</p></div>
+                            </div>
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
                 </article>
             </section>
         </article>

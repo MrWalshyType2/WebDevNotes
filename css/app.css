@@ -118,10 +118,16 @@ th,
 td,
 blockquote,
 figcaption,
-button {
+button,
+dd,
+dt {
     font-size: 1.6rem;
     color: black;
     line-height: 1.5;
+}
+
+dt {
+    font-weight: bold;
 }
 
 h1 {
