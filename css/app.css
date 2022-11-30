@@ -127,6 +127,29 @@ dt {
 }
 
 dt {
+    text-decoration: dotted underline;
+    text-underline-offset: 4px;
+}
+
+dt::after {
+    content: ":";
+}
+
+a {
+    text-decoration: underline rgba(0, 0, 0, 0.514);
+    text-underline-offset: 4px;
+    color: rgba(68, 68, 240, 0.87);
+}
+
+a:hover {
+    font-weight: bolder;
+}
+
+a:visited {
+    color: rgba(213, 45, 255, 0.479);
+}
+
+dt {
     font-weight: bold;
 }
 

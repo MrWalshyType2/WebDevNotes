@@ -62,6 +62,568 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <header>
+                <h1>Animations, transitions and transformations</h1>
+                <p>Making a website captivating and interactive is key in this modern digital world, where millions of websites are in existance at any one time; animations, transitions and transformations can help make this possible.</p>
+            </header>
+
+            <section>
+                <h2>Animations</h2>
+                <p>
+                    CSS3 has native support for animations, which allow for the animating of transitions between CSS styles. CSS animations are made up of two 
+                    key components:
+                </p>
+                <ul>
+                    <li>CSS styles which describe the animation</li>
+                    <li>Keyframes which indicate the start, intermediate and end states of the animation</li>
+                </ul>
+                <p>
+                    Key benefits of CSS animations are the bypassing of JavaScript, which in most instances will have performance deficits compared to the 
+                    built-in rendering engine of the browser, enabling a web designer who does not know JavaScript to create animations for web pages.
+                </p>
+
+                <h3>Animation properties</h3>
+                <p>
+                    CSS provides a multitude of properties for configuring an animation, and just like other properties, it provides a shorthand <code>animation</code> property.
+                </p>
+                <dl>
+                    <dt><code>animation-delay</code></dt>
+                    <dd>Used to specify the delay between when an element loads and the start of the animation.</dd>
+
+                    <dt><code>animation-direction</code></dt>
+                    <dd>Specifies the direction of an animations first run, forward or backward, and whether subsequent runs will alternate direction or reset.</dd>
+
+                    <dt><code>animation-duration</code></dt>
+                    <dd>Used to specify an animations length.</dd>
+
+                    <dt><code>animation-fill-mode</code></dt>
+                    <dd>Used to specify the way styles applied to an animation before and after it executes.</dd>
+
+                    <dt><code>animation-iteration-count</code></dt>
+                    <dd>Specifies how many times an animation should repeat.</dd>
+
+                    <dt><code>animation-name</code></dt>
+                    <dd>Specifies the name of animation for targeting by the keyframe rules.</dd>
+
+                    <dt><code>animation-play-state</code></dt>
+                    <dd>Specifies whether an animation should be running or stopped.</dd>
+
+                    <dt><code>animation-timing-function</code></dt>
+                    <dd>Used to specify the rate of transitions through keyframes.</dd>
+                </dl>
+
+                <h3>Specifying keyframes</h3>
+                <p>
+                    Animation keyframes are specified using the <code>@keyframes</code> at-rule, an <code>animation-name</code> must be specified, a <code>from</code> rule and a 
+                    <code>to</code> rule at a minimum. The following example demonstrates an animation sliding in a paragraph from off the left of the page to right:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.slide-in {
+    animation-name: slidein;
+    animation-duration: 3s;
+    height: 100px;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: -100%;
+    }
+
+    to {
+        margin-left: 0%;
+    }
+}
+                        </style>
+                        <p class="slide-in">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis eligendi, reprehenderit vel consequatur error quod voluptas vitae. Facere, reprehenderit pariatur officia distinctio corporis tenetur sed corrupti nemo ea. Modi, nesciunt tenetur quae, temporibus dolore officiis praesentium distinctio alias, soluta perferendis voluptatibus magni aliquid dolores corporis unde impedit illum corrupti. Molestias?</p>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <ul>
+                    <li>Press the <strong>Render</strong> button or reload the page to see the animation.</li>
+                </ul>
+
+                <p>Intermediary keyframes can be added to make the transition smoother or add effects by specifying a percentage in the keyframes:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.slide-in2 {
+    animation-name: slidein2;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    height: 120px;
+    margin: 0;
+}
+
+@keyframes slidein2 {
+    from {
+        font-size: 1rem;
+        margin-left: -100%;
+    }
+
+    50% {
+        font-size: 1.4rem;
+    }
+
+    75% {
+        font-size: 1.8rem;
+    }
+
+    to {
+        font-size: 2.0rem;
+        margin-left: 0%;
+    }
+}
+                        </style>
+                        <p class="slide-in2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis eligendi, reprehenderit vel consequatur error quod voluptas vitae. Facere, reprehenderit pariatur officia distinctio corporis tenetur sed corrupti nemo ea. Modi, nesciunt tenetur quae, temporibus dolore officiis praesentium distinctio alias, soluta perferendis voluptatibus magni aliquid dolores corporis unde impedit illum corrupti. Molestias?</p>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    This example increases the size of the font during the animation and makes the change permanent by applying the <code>animation-fill-mode: forwards</code> property.
+                </p>
+
+                <p>
+                    Let's create an animation that infinitely repeats sliding-in text from the right instead:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.slide-in-from-right {
+    animation-name: slidein-from-right;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.hide-overflow {
+    overflow: hidden;
+}
+
+@keyframes slidein-from-right {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+                        </style>
+                        <div class="hide-overflow">
+                            <p class="slide-in-from-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis eligendi, reprehenderit vel consequatur error quod voluptas vitae.</p>
+                        </div>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    To prevent an overflow from occuring when sliding-in the content, the animated element was placed inside a <code>div</code> with <code>overflow: hidden</code> applied. To 
+                    prevent the text from starting as a huge gobbled mess, we also apply a larger than normal width and reduce it to the size of the container (<code>100%</code>) during the 
+                    course of the animation. Setting the <code>animation-iteration-count</code> to <code>infinite</code> repeats the animation over and over.
+                </p>
+
+                <h3>The <code>animation</code> shorthand</h3>
+                <p>
+                    The <code>animation</code> shorthand property can be used to specify all of the properties of an animation:
+                </p>
+                <pre class="block-code"><code>animation: duration timing-function delay iteration-count direction fill-mode play-state name</code></pre>
+                
+                <p>The prior slide-in from the right animation, without infinitely looping but instead alternating in direction for 3 iterations, could then be specified as follows:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.slide-in-from-right2 {
+    animation: 3s ease-in 1s 3 alternate both slidein-from-right2;
+}
+
+@keyframes slidein-from-right2 {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+                        </style>
+                        <div class="hide-overflow">
+                            <p class="slide-in-from-right2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis eligendi, reprehenderit vel consequatur error quod voluptas vitae.</p>
+                        </div>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Transitions</h2>
+                <p>Transitions are useful when there is some kind of animation whose speed you want to control, changes occur through automatic calculations that follow a specified acceleration curve.</p>
+
+                <h3>Transition properties</h3>
+                <p>We can define transitions using a selection of CSS properties, these transitions can be applied to most CSS properties, a list of properties can be found <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties">here</a>.</p>
+                <p>Just like the <code>animation</code> property, a shorthand <code>transition</code> property is available. First, lets go through the available properties that make it up though:</p>
+                <dl>
+                    <dt><code>transition-property</code></dt>
+                    <dd>Used to specify which CSS properties a transition should be applied to.</dd>
+
+                    <dt><code>transition-duration</code></dt>
+                    <dd>Used to specify the duration of a transition, a single value can be specified or multiple to allow properties to transition over different time periods.</dd>
+
+                    <dt><code>transition-timing-function</code></dt>
+                    <dd>Used to specify how intermediate values for properties are computed, done by way of an <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function">easing function</a>.</dd>
+                
+                    <dt><code>transition-delay</code></dt>
+                    <dd>Used to specify the time between a property changing and the transition beginning.</dd>
+                </dl>
+
+                <p>The short-hand property follows the form:</p>
+                <pre class="block-code"><code>transition: property duration timing-function delay;</code></pre>
+
+                <h3>Example transitions</h3>
+                <p>The first example demonstrates a box that rotates 360 degrees, shrinks in size and changes colour on hover:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.box {
+    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+    background-color: #ff00aa70;
+    transition: rotate 3s ease-in 0.5s, height 3s, width 3s, background-color 2s;
+}
+
+.box:hover {
+    background-color: #FF00AA;
+    width: 100px;
+    height: 100px;
+    rotate: 360deg;
+}
+                        </style>
+                        <div class="box"><p>Hello world!</p></div>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <p>
+                    The <code>transition</code> property was applied to the <code>box</code> class rather than the psuedo-class <code>hover</code> selector. This enables the animation 
+                    to occur on hover and when the cursor is removed from the hover.
+                </p>
+            </section>
+
+            <section>
+                <h2>CSS transforms</h2>
+                <p>
+                    CSS transformations allow for changing the shape and position of content without disrupting nromal flow, this is done by modifying the coordinates of the element 
+                    in the document. Transformations are only applicable to <code>block</code>-level elements.
+                </p>
+
+                <article>
+                    <h3>Transform properties</h3>
+                    <p>
+                        There are two major properties for defining CSS transformations:
+                    </p>
+                    <dl>
+                        <dt><code>transform</code></dt>
+                        <dd>Used to specify a space-separated list of transformations to apply to an element, one after the other.</dd>
+
+                        <dt><code>transform-origin</code></dt>
+                        <dd>Used to specify the origin position of an element, by default it is at the centre of an element.</dd>
+                    </dl>
+                </article>
+
+                <article>
+                    <h3>Transform functions</h3>
+                    <p>To use the transform properties, we supply transform functions to manipulate an elements shape and position.</p>
+
+                    <h4>Functions for rotation</h4>
+                    <p>Rotation functions rotate an element around a specific point or axis:</p>
+                    <dl>
+                        <dt><code>rotate()</code></dt>
+                        <dd>Rotates an element around a fixed point on the 2D plane.</dd>
+
+                        <dt><code>rotate3d()</code></dt>
+                        <dd>Rotates an element around a fixed axis on the 3D plane.</dd>
+
+                        <dt><code>rotateX()</code></dt>
+                        <dd>Rotates an element around the horizontal axis.</dd>
+
+                        <dt><code>rotateY()</code></dt>
+                        <dd>Rotates an element around the vertical axis.</dd>
+
+                        <dt><code>rotateZ()</code></dt>
+                        <dd>Rotates an element around the z-axis (forwards and backwards).</dd>
+                    </dl>
+
+                    <h4>Functions for skewing</h4>
+                    <p>Skew functions will change the angle of an element along a specific point or axis:</p>
+                    <dl>
+                        <dt><code>skew()</code></dt>
+                        <dd>Skews an element on the 2D plane.</dd>
+
+                        <dt><code>skewX()</code></dt>
+                        <dd>Skews an element on the horizontal axis.</dd>
+
+                        <dt><code>skewY()</code></dt>
+                        <dd>Skews an element on the vertical axis.</dd>
+                    </dl>
+
+                    <h4>Functions for scaling</h4>
+                    <p>Scaling functions modify an elements size from a specific point or axis:</p>
+                    <dl>
+                        <dt><code>scale()</code></dt>
+                        <dd>Scales an element up or down on the 2D plane.</dd>
+
+                        <dt><code>scale3d()</code></dt>
+                        <dd>Scales an element up or down on the 3D plane.</dd>
+
+                        <dt><code>scaleX()</code></dt>
+                        <dd>Scales an element up or down on the horizontal axis.</dd>
+
+                        <dt><code>scaleY()</code></dt>
+                        <dd>Scales an element up or down on the vertical axis.</dd>
+
+                        <dt><code>scaleZ()</code></dt>
+                        <dd>Scales an element up or down on the z-axis.</dd>
+                    </dl>
+
+                    <h4>Functions for translations</h4>
+                    <p>Translation functions modify the position of an element from a specific point or axis:</p>
+                    <dl>
+                        <dt><code>translate()</code></dt>
+                        <dd>Translates an element around a fixed point on the 2D plane.</dd>
+
+                        <dt><code>translate3d()</code></dt>
+                        <dd>Translates an element around a fixed axis on the 3D plane.</dd>
+
+                        <dt><code>translateX()</code></dt>
+                        <dd>Translates an element around the horizontal axis.</dd>
+
+                        <dt><code>translateY()</code></dt>
+                        <dd>Translates an element around the vertical axis.</dd>
+
+                        <dt><code>translateZ()</code></dt>
+                        <dd>Translates an element around the z-axis (forwards and backwards).</dd>
+                    </dl>
+                </article>
+
+                <article>
+                    <h3>Example transforms</h3>
+                    
+                    <section>
+                        <h4>Horizontally and vertically centred text</h4>
+                        <p>
+                            The first transformation we will demonstrate is the centering of text both horizontally and vertically, which before CSS transforms and Flexbox was a tricky thing to do with just 
+                            the standard text stylings, requiring clever and careful attention to the padding of the text.
+                        </p>
+                        <p>
+                            To centre text with a transform, we will need to make use of the <code>relative</code> and <code>absolute</code> positioning systems. Let's see what we mean by this:
+                        </p>
+                        <div class="example">
+                            <div class="example-content">
+                                <style>
+    .centre1 {
+        position: relative;
+        height: 300px;
+    }
+    
+    .centre1 > p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+                                </style>
+                                <div class="centre1"><p>Hello world!</p></div>
+                            </div>
+                            <div class="example-buttons">
+                                <button class="render-btn">Render</button>
+                                <button class="raw-btn">Raw</button>
+                            </div>
+                        </div>
+                        <p>
+                            In the above example, we absolutely positioned the text and applied a <code>50%</code> value to <code>top</code> and <code>left</code>. This hasn't quite centred the 
+                            text though, it is slightly off. This is where a translation becomes helpful:
+                        </p>
+                        <div class="example">
+                            <div class="example-content">
+                                <style>
+    .centre2 {
+        position: relative;
+        height: 300px;
+    }
+    
+    .centre2 > p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+                                </style>
+                                <div class="centre2"><p>Hello world!</p></div>
+                            </div>
+                            <div class="example-buttons">
+                                <button class="render-btn">Render</button>
+                                <button class="raw-btn">Raw</button>
+                            </div>
+                        </div>
+
+                        <p>
+                            So what has happened here? Well, when we applied a <code>50%</code> value to <code>top</code> and <code>left</code>, it placed the top-left corner (origin) of the element 
+                            in the middle of the <code>div</code>. To centre the actual text, we then used <code>translate(-50%, -50%)</code> to move the text half of the width of the element to the left 
+                            and half the height upwards. This trick can also be used with non textual elements. For example, the following centres a green square <code>div</code>:
+                        </p>
+                        <div class="example">
+                            <div class="example-content">
+                                <style>
+    .container {
+        position: relative;
+        height: 100px;
+    }
+    
+    .transform-box {
+        width: 50px;
+        height: 50px;
+        background-color: greenyellow;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* translate(x-axis, y-axis) */
+    }
+                                </style>
+                                <div class="container">
+                                    <div class="transform-box"></div>
+                                </div>
+                            </div>
+                            <div class="example-buttons">
+                                <button class="render-btn">Render</button>
+                                <button class="raw-btn">Raw</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h4>Rotating and scaling an element on hover</h4>
+                        <p>The <code>rotate()</code> function can be used to rotate at an element clockwise or counter-clockwise given some degrees:</p>
+                        <div class="example">
+                            <div class="example-content" style="height: 400px">
+                                <style>
+    .rotate {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+    }
+
+    .rotate:hover {
+        transform: translate(50px, 100px) rotate(180deg) scale(2, 3);
+    }
+                                </style>
+                                <div class="rotate"><p>Hello world!</p></div>
+                            </div>
+                            <div class="example-buttons">
+                                <button class="render-btn">Render</button>
+                                <button class="raw-btn">Raw</button>
+                            </div>
+                        </div>
+                        <p>
+                            To ensure the element remained fully visible after rotating and scaling it up in size, the <code>translate()</code> function was supplied 
+                            to adjust the position of the element on hover. Be careful how much you adjust its position by though, adjusting it too much will result in the element rapidly
+                            switching between a hover and non-hover state as the element moves from out of the cursor and back in. Here is an example of this:
+                        </p>
+                        <div class="example">
+                            <div class="example-content" style="height: 400px">
+                                <style>
+    .bad-rotate {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+    }
+
+    .bad-rotate:hover {
+        transform: translate(200px, 200px) rotate(180deg) scale(2, 3);
+    }
+                                </style>
+                                <div class="bad-rotate"><p>Hello world!</p></div>
+                            </div>
+                            <div class="example-buttons">
+                                <button class="render-btn">Render</button>
+                                <button class="raw-btn">Raw</button>
+                            </div>
+                        </div>
+                        <p>This would be quite disconcerting for a viewer of your website to come across.</p>
+                    </section>
+
+                    <section>
+                        <h4>Combining transformations with animations</h4>
+                        <p>The following example demonstrates mixing transformations with animations to create movement effects:</p>
+                        <div class="example">
+                            <div class="example-content" style="height: 400px">
+                                <style>
+    .funky-box-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .funky-box {
+        height: 200px;
+        width: 100px;
+        margin: 8px;
+        background-image: linear-gradient(180deg,rgb(150, 75, 200),rgb(120, 144, 180));
+
+        animation: skew_and_rotate 5s ease-in-out infinite;
+        animation-direction: alternate;
+        transform: skew(30deg) rotate(30deg);
+    }
+
+    @keyframes skew_and_rotate {
+        0% {
+            transform: skew(30deg, 30deg) rotate(30deg);
+            height: 200px;
+        }
+
+        100% {
+            transform: skew(-30deg, -30deg) rotate(-30deg);
+            height: 300px;
+        }
+    }
+                                </style>
+                                <div class="funky-box-container">
+                                    <div class="funky-box"></div>
+                                    <div class="funky-box"></div>
+                                    <div class="funky-box"></div>
+                                </div>
+                            </div>
+                            <div class="example-buttons">
+                                <button class="render-btn">Render</button>
+                                <button class="raw-btn">Raw</button>
+                            </div>
+                        </div>
+                    </section>
+                    <p>Here is a handy <a href="https://css-tricks.com/almanac/properties/t/transform/">article</a> by CSS Tricks on transforms.</p>
+                </article>
+            </section>
+        </article>
+    </main>
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
