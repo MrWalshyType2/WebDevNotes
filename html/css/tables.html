@@ -62,6 +62,398 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
 
+    <main>
+        <article>
+            <header>
+                <h1>Styling tables</h1>
+                <p>HTML tables by default are rough to the eye, fortunately CSS can help us change this...</p>
+            </header>
+
+            <section>
+                <h2>Controlling width and styling borders</h2>
+                <p>One of the easiest changes we can make to a table is to alter its borders and give it a set size:</p>
+                <div class="example">
+                    <div class="example-content">
+<style>
+    #order_table {
+        width: 100%;
+        overflow-x: auto;
+        border: 1px solid black;
+        text-align: right;
+    }
+
+    #order_table > thead > tr > th {
+        padding: 8px;
+        border-bottom: 1px solid black;
+    }
+
+    #order_table > tbody > tr > td {
+        border-right: 1px dashed black;
+        border-bottom: 1px dashed black;
+    }
+
+    #order_table > tbody > tr > td:last-child {
+        border-right: none;
+    } 
+
+    #order_table > tfoot > tr > th {
+        border-right: 1px dashed black;
+    }
+</style>
+                        <table id="order_table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Cost</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="2">Total</th>
+                                    <td>£4.70</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>6 pack apples</td>
+                                    <td>1</td>
+                                    <td>£1.70</td>
+                                </tr>
+                                <tr>
+                                    <td>Chocolate Orange</td>
+                                    <td>3</td>
+                                    <td>£1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <ul>
+                    <li>Table width has been set to <code>100%</code> of its container</li>
+                    <li>Overflow has been set to <code>auto</code> to enable a scrollbar on horizontal overflow</li>
+                    <li>Table headers in the <code>thead</code> have been given a solid bottom border</li>
+                    <li>Table data cells in the <code>tbody</code> have been given bottom and right dashed borders</li>
+                    <li>The last table data cells for each row in the <code>tbody</code> have had their right border removed</li>
+                    <li>The <code>th</code> in the <code>tfoot</code> has been given a dashed right border</li>
+                    <li>Text has been aligned to the right of the columns</li>
+                </ul>
+
+                <p>
+                    Applying all of that styling is a bit verbose though, fortunately we have a <code>border-collapse</code> property which can be used to prevent double borders occuring. Here 
+                    is an example of double borders:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    #order_table2 {
+        width: 100%;
+        overflow-x: auto;
+        border: 1px solid black;
+        text-align: right;
+    }
+
+    #order_table2 th, #order_table2 td {
+        padding: 8px;
+        border: 1px solid black;
+    }
+                        </style>
+                        <table id="order_table2">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Cost</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="2">Total</th>
+                                    <td>£4.70</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>6 pack apples</td>
+                                    <td>1</td>
+                                    <td>£1.70</td>
+                                </tr>
+                                <tr>
+                                    <td>Chocolate Orange</td>
+                                    <td>3</td>
+                                    <td>£1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <p>Applying <code>border-collapse: collapse</code> will resolve the double-border issue:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    #order_table3 {
+        width: 100%;
+        overflow-x: auto;
+        border: 1px solid black;
+        text-align: right;
+        border-collapse: collapse;
+    }
+
+    #order_table3 th, #order_table3 td {
+        padding: 8px;
+        border: 1px solid black;
+    }
+                        </style>
+                        <table id="order_table3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Cost</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="2">Total</th>
+                                    <td>£4.70</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>6 pack apples</td>
+                                    <td>1</td>
+                                    <td>£1.70</td>
+                                </tr>
+                                <tr>
+                                    <td>Chocolate Orange</td>
+                                    <td>3</td>
+                                    <td>£1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <p>If you like the double borders, you can control the size of the gap between borders as long as <code>border-collapse: collapse</code> is not set:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    #order_table4 {
+        width: 100%;
+        overflow-x: auto;
+        border: 1px solid black;
+        text-align: right;
+        border-spacing: 8px;
+    }
+
+    #order_table4 th, #order_table4 td {
+        padding: 8px;
+        border: 1px solid black;
+    }
+                        </style>
+                        <table id="order_table4">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Cost</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="2">Total</th>
+                                    <td>£4.70</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>6 pack apples</td>
+                                    <td>1</td>
+                                    <td>£1.70</td>
+                                </tr>
+                                <tr>
+                                    <td>Chocolate Orange</td>
+                                    <td>3</td>
+                                    <td>£1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Styling the contents of a table</h2>
+                <p>
+                    Often, we will want the header of a table to be a different colour from the body. We might also want a banded effect where every other row is highlighted a different colour. This 
+                    can easily be done with usage of psuedo-class selectors:
+                </p>
+                <p>Applying <code>border-collapse: collapse</code> will resolve the double-border issue:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    #order_table5 {
+        width: 100%;
+        overflow-x: auto;
+        border: 1px solid black;
+        text-align: right;
+        border-collapse: collapse;
+    }
+
+    #order_table5 th, #order_table5 td {
+        padding: 8px;
+        border: 1px solid black;
+    }
+
+    #order_table5 th {
+        background-color: #226fff42;
+    }
+
+    #order_table5 tr:nth-child(even) {
+        background-color: rgba(255, 182, 193, 0.37);
+    }
+
+    #order_table5 > tbody tr:hover {
+        background-color: #DDDDDD;
+        box-shadow: 4px 4px 8px 2px;
+    }
+                        </style>
+                        <table id="order_table5">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Cost</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="2">Total</th>
+                                    <td>£4.70</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>6 pack apples</td>
+                                    <td>1</td>
+                                    <td>£1.70</td>
+                                </tr>
+                                <tr>
+                                    <td>Chocolate Orange</td>
+                                    <td>3</td>
+                                    <td>£1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <ul>
+                    <li>Table headers have a light blue colour</li>
+                    <li>Every even table row inside the table body is a light pink</li>
+                    <li>Hovering over a table row changes the background colour and produces a box shadow</li>
+                </ul>
+
+                <p>If we want to style columns, we must make use of the <code>colgroup</code> and <code>col</code> elements:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    #order_table6 {
+        width: 100%;
+        overflow-x: auto;
+        border: 1px solid black;
+        text-align: right;
+        border-collapse: collapse;
+    }
+
+    #order_table6 th, #order_table6 td {
+        padding: 8px;
+        border: 1px solid black;
+    }
+
+    #order_table6 th {
+        background-color: #226fff42;
+    }
+
+    #order_table6 tr:nth-child(even) {
+        background-color: rgba(255, 182, 193, 0.37);
+    }
+
+    #order_table6 > tbody tr:hover {
+        background-color: #DDDDDD;
+        box-shadow: 4px 4px 8px 2px;
+    }
+
+    #order_table6 col:last-child {
+        background-color: lightgray;
+    }
+                        </style>
+                        <table id="order_table6">
+                            <colgroup>
+                                <col span="1">
+                                <col span="1">
+                                <col span="1">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Cost</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="2">Total</th>
+                                    <td>£4.70</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>6 pack apples</td>
+                                    <td>1</td>
+                                    <td>£1.70</td>
+                                </tr>
+                                <tr>
+                                    <td>Chocolate Orange</td>
+                                    <td>3</td>
+                                    <td>£1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>This example styles the last column to have a light gray background colour.</p>
+                <blockquote>
+                    It is important when using the <code>colgroup</code> element that it comes after any <code>caption</code> and before any <code>thead</code>, <code>tbody</code>, <code>tfoot</code>
+                    and <code>tr</code> elements.
+                </blockquote>
+            </section>
+        </article>
+    </main>
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
