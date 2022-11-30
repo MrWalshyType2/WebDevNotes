@@ -139,6 +139,159 @@
                     it to retain its original aspect ratio - this was done as the image is 300x150 pixels in size.
                 </p>
             </section>
+
+            <section>
+                <h2>Background colours and images</h2>
+
+                <article>
+                    <h3>Background colours</h3>
+                    <p>The background colour of an element affects the content and padding areas, it can be set using the <code>background-color</code> property:</p>
+                    <div class="example">
+                        <div class="example-content">
+                            <style>
+    .bg1 {
+        width: 200px;
+        height: 200px;
+        background-color: #FF00AA;
+    }
+                            </style>
+                            <div class="bg1">
+                            </div>     
+                        </div>
+                        <div class="example-buttons">
+                            <button class="render-btn">Render</button>
+                            <button class="raw-btn">Raw</button>
+                        </div>
+                    </div>
+                    <p>This example set the background colour of a 200x200px <code>div</code> to the hexadecimal value <code>#FF00AA</code>.</p>
+
+                    <section>
+                        <h4>Types of background colour (colour keywords)</h4>
+                        <p>
+                            There are various units of measurement available for setting the background colour, the most basic are the colour keywords and hexadecimal notation. The 
+                            colour keywords are represented by simply typing the name of a colour:
+                        </p>
+                        <pre class="block-code"><code>selector {
+    background-color: red;
+}</code></pre>
+                        <blockquote>There are 140 colour names supported by modern browsers, find a list of them <a href="https://www.w3schools.com/cssref/css_colors.php">here</a>.</blockquote>
+                    </section>
+
+                    <section>
+                        <h4>Types of background colour (Hexadecimal notation)</h4>
+                        <p>
+                            The Hexadecimal notation is a base-16 measurement, meaning instead of their being just the 10 values (0-9) of the decimal notation (base-10), there are an additional
+                            6. The first 10 values are the numbers 0-9, with the next 6, 10-15, being represented as A-F. The Hexadecimal notation for supplying a colours takes the form:
+                        </p>
+                        <pre class="block-code"><code>selector {
+    background-color: #RRGGBB;
+}</code></pre>
+                        <ul>
+                            <li><code>RR</code> are the two values for specifying the shade of red</li>
+                            <li><code>GG</code> are the two values for specifying the shade of green</li>
+                            <li><code>BB</code> are the two values for specifying the shade of blue</li>
+                        </ul>
+                        
+                        <p>
+                            The colour black is represented by the hex value of <code>#000000</code> whilst the colour white is represented by <code>#FFFFFF</code>. Pure red would be <code>#FF0000</code>,
+                            pure green would be <code>#00FF00</code> and pure blue would be <code>#0000FF</code>.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h4>Types of background colour (RGB and RGBA)</h4>
+                        <p>
+                            CSS allows for a colour to be specified using the <code>rgb(red, green, blue)</code> and <code>rgba(red, green, blue, alpha)</code> formulas. The 
+                            red, green and blue positions accept a value in the range 0-255:
+                        </p>
+                        <div class="example">
+                            <div class="example-content">
+                                <style>
+.black-square {
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+.red-square {
+    background-color: rgb(255, 0, 0, 0.8);
+}
+
+.black-square, .red-square {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.black-square p, .red-square p {
+    color: white;
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+                                </style>
+                                <div class="black-square">
+                                    <p>Black: rgb(0,0,0)</p>
+                                </div>  
+                                <div class="red-square">
+                                    <p>Red: rgb(255,0,0)</p>
+                                </div>     
+                            </div>
+                            <div class="example-buttons">
+                                <button class="render-btn">Render</button>
+                                <button class="raw-btn">Raw</button>
+                            </div>
+                        </div>
+
+                        <p>
+                            The <code>rgba</code> formula also accepts an alpha channel, a value between 0.0 and 1.0, which represents the transparency/opacity of a colour. 0.0 represents 
+                            full transparency, 1.0 represents no transparency:
+                        </p>
+                        <div class="example">
+                            <div class="example-content">
+                                <style>
+.black-square-tp {
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+.red-square-tp {
+    background-color: rgb(255, 0, 0, 0.8);
+}
+
+.black-square-tp, .red-square-tp {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.black-square-tp p, .red-square-tp p {
+    color: white;
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+                                </style>
+                                <div class="black-square-tp">
+                                    <p>Half transparent black: rgba(0, 0, 0, 0.5)</p>
+                                </div>  
+                                <div class="red-square-tp">
+                                    <p>Mild transparent red: rgba(255, 0, 0, 0.8)</p>
+                                </div>     
+                            </div>
+                            <div class="example-buttons">
+                                <button class="render-btn">Render</button>
+                                <button class="raw-btn">Raw</button>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+
+                <article>
+                    <h3>Images with CSS</h3>
+                </article>
+            </section>
         </article>
     </main>
 
