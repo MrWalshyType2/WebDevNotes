@@ -60,6 +60,319 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
     
+    <main>
+        <article>
+            <header>
+                <h1>Media queries</h1>
+                <p>Media queries, introduced in CSS3, extend the CSS2 media types definable with <code>@media</code> to promote the definition of different style rules dependant on a devices capabilities....</p>
+            </header>
+
+            <section>
+                <h2>What is a media query?</h2>
+                <p>
+                    Media queries allow for different style rules to be specified given some specified conditions are met, allowing for websites that respond according to the capabilities of 
+                    a device rather than the device itself. A media query is built from an optional <em>media type</em> and possibly many <em>media feature</em> expressions.
+                </p>
+
+                <p>A media query takes the following form:</p>
+                <pre class="block-code"><code>@media not|only media_type and (media_feature_expressions) {
+    /* CSS rules here */
+}</code></pre>
+
+                <h3>Media types</h3>
+                <p>
+                    A media type describes the category of device a given set of style rules should apply to, of which there are three:
+                </p>
+                <ul>
+                    <li><code>all</code>: The default, equivalent to not specifying a media type.</li>
+                    <li><code>screen</code>: Styles that only apply to screen-based devices.</li>
+                    <li><code>print</code>: Styles that only apply when printing.</li>
+                </ul>
+
+                <p>Specifying a mediatype is relatively simple:</p>
+                <pre class="block-code"><code>@media print {
+}</code></pre>
+                <p>This targets only printers which output print media.</p>
+
+                <blockquote>It is important to know that if a logical operator is applied, <code>not</code> or <code>only</code>, the media type is no longer optional.</blockquote>
+
+                <p>
+                    We may also only want to apply a media query if a specific feature of CSS is supported, we can do this by wrapping the query in a <code>@supports</code> rule:
+                </p>
+                <pre class="block-code"><code>@supports (display: flex) {
+    @media screen and (min-width: 1024px) {
+
+    }
+}
+                </code></pre>
+                <p>
+                    This query will only take affect if the <code>flex</code> display type is available.
+                </p>
+
+                <h3>Media features</h3>
+                <p>
+                    A media feature describes some characteristic of the device to output the media to, we can state a media query that only applies to non-colour screens up to 
+                    a maximum width of <code>1024px</code> like so:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .box {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+    }
+
+    @media screen and (not (color)) and (max-width: 1024px) {
+        .wont-apply {
+            width: 100%;
+            background-color: red;
+        }
+    }
+                        </style>
+                        <div class="box wont-apply"></div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    Try resizing the screen, unless you are on a non-colour device with a screen the box will not have the <code>wont-apply</code> class applied. If we remove the <code>not</code>
+                    logical operator, the style will be applied when the screen is small enough:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .box {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+    }
+
+    @media screen and (color) and (max-width: 1024px) {
+        .will-apply {
+            width: 100%;
+            background-color: red;
+        }
+    }
+                        </style>
+                        <div class="box will-apply"></div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media#media_features">here</a> for more information on media features.</p>
+            </section>
+
+            <section>
+                <h2>Creating a responsive navigation bar with media queries</h2>
+                <p>
+                    For this example, we will take a mobile-first approach; we will design the navigation bar for mobile displays first. First, we will create the list of navigation items 
+                    and give each item a <code>100%</code> width:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .navigation-bar {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navigation-link {
+        list-style-type: none;
+    }
+
+    .navigation-link > a {
+        display: block;
+        width: 100%;
+        padding: 16px;
+
+        text-decoration: none;
+        text-align: center;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
+    .navigation-link > a:hover {
+        background-color: green;
+        font-weight: 700;
+    }
+
+    .active-link > a {
+        background-color: green;
+        font-weight: 700;
+        cursor: default;
+    }
+                        </style>
+                        <div>
+                            <ul class="navigation-bar">
+                                <li class="navigation-link active-link"><a>Home</a></li>
+                                <li class="navigation-link"><a>Store</a></li>
+                                <li class="navigation-link"><a>Blog</a></li>
+                                <li class="navigation-link"><a>About</a></li>
+                                <li class="navigation-link"><a>Contact</a></li>
+                            </ul>
+                        </div>  
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <p>
+                    Now that we have the mobile-first design, we can add media queries to account for larger screen-sizes. We will use <code>1024px</code> as the cutoff point, the size 
+                    of a small laptop:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .navigation-bar2 {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navigation-link2 {
+        list-style-type: none;
+    }
+
+    .navigation-link2 > a {
+        display: block;
+        width: 100%;
+        padding: 16px;
+
+        text-decoration: none;
+        text-align: center;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
+    .navigation-link2 > a:hover {
+        background-color: green;
+        font-weight: 700;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .navigation-link2 {
+            display: inline-block;
+        }
+
+        .navigation-link2 > a {
+            width: auto;
+            margin-right: -4px; /* remove gap left-over by inline-block */
+        }
+    }
+
+    /* Must be below media query to prevent style being overridden */
+    .active-link > a {
+        background-color: green;
+        font-weight: 700;
+        cursor: default;
+    }
+                        </style>
+                        <div>
+                            <ul class="navigation-bar2">
+                                <li class="navigation-link2 active-link"><a>Home</a></li>
+                                <li class="navigation-link2"><a>Store</a></li>
+                                <li class="navigation-link2"><a>Blog</a></li>
+                                <li class="navigation-link2"><a>About</a></li>
+                                <li class="navigation-link2"><a>Contact</a></li>
+                            </ul>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolor! Ducimus voluptate minus eaque odio cumque totam quo, cupiditate dolores neque? Autem, totam dolores! Eligendi quisquam iusto unde repellat consequatur.</p>  
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <p>
+                    We can also use <code>float</code>'s instead of the <code>inline-block</code> display type in the media queries to achieve the same effect:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .navigation-bar3 {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navigation-link3 {
+        list-style-type: none;
+    }
+
+    .navigation-link3 > a {
+        display: block;
+        width: 100%;
+        padding: 16px;
+
+        text-decoration: none;
+        text-align: center;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
+    .navigation-link3 > a:hover {
+        background-color: green;
+        font-weight: 700;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .navigation-bar3 {
+            clear: both;
+            content: "";
+            display: table;
+        }
+
+        .navigation-link3 {
+            float: left;
+        }
+
+        .navigation-link3 > a {
+            width: auto;
+        }
+    }
+
+    /* Must be below media query to prevent style being overridden */
+    .active-link > a {
+        background-color: green;
+        font-weight: 700;
+        cursor: default;
+    }
+                        </style>
+                        <div>
+                            <ul class="navigation-bar3">
+                                <li class="navigation-link3 active-link"><a>Home</a></li>
+                                <li class="navigation-link3"><a>Store</a></li>
+                                <li class="navigation-link3"><a>Blog</a></li>
+                                <li class="navigation-link3"><a>About</a></li>
+                                <li class="navigation-link3"><a>Contact</a></li>
+                            </ul>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolor! Ducimus voluptate minus eaque odio cumque totam quo, cupiditate dolores neque? Autem, totam dolores! Eligendi quisquam iusto unde repellat consequatur.</p>  
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <blockquote>
+                    Do take note, if using floats to position elements you will need to use the <em>clearfix</em> hack to prevent items from overlapping, overflowing, text squishing onto the same 
+                    line as floated elements, etc... Here is an interesting article on the <a href="https://css-tricks.com/clearfix-a-lesson-in-web-development-evolution/#:~:text=The%20clearfix%2C%20for%20those%20unaware%2C%20is%20a%20CSS,it%20can%20easily%20wreak%20havoc%20on%20a%20layout.">clearfix hack</a>.
+                </blockquote>
+            </section>
+        </article>
+    </main>
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
