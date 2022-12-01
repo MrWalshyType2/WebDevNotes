@@ -141,11 +141,11 @@ a {
     color: rgba(68, 68, 240, 0.87);
 }
 
-a:hover {
+a:hover:not(.navbar a) {
     font-weight: bolder;
 }
 
-a:visited {
+a:visited:not(.navbar a) {
     color: rgba(213, 45, 255, 0.479);
 }
 
