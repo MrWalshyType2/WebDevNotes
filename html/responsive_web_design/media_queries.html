@@ -370,6 +370,138 @@
                     Do take note, if using floats to position elements you will need to use the <em>clearfix</em> hack to prevent items from overlapping, overflowing, text squishing onto the same 
                     line as floated elements, etc... Here is an interesting article on the <a href="https://css-tricks.com/clearfix-a-lesson-in-web-development-evolution/#:~:text=The%20clearfix%2C%20for%20those%20unaware%2C%20is%20a%20CSS,it%20can%20easily%20wreak%20havoc%20on%20a%20layout.">clearfix hack</a>.
                 </blockquote>
+
+                <h3>Adding a hamburger menu</h3>
+                <p>
+                    A hamburger menu is the term given for the three lines you often see representing a menu on mobile and tablet devices, it is important to include them with a 
+                    navigation menu designed to also work on mobile-devices. The only issue is that it cannot be created solely with HTML and CSS, without resorting to the <em>checkbox hack</em> 
+                    which reduces the accessibility of the page for those dependent on accessibility devices. The following navigation bar has a snippet of JavaScript included for 
+                    turning the menu into a hamburger menu on mobile devices. First though, we need to create a hamburger icon and 
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .hamburger {
+        list-style-type: none;
+        display: block;
+        width: 100%;
+        background-color: black;
+    }
+
+    .hamburger > button {
+        display: block;
+        width: 100%;
+        padding: 16px;
+        background-color: inherit;
+        cursor: pointer;
+    }
+
+    .hamburger span {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 4px;
+        width: 32px;
+        height: 4px;
+        background-color: white;
+    }
+
+    .navigation-bar4 {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navigation-link4 {
+        display: none;
+        list-style-type: none;
+    }
+
+    .navigation-link4 > a {
+        display: block;
+        width: 100%;
+        padding: 16px;
+
+        text-decoration: none;
+        text-align: center;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
+    .navigation-link4 > a:hover {
+        background-color: green;
+        font-weight: 700;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .hamburger {
+            display: none;
+        }
+
+        .navigation-bar4 {
+            clear: both;
+            content: "";
+            display: table;
+        }
+
+        .navigation-link4 {
+            display: block;
+            float: left;
+        }
+
+        .navigation-link4 > a {
+            width: auto;
+        }
+    }
+
+    /* Must be below media query to prevent style being overridden */
+    .active-link > a {
+        background-color: green;
+        font-weight: 700;
+        cursor: default;
+    }
+
+    .show {
+        display: block;
+    }
+                        </style>
+                        <div>
+                            <ul class="navigation-bar4">
+                                <li class="hamburger"><button><span></span><span></span><span></span></button></li>
+                                <li class="navigation-link4 active-link"><a>Home</a></li>
+                                <li class="navigation-link4"><a>Store</a></li>
+                                <li class="navigation-link4"><a>Blog</a></li>
+                                <li class="navigation-link4"><a>About</a></li>
+                                <li class="navigation-link4"><a>Contact</a></li>
+                            </ul>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolor! Ducimus voluptate minus eaque odio cumque totam quo, cupiditate dolores neque? Autem, totam dolores! Eligendi quisquam iusto unde repellat consequatur.</p>  
+                    </div>
+                    <script>
+                        const hamburgerBtn = document.querySelector(".hamburger > button");
+                        const navigationLinks = document.querySelectorAll(".navigation-link4");
+
+                        hamburgerBtn.addEventListener("click", event => navigationLinks.forEach(navlink => navlink.classList.toggle("show")));
+                    </script>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <ul>
+                    <li>Try pressing the hamburger button, it will toggle the navigation bar.</li>
+                </ul>
+
+                <p>The snippet of JavaScript code responsible looks as follows:</p>
+                <pre class="block-code"><code>const hamburgerBtn = document.querySelector(".hamburger > button");
+const navigationLinks = document.querySelectorAll(".navigation-link4");
+
+hamburgerBtn.addEventListener("click", event => navigationLinks.forEach(navlink => navlink.classList.toggle("show")));</code></pre>
+
+                <p>
+                    To use this, just stick the HTML and CSS into appropriate files and then put the JavaScript code inside of a <code>script</code> tag at the bottom of the page for simplicity.
+                    Ideally, the JavaScript would be in a <code>.js</code> file to promote the concept of DRY (Don't Repeat Yourself).
+                </p>
             </section>
         </article>
     </main>
