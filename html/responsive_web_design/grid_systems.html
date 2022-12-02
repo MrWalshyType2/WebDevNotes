@@ -60,6 +60,337 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
     
+    <main>
+        <article>
+            <header>
+                <h1>Grid-based layouts</h1>
+                <p>
+                    CSS has allowed pages to be laid out according to the box-model, this fits nicely with laying websites out using a grid. Grids can be produced with 
+                    CSS floats (older way, requires clearfix), CSS tables (not recommended, not easily accessible, used in the 90s and early 2000s), CSS Flexbox (recommended) and CSS Grid (recommended).
+                </p>
+            </header>
+            <blockquote>All of the following examples take part in the <em>border-box</em> model rather than the default <em>content-box</em> model.</blockquote>
+
+            <section>
+                <h2>Float-based grid</h2>
+                <p>
+                    CSS floats can be used for creating grid-based layouts, it is as simple as floating an item to the left and giving it a specific width. For example:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .float-25, .float-50 {
+        width: 100%;
+        float: none;
+        display: block;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .float-25 {
+            width: 25%;
+            float: left;
+        }
+
+        .float-50 {
+            width: 50%;
+            float: left;
+        }
+    }
+                        </style>
+                        <div class="float-25">
+                            <p>Sidemenu</p>
+                            <ul>
+                                <li>Item 1</li>
+                                <li>Item 2</li>
+                                <li>Item 3</li>
+                                <li>Item 4</li>
+                                <li>Item 5</li>
+                            </ul>
+                        </div>
+                        <div class="float-50">
+                            <p>Main content</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque est velit vitae eligendi quos corrupti eum, ipsa esse. Ipsa dolorum praesentium velit? Sed explicabo temporibus repellendus ab quibusdam enim laborum amet quo eveniet maxime doloribus expedita vero illum nesciunt reiciendis delectus, voluptates voluptas cum ea iste! Ex odio repellendus dolores!</p>
+                        </div>
+                        <div class="float-25">
+                            <p>Sidemenu</p>
+                            <ul>
+                                <li>Item 1</li>
+                                <li>Item 2</li>
+                                <li>Item 3</li>
+                                <li>Item 4</li>
+                                <li>Item 5</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    By default, elements with the <code>float-xx</code> classes are not floated and have a <code>block</code> outer display type. Upon reaching 1024px in screen size, the 
+                    elements with the classes will be floated to the left and have their respective widths applied. This is a very simple example of creating a mobile-first responsive grid 
+                    with CSS floats.
+                </p>
+
+                <p>
+                    A more suitable grid with floats would include a row class, alongside some amount of column classes. The following example uses a 12-column float-based grid
+                    with clearfix applied to the rows:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+        width: 100%;
+        float: none;
+        display: block;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .row {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        [class*="col-"]:not([class*="flex-col"]) {
+            float: left;
+            padding: 16px;
+            margin-bottom: -99999px;
+            padding-bottom: 99999px;
+        }
+
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+    }
+                        </style>
+                        <div class="row">
+                            <div class="col-2" style="background-color: lightgray;">
+                                <p>Sidemenu</p>
+                                <ul>
+                                    <li>Item 1</li>
+                                    <li>Item 2</li>
+                                    <li>Item 3</li>
+                                    <li>Item 4</li>
+                                    <li>Item 5</li>
+                                </ul>
+                            </div>
+                            <div class="col-8 borders">
+                                <p>Main content</p>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque est velit vitae eligendi quos corrupti eum, ipsa esse. Ipsa dolorum praesentium velit? Sed explicabo temporibus repellendus ab quibusdam enim laborum amet quo eveniet maxime doloribus expedita vero illum nesciunt reiciendis delectus, voluptates voluptas cum ea iste! Ex odio repellendus dolores!</p>
+                            </div>
+                            <div class="col-2 borders" style="background-color: lightgray;">
+                                <p>Sidemenu</p>
+                                <ul>
+                                    <li>Item 1</li>
+                                    <li>Item 2</li>
+                                    <li>Item 3</li>
+                                    <li>Item 4</li>
+                                    <li>Item 5</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    To give the columns equal height, the <em>one true layout method</em> was used. This involves hiding overflow on the row while giving each column a magic number for both 
+                    <code>padding-bottom</code> and <code>margin-bottom</code>.
+                </p>
+            </section>
+
+            <section>
+                <h2>Flexbox-based grid</h2>
+                <ul>
+                    <li>This content also appears on the Flexbox page</li>
+                </ul>
+
+                <p>
+                    Flexbox can also be used to create grids of content, this requires a container element with <code>display: flex</code> and <code>flex-direction: column</code> applied for containing rows of content. Each container 
+                    will contain row elements, with <code>display: flex</code> and wrapping behaviour applied. Each column is then created with a specific <code>flex-basis</code>, <code>col-6</code>
+                    would have a <code>flex-basis: 50%</code> on a 12-column grid for example:
+                </p>
+    
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    .full-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .flex-row {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0 auto;
+    }
+
+    .bg-light-blue {
+        background-color: lightblue;
+    }
+    
+    .flex-col-1,
+    .flex-col-2,
+    .flex-col-3,
+    .flex-col-4,
+    .flex-col-5,
+    .flex-col-6,
+    .flex-col-7,
+    .flex-col-8,
+    .flex-col-9,
+    .flex-col-10,
+    .flex-col-11,
+    .flex-col-12 {
+        flex-basis: 100%;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        .flex-col-1 {flex: 8.33%;}
+        .flex-col-2 {flex: 16.66%;}
+        .flex-col-3 {flex: 25%;}
+        .flex-col-4 {flex: 33.33%;}
+        .flex-col-5 {flex: 41.66%;}
+        .flex-col-6 {flex: 50%;}
+        .flex-col-7 {flex: 58.33%;}
+        .flex-col-8 {flex: 66.66%;}
+        .flex-col-9 {flex: 75%;}
+        .flex-col-10 {flex: 83.33%;}
+        .flex-col-11 {flex: 91.66%;}
+        .flex-col-12 {flex: 100%;}
+    }
+                        </style>
+                        <div class="container">
+                            <div class="flex-row">
+                                <div class="flex-col-4 full-container">
+                                    <div class="flex-row bg-light-blue" style="width: 90%; padding: 16px;">
+                                        <h3 role="presentation">Box 1</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                                <div class="flex-col-4 full-container">
+                                    <div class="flex-row bg-light-blue" style="width: 90%; padding: 16px;">
+                                        <h3 role="presentation">Box 2</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                                <div class="flex-col-4 full-container">
+                                    <div class="flex-row bg-light-blue" style="width: 90%; padding: 16px;">
+                                        <h3 role="presentation">Box 3</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                                <div class="flex-col-6 full-container" style="margin-top: 16px">
+                                    <div class="flex-row bg-light-blue" style="width: 90%; padding: 16px;">
+                                        <h3 role="presentation">Box 5</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                                <div class="flex-col-6 full-container" style="margin-top: 16px">
+                                    <div class="flex-row bg-light-blue" style="width: 90%; padding: 16px;">
+                                        <h3 role="presentation">Box 6</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    A media query is used to change the flex-basis dependent on the screen size, any column below 1024px in screen width will have a <code>flex-basis: 100%</code>.
+                </p>
+
+                <p>
+                    This Flexbox grid could then be used to create different page layouts, such as the holy grail layout:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .borders {
+        border: solid 1px black;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .sidemenu {
+            display: none;
+        }
+    }
+
+    .p-md {
+        padding: 16px;
+    }
+                        </style>
+                        <div class="full-container">
+                            <div class="flex-row">
+                                <div class="flex-col-12 borders p-md">
+                                    <p>Navbar</p>
+                                </div>
+                            </div>
+                            <div class="flex-row">
+                                <div class="flex-col-3 borders sidemenu p-md">
+                                    <p>Side menu</p>
+                                </div>
+                                <div class="flex-col-6 borders p-md">
+                                    <h2 role="presentation">Main content</h2>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda numquam enim aut? Aspernatur nemo eligendi saepe, impedit, error accusantium cupiditate magnam doloribus dolor in a! Aperiam quis a magni error.</p>
+                                </div>
+                                <div class="flex-col-3 borders sidemenu p-md">
+                                    <p>Side menu</p>
+                                </div>
+                            </div>
+                            <div class="flex-row">
+                                <div class="flex-col-12 borders p-md">
+                                    <p>Footer</p>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    A benefit of Flexbox seen here is that we don't need any magic numbers in the CSS to get equal height columns like a float-based layout.
+                </p>
+            </section>
+        </article>
+    </main>
+
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
