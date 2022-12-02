@@ -61,6 +61,493 @@
         <a href="/html/attributions.html">Attributions</a>
     </nav>
     
+    <main>
+        <article>
+            <header>
+                <h1>Flexbox</h1>
+                <p>The CSS <strong>Flexible Box Module</strong> (Flexbox) is a positioning system introduced in CSS3 for making one-dimensional content (rows and columns) simpler to produce.</p>
+            </header>
+
+            <section>
+                <h2>The axis and creating a flexible box</h2>
+                <p>
+                    Flexbox is designed for producing one-dimensional content, that content runs along a main axis which may be a row or column (forward or in reverse). The direction of the 
+                    axis is decided with the <code>flex-direction</code> property:
+                </p>
+                <ul>
+                    <li><code>row</code>: The default layout, flex children are laid out in a row as if they are <code>inline-block</code> elements</li>
+                    <li><code>row-reverse</code>: Items are laid out in a reversed row</li>
+                    <li><code>column</code>: Items are laid out in a column, as if each child is a <code>block</code> element</li>
+                    <li><code>column-reverse</code>: Items are laid out in a reversed column</li>
+                </ul>
+
+                <h3>The main axis</h3>
+                <p>
+                    The main axis of a flexible box is that chosen by the <code>flex-direction</code> property, but to be a flexible box it must also have the <code>display</code> type of 
+                    <code>flex</code> applied to make the direct children <strong>flex items</strong>:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    margin-right: 16px;
+}
+                        </style>
+                        <div class="row-container">
+                            <p>&lt;-------- Main axis (<code>flex-direction: row</code>) --------&gt;</p>
+                        </div>
+                        <div class="row-container">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <h3>The cross axis</h3>
+                <p>
+                    The cross axis is the opposite to the main axis, so if <code>flex-direction</code> is set to <code>row</code> then the cross-axis is vertical.
+                </p>
+                <div class="example">
+                    <div class="example-content" style="display: flex;">
+                        <div style="margin-right: 16px;">
+                            <p style="text-align: center; margin: 0;">&#9650;</p>
+                            <p style="text-align: center;">Cross axis (<code>flex-direction: row</code>)</p>
+                            <p style="text-align: center; margin: 0;">&#9660;</p>
+                        </div>
+                        <div class="row-container">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>The default settings</h2>
+                <p>
+                    As with most CSS properties, defaults are defined and applied to give a consistent experience across browsers. These are as follows:
+                </p>
+                <ul>
+                    <li>The default <code>flex-direction</code> is <code>row</code></li>
+                    <li>Items start at the starting edge of the main axis (left-to-right for a default row in English, but right-to-left for a default row in Arabic)</li>
+                    <li>Items cannot be stretched along the main-axis, but can be shrunk</li>
+                    <li>Items stretch to fill the size of the cross-axis, this gives even heights to flex items in a row or equal widths in a column</li>
+                    <li><code>flex-wrap</code> is set to <code>nowrap</code>, meaning items do not wrap onto a new row by default should the screen become too small for the items</li>
+                    <li><code>flex-basis</code> is set to <code>auto</code>, this defines how the flex items should shrink and grow in size in response to changes in size of the parent flex container</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Allowing wrapping</h2>
+                <p>Often, we will want content to wrap onto a new row should the content be too large for the viewports width. We can do this by setting <code>flex-wrap</code> to <code>wrap</code>:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.wrap-container {
+    display: flex;
+    flex-wrap: wrap;
+    counter-reset: widebox;
+}
+
+.wide-box {
+    width: 300px;
+    height: 50px;
+    background-color: blue;
+    margin: 8px;
+}
+
+.wide-box::before {
+    counter-increment: widebox;
+    content: "Box " counter(widebox);
+    font-size: 1.6rem;
+    color: white;
+    margin: 120px;
+}
+                        </style>
+                        <div class="wrap-container">
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>Try resizing the screen to see how the boxes automatically wrap onto a newline as the screen becomes smaller.</p>
+
+                <p>We can also make use of the shorthand <code>flex-flow</code> property to specify the values for <code>flex-direction</code> and <code>flex-wrap</code> respectively:</p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.flow-container {
+    display: flex;
+    flex-flow: row wrap;
+    counter-reset: widebox;
+}
+
+.wide-box {
+    width: 300px;
+    height: 50px;
+    background-color: blue;
+    margin: 8px;
+}
+
+.wide-box::before {
+    counter-increment: widebox;
+    content: "Box " counter(widebox);
+    font-size: 1.6rem;
+    color: white;
+    margin: 120px;
+}
+                        </style>
+                        <div class="flow-container">
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                            <div class="wide-box"></div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Flex item properties</h2>
+                <p>
+                    There are three main properties for controlling how flex items appear in the flexible box:
+                </p>
+                <dl>
+                    <dt><code>flex-grow</code></dt>
+                    <dd>
+                        The <code>flex-grow</code> property is used to specify a growth factor, as a positive integer, for a flex-item. If there was a flexible box of width 1000px containing 
+                        ten items of width 50px, setting <code>flex-grow: 1</code> would share all the remaining space equally and become 100px each in size. If we gave 1 of the items a <code>flex-grow</code>
+                        value of <code>2</code>, that would receive two parts of the available space (100px) instead of sharing equally with the rest of the elements.
+                    </dd>
+
+                    <dt><code>flex-shrink</code></dt>
+                    <dd>
+                        The <code>flex-shrink</code> property controls how space is taken away from an element. Setting a positive integer allows a flex item to shrink smaller than the 
+                        defined <code>flex-basis</code>. The larger the value, the faster a flex item will shrink.
+                    </dd>
+
+                    <dt><code>flex-basis</code></dt>
+                    <dd>
+                        The <code>flex-basis</code> property decides upon the size of an item in relation to available space in the flexible box it is contained in. The initial value is <code>auto</code>, 
+                        which gets its width from one of two locations:
+                        <ul>
+                            <li>If a <code>width</code> is defined, that is the flex-basis of the item</li>
+                            <li>If no <code>width</code> is defined, the width of the content is the flex-basis of the item</li>
+                        </ul>
+                    </dd>
+                </dl>
+
+                <p>
+                    These properties are commonly combined into the shorthand <code>flex</code> property instead:
+                </p>
+                <pre class="block-code"><code>flex: flex-grow flex-shrink flex-basis;</code></pre>
+
+                <p>
+                    The following example demonstrates three boxes which will grow and shrink as their container shrinks, always growing to fill the containers total length:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.container {
+    display: flex;
+}
+
+.item {
+    flex: 1 1 auto; /* This is the same as setting flex: auto; */
+    background-color: lightblue;
+    margin: 8px;
+}
+                        </style>
+                        <div class="container">
+                            <div class="item">Box 1</div>
+                            <div class="item">Box 2</div>
+                            <div class="item">Box 3 has more content</div>
+                            <div class="item">Box 4 is here</div>
+                            <div class="item">Box 5</div>
+                            <div class="item">Box 6</div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <blockquote>
+                    Setting <code>flex: 1 1 auto;</code> is the same as setting <code>flex: auto;</code>
+                </blockquote>
+
+                <p>
+                    If we did not want items to grow to fill the remaining space, we can set the <code>flex-grow</code> property to 0:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.container {
+    display: flex;
+}
+
+.item-no-grow {
+    flex: 0 1 auto;
+    background-color: lightblue;
+    margin: 8px;
+}
+                        </style>
+                        <div class="container">
+                            <div class="item-no-grow">Box 1</div>
+                            <div class="item-no-grow">Box 2</div>
+                            <div class="item-no-grow">Box 3 has more content</div>
+                            <div class="item-no-grow">Box 4 is here</div>
+                            <div class="item-no-grow">Box 5</div>
+                            <div class="item-no-grow">Box 6</div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+
+                <p>
+                    Setting the <code>flex-basis</code> to 0, <code>flex-grow</code> and <code>flex-shrink</code> to 1 will result in flex items which 
+                    grow and shrink to fill the given space equally:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.container {
+    display: flex;
+}
+
+.item-0-basis {
+    flex: 1 1 0; /* This is the same as setting flex: 1; */
+    background-color: lightblue;
+    margin: 8px;
+}
+                        </style>
+                        <div class="container">
+                            <div class="item-0-basis">Box 1</div>
+                            <div class="item-0-basis">Box 2</div>
+                            <div class="item-0-basis">Box 3 has more content</div>
+                            <div class="item-0-basis">Box 4 is here</div>
+                            <div class="item-0-basis">Box 5</div>
+                            <div class="item-0-basis">Box 6</div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>A flexible grid</h2>
+                <p>
+                    Flexbox can also be used to create grids of content, this requires a container element with <code>display: flex</code> and <code>flex-direction: column</code> applied for containing rows of content. Each container 
+                    will contain row elements, with <code>display: flex</code> and wrapping behaviour applied. Each column is then created with a specific <code>flex-basis</code>, <code>col-6</code>
+                    would have a <code>flex-basis: 50%</code> on a 12-column grid for example:
+                </p>
+
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+.vcontainer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.full-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.itemex {
+    background-color: lightcoral;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+    flex-basis: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+    .col-1 {flex-basis: 8.33%;}
+    .col-2 {flex-basis: 16.66%;}
+    .col-3 {flex-basis: 25%;}
+    .col-4 {flex-basis: 33.33%;}
+    .col-5 {flex-basis: 41.66%;}
+    .col-6 {flex-basis: 50%;}
+    .col-7 {flex-basis: 58.33%;}
+    .col-8 {flex-basis: 66.66%;}
+    .col-9 {flex-basis: 75%;}
+    .col-10 {flex-basis: 83.33%;}
+    .col-11 {flex-basis: 91.66%;}
+    .col-12 {flex-basis: 100%;}
+}
+                        </style>
+                        <div class="vcontainer">
+                            <div class="row">
+                                <div class="col-3 itemex full-container">
+                                    <div class="row" style="width: 90%; margin: 0 auto;">
+                                        <h3 role="presentation">Box 1</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 itemex full-container">
+                                    <div class="row" style="width: 90%; margin: 0 auto;">
+                                        <h3 role="presentation">Box 2</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 itemex full-container">
+                                    <div class="row" style="width: 90%; margin: 0 auto;">
+                                        <h3 role="presentation">Box 3</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 itemex full-container">
+                                    <div class="row" style="width: 90%; margin: 0 auto;">
+                                        <h3 role="presentation">Box 4</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 itemex full-container">
+                                    <div class="row" style="width: 90%; margin: 0 auto;">
+                                        <h3 role="presentation">Box 5</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 itemex full-container">
+                                    <div class="row" style="width: 90%; margin: 0 auto;">
+                                        <h3 role="presentation">Box 6</h3>
+                                        <img style="width: 100%;" src="https://via.placeholder.com/350x200" alt="Placeholder image">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque esse veritatis officiis sunt eligendi beatae ducimus sapiente laudantium non aliquam!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+                <p>
+                    A media query is used to change the flex-basis dependent on the screen size, any column below 1024px in screen width will have a <code>flex-basis: 100%</code>.
+                </p>
+                
+                <p>
+                    This Flexbox grid could then be used to create different page layouts, such as the holy grail layout:
+                </p>
+                <div class="example">
+                    <div class="example-content">
+                        <style>
+    .borders {
+        border: solid 1px black;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .sidemenu {
+            display: none;
+        }
+    }
+                        </style>
+                        <div class="full-container">
+                            <div class="row">
+                                <div class="col-12 borders">
+                                    <p>Navbar</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 borders sidemenu">
+                                    <p>Side menu</p>
+                                </div>
+                                <div class="col-6 borders">
+                                    <h2 role="presentation">Main content</h2>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda numquam enim aut? Aspernatur nemo eligendi saepe, impedit, error accusantium cupiditate magnam doloribus dolor in a! Aperiam quis a magni error.</p>
+                                </div>
+                                <div class="col-3 borders sidemenu">
+                                    <p>Side menu</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 borders">
+                                    <p>Footer</p>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="example-buttons">
+                        <button class="render-btn">Render</button>
+                        <button class="raw-btn">Raw</button>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
     <script src="../../js/navigation.js"></script>
 </body>
 </html>
